@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pcmohqm-coder.github.io/pool-ticket/sitemap.xml
