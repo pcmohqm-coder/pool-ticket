@@ -1,191 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="استخر شهدای بسیج قم؛ اطلاعات بلیت، ساعات کاری، آدرس و راه‌های ارتباطی">
-  <title>استخر شهدای بسیج | قم</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071b33">
+<meta name="description" content="استخر شهدای بسیج قم؛ سانس‌ها، امکانات، گالری، قیمت بلیت و راه‌های ارتباطی">
+<title>استخر شهدای بسیج | قم</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--navy:#06182d;--navy2:#0b2947;--blue:#0879c9;--cyan:#20b9ed;--gold:#f5b83d;--white:#fff;--muted:#6d7c8c;--bg:#f6f9fc;--card:#fff;--line:#e7edf3;--shadow:0 18px 50px rgba(5,32,58,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:#102337;line-height:1.9}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}
+header{position:fixed;z-index:50;top:0;left:0;right:0;background:rgba(4,20,38,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.10)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{height:64px;width:170px;object-fit:contain;object-position:center;background:transparent}
+.menu{display:flex;align-items:center;gap:25px;color:#eef7ff;font-size:14px;font-weight:600}
+.menu a{opacity:.9;transition:.25s}
+.menu a:hover{color:#5dd5ff;opacity:1}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+.hero{min-height:720px;position:relative;display:flex;align-items:center;overflow:hidden;background:#031326}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,16,31,.86),rgba(2,18,35,.54) 48%,rgba(2,18,35,.35))}
+.hero-content{position:relative;z-index:2;color:#fff;max-width:760px;padding:150px 0 90px}
+.hero-logo{width:min(430px,88vw);max-height:190px;object-fit:contain;object-position:right;margin-bottom:22px;filter:drop-shadow(0 12px 25px rgba(0,0,0,.35))}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:13px;margin-bottom:15px}
+.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.35;font-weight:900;margin-bottom:14px}
+.hero p{font-size:18px;color:#e5f2fc;max-width:680px;margin-bottom:24px}
+.features{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.feature{padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:13px;padding:13px 22px;font-family:inherit;font-weight:800;cursor:pointer;transition:.25s}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;box-shadow:0 12px 28px rgba(0,139,210,.28)}
+.btn-primary:hover{transform:translateY(-2px)}
+.play{display:inline-flex;align-items:center;gap:10px;margin-right:15px;color:#fff;font-weight:700;font-size:14px}
+.play i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
+section{padding:88px 0}
+.section-head{text-align:center;margin-bottom:38px}
+.section-head .eyebrow{color:var(--blue);font-size:13px;font-weight:800;margin-bottom:5px}
+.section-head h2{font-size:clamp(26px,4vw,36px);color:var(--navy);font-weight:900}
+.section-head p{color:var(--muted);max-width:680px;margin:8px auto 0}
+.sessions{background:#fff}
+.session-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.session-card{position:relative;overflow:hidden;border-radius:22px;padding:30px;background:linear-gradient(145deg,#fff,#f2f8fc);border:1px solid var(--line);box-shadow:var(--shadow)}
+.session-card:before{content:"";position:absolute;left:-35px;top:-50px;width:140px;height:140px;border-radius:50%;background:rgba(32,185,237,.10)}
+.session-icon{font-size:42px;margin-bottom:10px}
+.session-card h3{font-size:25px;color:var(--navy);margin-bottom:5px}
+.session-card .days{color:#4c6478;font-weight:700}
+.time{display:inline-block;margin-top:16px;padding:9px 15px;border-radius:12px;background:#e8f6fd;color:#0577b7;font-weight:900}
+.session-card .btn{margin-top:20px}
+.facilities{background:var(--bg)}
+.facility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.facility{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px 15px;text-align:center;box-shadow:0 8px 25px rgba(6,34,58,.05);transition:.25s}
+.facility:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.facility .ico{width:68px;height:68px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e7f7ff,#f8fcff);font-size:31px;border:1px solid #d5edf8}
+.facility h3{font-size:15px;color:#173149}
+.gallery{background:#fff}
+.slider{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:#06203a}
+.slides{display:flex;transition:transform .45s ease}
+.slide{min-width:100%;height:460px;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.42),transparent 50%)}
+.slide-caption{position:absolute;z-index:2;bottom:24px;right:26px;color:#fff;font-weight:800;font-size:18px}
+.slider button{position:absolute;z-index:4;top:50%;transform:translateY(-50%);width:45px;height:45px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,20,40,.55);color:#fff;font-size:24px;cursor:pointer}
+.prev{right:16px}.next{left:16px}
+.dots{position:absolute;z-index:4;bottom:17px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);border:0}.dot.active{background:#fff;width:23px;border-radius:10px}
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-img{height:420px;border-radius:26px;overflow:hidden;box-shadow:var(--shadow)}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-text h2{font-size:34px;color:var(--navy);margin-bottom:12px}
+.about-text p{color:#5d7080;margin-bottom:18px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;color:#29465d;font-size:14px}
+.checks div:before{content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e6f8ff;color:#0580bd;margin-left:7px;font-weight:900}
+.info-bar{background:var(--navy);color:#fff;padding:28px 0}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.info-item{padding:10px 16px;border-left:1px solid rgba(255,255,255,.13)}
+.info-item:last-child{border-left:0}
+.info-label{color:#79d9fb;font-size:12px;font-weight:800;margin-bottom:3px}
+.info-value{font-size:14px;color:#eef7ff}
+.info-value strong{font-size:20px}
+footer{background:#03111f;color:#dbe8f3;padding:52px 0 22px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px}
+footer .logo{width:200px;margin-bottom:10px}
+footer p{color:#9db1c2;font-size:13px}
+footer h3{color:#fff;margin-bottom:12px}
+.footer-links{display:grid;gap:8px;font-size:13px}
+.footer-links a:hover{color:#54d4ff}
+.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;color:#7f96a9;font-size:12px}
+@media(max-width:900px){
+ .menu{position:absolute;top:82px;right:16px;left:16px;display:none;flex-direction:column;align-items:stretch;gap:0;background:#071b30;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+ .menu.open{display:flex}.menu a{padding:11px 13px;border-radius:10px}.menu a:hover{background:rgba(255,255,255,.07)}
+ .menu-btn{display:block}.logo{width:145px}
+ .hero{min-height:690px}.hero-content{padding-top:135px}
+ .facility-grid{grid-template-columns:repeat(2,1fr)}
+ .info-grid{grid-template-columns:repeat(2,1fr)}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+ .container{width:min(100% - 22px,1180px)}
+ section{padding:65px 0}
+ .nav{height:70px}.menu{top:70px}
+ .hero-content{padding-top:120px}.hero h1{font-size:31px}.hero p{font-size:15px}.hero-logo{width:300px;max-height:145px}
+ .play{margin-right:0;margin-top:12px}.btn-primary{width:100%}
+ .session-grid,.about-grid{grid-template-columns:1fr}
+ .facility-grid{grid-template-columns:repeat(2,1fr);gap:10px}.facility{padding:18px 8px}
+ .slide{height:300px}.slide-caption{font-size:14px;right:17px}
+ .info-grid{grid-template-columns:1fr 1fr}.info-item{border-left:0;border-bottom:1px solid rgba(255,255,255,.1)}
+ .footer-grid{grid-template-columns:1fr}.about-img{height:290px}.checks{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 <body>
-  <main>
 
-    <!-- 1. تایپوگرافی اصلی -->
-    <section class="hero-brand" aria-label="استخر شهدای بسیج">
-      <div class="brand-image-wrap">
-        <img
-          src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/typography.png"
-          alt="استخر شهدای بسیج"
-          class="brand-image"
-        >
+<header>
+  <div class="container nav">
+    <a href="#home"><img class="logo" src="typography.png" alt="استخر شهدای بسیج"></a>
+    <nav class="menu" id="menu">
+      <a href="#home">صفحه اصلی</a>
+      <a href="#sessions">سانس‌ها</a>
+      <a href="#facilities">امکانات</a>
+      <a href="#gallery">گالری تصاویر</a>
+      <a href="#about">درباره ما</a>
+      <a href="#contact">تماس با ما</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="باز کردن منو">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content container">
+    <span class="kicker">🏊 مجموعه ورزشی و تفریحی در قم</span>
+    <img class="hero-logo" src="typography.png" alt="استخر شهدای بسیج">
+    <h1>محلی برای سلامتی، نشاط و آرامش</h1>
+    <p>فضایی مجهز برای شنا، ورزش و آرامش؛ با سانس‌های جداگانه آقایان و بانوان و امکانات کامل مجموعه.</p>
+    <div class="features">
+      <span class="feature">🏊 استخر مجهز</span>
+      <span class="feature">🔥 سونای خشک و بخار</span>
+      <span class="feature">🛁 جکوزی و حوضچه آب سرد</span>
+    </div>
+    <a class="btn btn-primary" href="#tickets">خرید بلیت و رزرو سانس ←</a>
+    <a class="play" href="#gallery"><i>▶</i> مشاهده فضای استخر</a>
+  </div>
+</section>
+
+<section class="sessions" id="sessions">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">برنامه مجموعه</div>
+      <h2>معرفی سانس‌ها</h2>
+      <p>زمان‌بندی استفاده از مجموعه برای آقایان و بانوان</p>
+    </div>
+    <div class="session-grid">
+      <article class="session-card">
+        <div class="session-icon">👨</div>
+        <h3>آقایان</h3>
+        <div class="days">روزهای فرد و جمعه</div>
+        <span class="time">۱۵:۰۰ تا ۲۳:۰۰</span>
+        <a class="btn btn-primary" href="#tickets">مشاهده سانس‌ها</a>
+      </article>
+      <article class="session-card">
+        <div class="session-icon">👩</div>
+        <h3>بانوان</h3>
+        <div class="days">روزهای زوج</div>
+        <span class="time">۱۳:۰۰ تا ۱۹:۰۰</span>
+        <a class="btn btn-primary" href="#tickets">مشاهده سانس‌ها</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="facilities" id="facilities">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">امکانات مجموعه</div>
+      <h2>امکانات و خدمات</h2>
+      <p>امکاناتی برای یک تجربه کامل‌تر از حضور در استخر</p>
+    </div>
+    <div class="facility-grid">
+      <div class="facility"><div class="ico">🏊</div><h3>استخر</h3></div>
+      <div class="facility"><div class="ico">🔥</div><h3>سونای خشک و بخار</h3></div>
+      <div class="facility"><div class="ico">🛁</div><h3>جکوزی</h3></div>
+      <div class="facility"><div class="ico">❄️</div><h3>حوضچه آب سرد</h3></div>
+      <div class="facility"><div class="ico">🚿</div><h3>دوش و رختکن</h3></div>
+      <div class="facility"><div class="ico">🅿️</div><h3>پارکینگ</h3></div>
+      <div class="facility"><div class="ico">🧼</div><h3>محیط بهداشتی و مجهز</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">تصاویر مجموعه</div>
+      <h2>گالری تصاویر</h2>
+      <p>نمایی از فضای استخر شهدای بسیج</p>
+    </div>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="فضای استخر شهدای بسیج"><div class="slide-caption">فضای استخر شهدای بسیج</div></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="استخر شهدای بسیج"><div class="slide-caption">محیط استخر</div></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="مجموعه استخر"><div class="slide-caption">مجموعه ورزشی و تفریحی</div></div>
       </div>
-    </section>
+      <button class="prev" id="prev">›</button><button class="next" id="next">‹</button>
+      <div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
+    </div>
+  </div>
+</section>
 
-    <!-- 2. ویدیوی معرفی -->
-    <section class="video-section">
-      <div class="section-heading">
-        <span class="eyebrow">نگاهی از نزدیک</span>
-        <h1>فضای استخر شهدای بسیج</h1>
-        <p>ویدیوی معرفی فضای کلی مجموعه</p>
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-img"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="استخر شهدای بسیج قم"></div>
+    <div class="about-text">
+      <div class="eyebrow">درباره مجموعه</div>
+      <h2>درباره استخر شهدای بسیج</h2>
+      <p>استخر شهدای بسیج در قم، فضایی برای ورزش، نشاط و آرامش با سانس‌های مجزا و امکانات متنوع مجموعه است.</p>
+      <div class="checks">
+        <div>سانس مجزای آقایان</div><div>سانس مجزای بانوان</div>
+        <div>سونای خشک و بخار</div><div>جکوزی</div>
+        <div>حوضچه آب سرد</div><div>دوش و رختکن</div>
+        <div>پارکینگ</div><div>محیط بهداشتی و مجهز</div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="video-card">
-        <video
-          class="pool-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          controls
-          preload="metadata"
-        >
-          <source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4">
-          مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-        </video>
-      </div>
-    </section>
+<section class="sessions" id="tickets">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">تعرفه</div>
+      <h2>قیمت بلیت</h2>
+    </div>
+    <div class="session-grid">
+      <article class="session-card">
+        <div class="session-icon">🎟️</div>
+        <h3>بلیط آزاد</h3>
+        <div class="time">۲۵۰٬۰۰۰ تومان</div>
+        <p style="margin-top:14px;color:#4c6478;font-weight:700">تخفیف ویژه شامل نیروهای مسلح و بسیجیان</p>
+      </article>
+      <article class="session-card">
+        <div class="session-icon">📅</div>
+        <h3>رزرو و مشاهده سانس</h3>
+        <p style="color:#4c6478">برای اطلاع از برنامه سانس‌ها و هماهنگی با مجموعه با ما در ارتباط باشید.</p>
+        <a class="btn btn-primary" href="tel:0933055036">تماس با استخر</a>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- 3. معرفی -->
-    <section class="intro section">
-      <div class="intro-card">
-        <span class="eyebrow">استخر شهدای بسیج</span>
-        <h2>محلی برای سلامتی، نشاط و آرامش</h2>
-        <p>
-          اطلاعات بلیت، ساعات کاری، آدرس و راه‌های ارتباطی مجموعه
-          را در ادامه مشاهده کنید.
-        </p>
-      </div>
-    </section>
+<div class="info-bar" id="contact">
+  <div class="container info-grid">
+    <div class="info-item"><div class="info-label">ایتـا</div><div class="info-value"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a></div></div>
+    <div class="info-item"><div class="info-label">آدرس</div><div class="info-value">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</div></div>
+    <div class="info-item"><div class="info-label">تلفن</div><div class="info-value"><a href="tel:0933055036">۰۹۳۳۰۵۵۰۳۶</a></div></div>
+    <div class="info-item"><div class="info-label">قیمت بلیت آزاد</div><div class="info-value"><strong>۲۵۰٬۰۰۰</strong> تومان</div></div>
+  </div>
+</div>
+</main>
 
-    <!-- 4. قیمت بلیت -->
-    <section class="section" id="tickets">
-      <div class="section-heading">
-        <span class="eyebrow">تعرفه</span>
-        <h2>🎟️ قیمت بلیت</h2>
-      </div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><img class="logo" src="typography.png" alt="استخر شهدای بسیج"><p>استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p></div>
+      <div><h3>دسترسی سریع</h3><div class="footer-links"><a href="#home">صفحه اصلی</a><a href="#sessions">سانس‌ها</a><a href="#facilities">امکانات</a><a href="#gallery">گالری تصاویر</a></div></div>
+      <div><h3>ارتباط با ما</h3><div class="footer-links"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a><a href="tel:0933055036">۰۹۳۳۰۵۵۰۳۶</a><a href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank">مشاهده موقعیت روی نقشه</a></div></div>
+    </div>
+    <div class="copy">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div>
+  </div>
+</footer>
 
-      <div class="cards two-cols">
-        <article class="info-card price-card">
-          <div class="icon">🎟️</div>
-          <h3>بلیط آزاد</h3>
-          <div class="price">۲۵۰٬۰۰۰ <small>تومان</small></div>
-        </article>
-
-        <article class="info-card price-card featured">
-          <div class="icon">⭐</div>
-          <h3>ویژه بسیجیان</h3>
-          <div class="price">۱۲۰٬۰۰۰ <small>تومان</small></div>
-          <p>با ارائه مدرک معتبر</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- 5. ساعات کاری -->
-    <section class="section" id="hours">
-      <div class="section-heading">
-        <span class="eyebrow">برنامه مجموعه</span>
-        <h2>🕐 ساعات کاری</h2>
-      </div>
-
-      <div class="cards two-cols">
-        <article class="info-card schedule-card">
-          <div class="gender-icon">👨</div>
-          <h3>آقایان</h3>
-          <p>روزهای فرد و جمعه</p>
-          <strong>۱۵:۰۰ تا ۲۳:۰۰</strong>
-        </article>
-
-        <article class="info-card schedule-card">
-          <div class="gender-icon">👩</div>
-          <h3>بانوان</h3>
-          <p>روزهای زوج</p>
-          <strong>۱۳:۰۰ تا ۱۹:۰۰</strong>
-        </article>
-      </div>
-    </section>
-
-    <!-- 6. آدرس -->
-    <section class="section" id="address">
-      <div class="section-heading">
-        <span class="eyebrow">موقعیت</span>
-        <h2>📍 آدرس و مسیریابی</h2>
-      </div>
-
-      <div class="location-card">
-        <p>
-          قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر
-        </p>
-
-        <a
-          class="primary-button"
-          href="https://nshn.ir/96sbs-M4yxQJuj"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          🗺️ باز کردن موقعیت روی نقشه
-        </a>
-      </div>
-    </section>
-
-    <!-- 7. ارتباط -->
-    <section class="section" id="contact">
-      <div class="section-heading">
-        <span class="eyebrow">ارتباط</span>
-        <h2>📞 ارتباط با ما</h2>
-      </div>
-
-      <div class="cards two-cols">
-        <a class="contact-card" href="tel:09330555036">
-          <span class="contact-icon">☎️</span>
-          <span>
-            <b>تماس با استخر</b>
-            <small>۰۹۳۳۰۵۵۵۰۳۶</small>
-          </span>
-        </a>
-
-        <a
-          class="contact-card"
-          href="https://eitaa.com/bassijpool"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="contact-icon">📣</span>
-          <span>
-            <b>کانال ایتا</b>
-            <small>@bassijpool</small>
-          </span>
-        </a>
-      </div>
-    </section>
-
-    <!-- 8. گالری فعلی سایت -->
-    <section class="section" id="gallery">
-      <div class="section-heading">
-        <span class="eyebrow">تصاویر</span>
-        <h2>📸 گالری</h2>
-      </div>
-
-      <div class="gallery-note">
-        تصاویر گالری فعلی سایت را می‌توانی در همین بخش قرار بدهی.
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-brand">استخر شهدای بسیج</div>
-    <div>برای اطلاع از اخبار و برنامه‌ها</div>
-    <a href="https://eitaa.com/bassijpool" target="_blank" rel="noopener noreferrer">
-      @bassijpool
-    </a>
-  </footer>
-
-  <script>
-    // تلاش برای پخش خودکار ویدیو در مرورگرهای سازگار
-    const video = document.querySelector('.pool-video');
-    video?.play().catch(() => {});
-  </script>
+<script>
+const menu=document.getElementById('menu'), btn=document.getElementById('menuBtn');
+btn.addEventListener('click',()=>menu.classList.toggle('open'));
+document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+const slides=document.getElementById('slides'), dots=[...document.querySelectorAll('.dot')]; let i=0;
+function go(n){i=(n+3)%3;slides.style.transform=`translateX(${i*100}%)`;dots.forEach((d,k)=>d.classList.toggle('active',k===i));}
+document.getElementById('prev').onclick=()=>go(i+1);
+document.getElementById('next').onclick=()=>go(i-1);
+dots.forEach((d,k)=>d.onclick=()=>go(k));
+setInterval(()=>go(i+1),5000);
+</script>
 </body>
 </html>
