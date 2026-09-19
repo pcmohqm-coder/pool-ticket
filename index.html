@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071b33">
-<meta name="description" content="استخر شهدای بسیج قم؛ سانس‌ها، امکانات، گالری، قیمت بلیت و راه‌های ارتباطی">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#071b33" name="theme-color"/>
+<meta content="استخر شهدای بسیج قم؛ سانس‌ها، امکانات، گالری، قیمت بلیت و راه‌های ارتباطی" name="description"/>
 <title>استخر شهدای بسیج | قم</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
@@ -111,170 +112,186 @@ footer h3{color:#fff;margin-bottom:12px}
  .info-grid{grid-template-columns:1fr 1fr}.info-item{border-left:0;border-bottom:1px solid rgba(255,255,255,.1)}
  .footer-grid{grid-template-columns:1fr}.about-img{height:290px}.checks{grid-template-columns:1fr}
 }
+
+.header-title{font-size:20px;font-weight:900;color:#fff;white-space:nowrap;order:2}
+.header-title a{color:#fff}
+.header-actions{display:flex;align-items:center;gap:10px;order:3}
+.lang-switch{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);border-radius:999px}
+.lang-btn{border:0;background:transparent;color:#dcecf7;font-family:inherit;font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;cursor:pointer}
+.lang-btn.active{background:#fff;color:#071b33}
+.nav .menu-btn{order:1}
+@media(max-width:900px){
+ .nav{position:relative;justify-content:center;gap:10px}
+ .header-title{font-size:18px}
+ .header-actions{position:absolute;left:0;right:0;top:0;height:100%;justify-content:space-between;pointer-events:none}
+ .header-actions .lang-switch,.header-actions .menu-btn{pointer-events:auto}
+ .header-actions .lang-switch{margin-right:0}
+ .header-actions .menu-btn{display:block}
+ .menu{z-index:60}
+}
+@media(max-width:620px){
+ .header-title{font-size:17px}
+ .lang-btn{font-size:10px;padding:4px 7px}
+ .lang-switch{gap:2px}
+}
+
+header .logo{display:none}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container nav">
-    <a href="#home"><img class="logo" src="typography.png" alt="استخر شهدای بسیج"></a>
-    <nav class="menu" id="menu">
-      <a href="#home">صفحه اصلی</a>
-      <a href="#sessions">سانس‌ها</a>
-      <a href="#facilities">امکانات</a>
-      <a href="#gallery">گالری تصاویر</a>
-      <a href="#about">درباره ما</a>
-      <a href="#contact">تماس با ما</a>
-    </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="باز کردن منو">☰</button>
-  </div>
+<div class="container nav">
+<div class="header-title"><a data-i18n="brand" href="#home">استخر شهدای بسیج</a></div>
+<div class="header-actions">
+<div aria-label="انتخاب زبان" class="lang-switch">
+<button class="lang-btn active" data-lang="fa">فارسی</button>
+<button class="lang-btn" data-lang="ar">العربية</button>
+</div>
+<button aria-label="باز کردن منو" class="menu-btn" id="menuBtn">☰</button>
+</div>
+<nav class="menu" id="menu">
+<a data-i18n="nav_home" href="#home">صفحه اصلی</a>
+<a data-i18n="nav_sessions" href="#sessions">سانس‌ها</a>
+<a data-i18n="nav_facilities" href="#facilities">امکانات</a>
+<a data-i18n="nav_gallery" href="#gallery">گالری تصاویر</a>
+<a data-i18n="nav_about" href="#about">درباره ما</a>
+<a data-i18n="nav_contact" href="#contact">تماس با ما</a>
+</nav>
+</div>
 </header>
-
 <main>
 <section class="hero" id="home">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4">
-  </video>
-  <div class="hero-content container">
-    <span class="kicker">🏊 مجموعه ورزشی و تفریحی در قم</span>
-    <img class="hero-logo" src="typography.png" alt="استخر شهدای بسیج">
-    <h1>محلی برای سلامتی، نشاط و آرامش</h1>
-    <p>فضایی مجهز برای شنا، ورزش و آرامش؛ با سانس‌های جداگانه آقایان و بانوان و امکانات کامل مجموعه.</p>
-    <div class="features">
-      <span class="feature">🏊 استخر مجهز</span>
-      <span class="feature">🔥 سونای خشک و بخار</span>
-      <span class="feature">🛁 جکوزی و حوضچه آب سرد</span>
-    </div>
-    <a class="btn btn-primary" href="#tickets">خرید بلیت و رزرو سانس ←</a>
-    <a class="play" href="#gallery"><i>▶</i> مشاهده فضای استخر</a>
-  </div>
-</section>
+<video autoplay="" loop="" muted="" playsinline="" preload="auto">
+<source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4"/>
+</video>
+<div class="hero-content container">
+<span class="kicker" data-i18n="hero_kicker">🏊 مجموعه ورزشی و تفریحی در قم</span>
+<img alt="استخر شهدای بسیج" class="hero-logo" src="typography.png"/>
+<h1 data-i18n="hero_title">محلی برای سلامتی، نشاط و آرامش</h1>
+<p data-i18n="hero_desc">فضایی مجهز برای شنا، ورزش و آرامش؛ با سانس‌های جداگانه آقایان و بانوان و امکانات کامل مجموعه.</p>
 
+<a class="btn btn-primary" data-i18n="hero_cta" href="#tickets">خرید بلیت و رزرو سانس ←</a>
+<a class="play" data-i18n="hero_play" href="#gallery"><i>▶</i> مشاهده فضای استخر</a>
+</div>
+</section>
 <section class="sessions" id="sessions">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">برنامه مجموعه</div>
-      <h2>معرفی سانس‌ها</h2>
-      <p>زمان‌بندی استفاده از مجموعه برای آقایان و بانوان</p>
-    </div>
-    <div class="session-grid">
-      <article class="session-card">
-        <div class="session-icon">👨</div>
-        <h3>آقایان</h3>
-        <div class="days">روزهای فرد و جمعه</div>
-        <span class="time">۱۵:۰۰ تا ۲۳:۰۰</span>
-        <a class="btn btn-primary" href="#tickets">مشاهده سانس‌ها</a>
-      </article>
-      <article class="session-card">
-        <div class="session-icon">👩</div>
-        <h3>بانوان</h3>
-        <div class="days">روزهای زوج</div>
-        <span class="time">۱۳:۰۰ تا ۱۹:۰۰</span>
-        <a class="btn btn-primary" href="#tickets">مشاهده سانس‌ها</a>
-      </article>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow" data-i18n="sessions_eyebrow">برنامه مجموعه</div>
+<h2 data-i18n="sessions_title">معرفی سانس‌ها</h2>
+<p data-i18n="sessions_desc">زمان‌بندی استفاده از مجموعه برای آقایان و بانوان</p>
+</div>
+<div class="session-grid">
+<article class="session-card">
+<div class="session-icon">👨</div>
+<h3 data-i18n="men_title">آقایان</h3>
+<div class="days" data-i18n="men_days">روزهای فرد و جمعه</div>
+<span class="time" data-i18n="men_time">۱۵:۰۰ تا ۲۳:۰۰</span>
+<a class="btn btn-primary" data-i18n="sessions_btn" href="#tickets">مشاهده سانس‌ها</a>
+</article>
+<article class="session-card">
+<div class="session-icon">👩</div>
+<h3 data-i18n="women_title">بانوان</h3>
+<div class="days" data-i18n="women_days">روزهای زوج</div>
+<span class="time" data-i18n="women_time">۱۳:۰۰ تا ۱۹:۰۰</span>
+<a class="btn btn-primary" data-i18n="sessions_btn" href="#tickets">مشاهده سانس‌ها</a>
+</article>
+</div>
+</div>
 </section>
-
 <section class="facilities" id="facilities">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">امکانات مجموعه</div>
-      <h2>امکانات و خدمات</h2>
-      <p>امکاناتی برای یک تجربه کامل‌تر از حضور در استخر</p>
-    </div>
-    <div class="facility-grid">
-      <div class="facility"><div class="ico">🏊</div><h3>استخر</h3></div>
-      <div class="facility"><div class="ico">🔥</div><h3>سونای خشک و بخار</h3></div>
-      <div class="facility"><div class="ico">🛁</div><h3>جکوزی</h3></div>
-      <div class="facility"><div class="ico">❄️</div><h3>حوضچه آب سرد</h3></div>
-      <div class="facility"><div class="ico">🚿</div><h3>دوش و رختکن</h3></div>
-      <div class="facility"><div class="ico">🅿️</div><h3>پارکینگ</h3></div>
-      <div class="facility"><div class="ico">🧼</div><h3>محیط بهداشتی و مجهز</h3></div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow" data-i18n="fac_eyebrow">امکانات مجموعه</div>
+<h2 data-i18n="fac_title">امکانات و خدمات</h2>
+<p data-i18n="fac_desc">امکاناتی برای یک تجربه کامل‌تر از حضور در استخر</p>
+</div>
+<div class="facility-grid">
+<div class="facility"><div class="ico">🏊</div><h3 data-i18n="fac_pool">استخر</h3></div>
+<div class="facility"><div class="ico">🔥</div><h3 data-i18n="fac_sauna">سونای خشک و بخار</h3></div>
+<div class="facility"><div class="ico">🛁</div><h3 data-i18n="fac_jacuzzi">جکوزی</h3></div>
+<div class="facility"><div class="ico">❄️</div><h3 data-i18n="fac_cold">حوضچه آب سرد</h3></div>
+<div class="facility"><div class="ico">🚿</div><h3 data-i18n="fac_shower">دوش و رختکن</h3></div>
+<div class="facility"><div class="ico">🅿️</div><h3 data-i18n="fac_parking">پارکینگ</h3></div>
+<div class="facility"><div class="ico">🧼</div><h3 data-i18n="fac_hygiene">محیط بهداشتی و مجهز</h3></div>
+</div>
+</div>
 </section>
-
 <section class="gallery" id="gallery">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">تصاویر مجموعه</div>
-      <h2>گالری تصاویر</h2>
-      <p>نمایی از فضای استخر شهدای بسیج</p>
-    </div>
-    <div class="slider">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="فضای استخر شهدای بسیج"><div class="slide-caption">فضای استخر شهدای بسیج</div></div>
-        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="استخر شهدای بسیج"><div class="slide-caption">محیط استخر</div></div>
-        <div class="slide"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="مجموعه استخر"><div class="slide-caption">مجموعه ورزشی و تفریحی</div></div>
-      </div>
-      <button class="prev" id="prev">›</button><button class="next" id="next">‹</button>
-      <div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow" data-i18n="gallery_eyebrow">تصاویر مجموعه</div>
+<h2 data-i18n="gallery_title">گالری تصاویر</h2>
+<p data-i18n="gallery_desc">نمایی از فضای استخر شهدای بسیج</p>
+</div>
+<div class="slider">
+<div class="slides" id="slides">
+<div class="slide"><img alt="فضای استخر شهدای بسیج" src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg"/><div class="slide-caption" data-i18n="gallery_cap1">فضای استخر شهدای بسیج</div></div>
+<div class="slide"><img alt="استخر شهدای بسیج" src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg"/><div class="slide-caption" data-i18n="gallery_cap2">محیط استخر</div></div>
+<div class="slide"><img alt="مجموعه استخر" src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg"/><div class="slide-caption" data-i18n="gallery_cap3">مجموعه ورزشی و تفریحی</div></div>
+</div>
+<button class="prev" id="prev">›</button><button class="next" id="next">‹</button>
+<div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
+</div>
+</div>
 </section>
-
 <section class="about" id="about">
-  <div class="container about-grid">
-    <div class="about-img"><img src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg" alt="استخر شهدای بسیج قم"></div>
-    <div class="about-text">
-      <div class="eyebrow">درباره مجموعه</div>
-      <h2>درباره استخر شهدای بسیج</h2>
-      <p>استخر شهدای بسیج در قم، فضایی برای ورزش، نشاط و آرامش با سانس‌های مجزا و امکانات متنوع مجموعه است.</p>
-      <div class="checks">
-        <div>سانس مجزای آقایان</div><div>سانس مجزای بانوان</div>
-        <div>سونای خشک و بخار</div><div>جکوزی</div>
-        <div>حوضچه آب سرد</div><div>دوش و رختکن</div>
-        <div>پارکینگ</div><div>محیط بهداشتی و مجهز</div>
-      </div>
-    </div>
-  </div>
+<div class="container about-grid">
+<div class="about-img"><img alt="استخر شهدای بسیج قم" src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool.jpg"/></div>
+<div class="about-text">
+<div class="eyebrow" data-i18n="about_eyebrow">درباره مجموعه</div>
+<h2 data-i18n="about_title">درباره استخر شهدای بسیج</h2>
+<p data-i18n="about_desc">استخر شهدای بسیج در قم، فضایی برای ورزش، نشاط و آرامش با سانس‌های مجزا و امکانات متنوع مجموعه است.</p>
+<div class="checks">
+<div data-i18n="check_men">سانس مجزای آقایان</div><div data-i18n="check_women">سانس مجزای بانوان</div>
+<div data-i18n="check_sauna">سونای خشک و بخار</div><div data-i18n="check_jacuzzi">جکوزی</div>
+<div data-i18n="check_cold">حوضچه آب سرد</div><div data-i18n="check_shower">دوش و رختکن</div>
+<div data-i18n="check_parking">پارکینگ</div><div data-i18n="check_hygiene">محیط بهداشتی و مجهز</div>
+</div>
+</div>
+</div>
 </section>
-
 <section class="sessions" id="tickets">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">تعرفه</div>
-      <h2>قیمت بلیت</h2>
-    </div>
-    <div class="session-grid">
-      <article class="session-card">
-        <div class="session-icon">🎟️</div>
-        <h3>بلیط آزاد</h3>
-        <div class="time">۲۵۰٬۰۰۰ تومان</div>
-        <p style="margin-top:14px;color:#4c6478;font-weight:700">تخفیف ویژه شامل نیروهای مسلح و بسیجیان</p>
-      </article>
-      <article class="session-card">
-        <div class="session-icon">📅</div>
-        <h3>رزرو و مشاهده سانس</h3>
-        <p style="color:#4c6478">برای اطلاع از برنامه سانس‌ها و هماهنگی با مجموعه با ما در ارتباط باشید.</p>
-        <a class="btn btn-primary" href="tel:0933055036">تماس با استخر</a>
-      </article>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head">
+<div class="eyebrow" data-i18n="tickets_eyebrow">تعرفه</div>
+<h2 data-i18n="tickets_title">قیمت بلیت</h2>
+</div>
+<div class="session-grid">
+<article class="session-card">
+<div class="session-icon">🎟️</div>
+<h3 data-i18n="free_ticket_title">بلیط آزاد</h3>
+<div class="time" data-i18n="free_ticket_price">۲۵۰٬۰۰۰ تومان</div>
+<p data-i18n="discount_desc" style="margin-top:14px;color:#4c6478;font-weight:700">تخفیف ویژه شامل نیروهای مسلح و بسیجیان</p>
+</article>
+<article class="session-card">
+<div class="session-icon">📅</div>
+<h3 data-i18n="reserve_title">رزرو و مشاهده سانس</h3>
+<p data-i18n="reserve_desc" style="color:#4c6478">برای اطلاع از برنامه سانس‌ها و هماهنگی با مجموعه با ما در ارتباط باشید.</p>
+<a class="btn btn-primary" data-i18n="call_pool" href="tel:09330555036">تماس با استخر</a>
+</article>
+</div>
+</div>
 </section>
-
 <div class="info-bar" id="contact">
-  <div class="container info-grid">
-    <div class="info-item"><div class="info-label">ایتـا</div><div class="info-value"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a></div></div>
-    <div class="info-item"><div class="info-label">آدرس</div><div class="info-value">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</div></div>
-    <div class="info-item"><div class="info-label">تلفن</div><div class="info-value"><a href="tel:0933055036">۰۹۳۳۰۵۵۰۳۶</a></div></div>
-    <div class="info-item"><div class="info-label">قیمت بلیت آزاد</div><div class="info-value"><strong>۲۵۰٬۰۰۰</strong> تومان</div></div>
-  </div>
+<div class="container info-grid">
+<div class="info-item"><div class="info-label" data-i18n="info_eitaa_label">ایتـا</div><div class="info-value"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a></div></div>
+<div class="info-item"><div class="info-label" data-i18n="info_address_label">آدرس</div><div class="info-value" data-i18n="address">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</div></div>
+<div class="info-item"><div class="info-label" data-i18n="info_phone_label">تلفن</div><div class="info-value"><a data-i18n="phone" href="tel:09330555036">۰۹۳۳۰۵۵۵۰۳۶</a></div></div>
+<div class="info-item"><div class="info-label" data-i18n="info_price_label">قیمت بلیت آزاد</div><div class="info-value" data-i18n="info_price"><strong>۲۵۰٬۰۰۰</strong> تومان</div></div>
+</div>
 </div>
 </main>
-
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div><img class="logo" src="typography.png" alt="استخر شهدای بسیج"><p>استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p></div>
-      <div><h3>دسترسی سریع</h3><div class="footer-links"><a href="#home">صفحه اصلی</a><a href="#sessions">سانس‌ها</a><a href="#facilities">امکانات</a><a href="#gallery">گالری تصاویر</a></div></div>
-      <div><h3>ارتباط با ما</h3><div class="footer-links"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a><a href="tel:0933055036">۰۹۳۳۰۵۵۰۳۶</a><a href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank">مشاهده موقعیت روی نقشه</a></div></div>
-    </div>
-    <div class="copy">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div><img alt="استخر شهدای بسیج" class="logo" src="typography.png"/><p data-i18n="footer_desc">استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p></div>
+<div><h3 data-i18n="footer_quick_title">دسترسی سریع</h3><div class="footer-links"><a data-i18n="nav_home" href="#home">صفحه اصلی</a><a data-i18n="nav_sessions" href="#sessions">سانس‌ها</a><a data-i18n="nav_facilities" href="#facilities">امکانات</a><a data-i18n="nav_gallery" href="#gallery">گالری تصاویر</a></div></div>
+<div><h3 data-i18n="footer_contact_title">ارتباط با ما</h3><div class="footer-links"><a href="https://eitaa.com/bassijpool" target="_blank">@bassijpool</a><a data-i18n="phone" href="tel:09330555036">۰۹۳۳۰۵۵۵۰۳۶</a><a data-i18n="map_link" href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank">مشاهده موقعیت روی نقشه</a></div></div>
+</div>
+<div class="copy" data-i18n="copyright">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div>
+</div>
 </footer>
-
 <script>
 const menu=document.getElementById('menu'), btn=document.getElementById('menuBtn');
 btn.addEventListener('click',()=>menu.classList.toggle('open'));
@@ -286,5 +303,59 @@ document.getElementById('next').onclick=()=>go(i-1);
 dots.forEach((d,k)=>d.onclick=()=>go(k));
 setInterval(()=>go(i+1),5000);
 </script>
-</body>
+<script>
+const translations = {
+  fa: {
+    brand:'استخر شهدای بسیج', nav_home:'صفحه اصلی', nav_sessions:'سانس‌ها', nav_facilities:'امکانات', nav_gallery:'گالری تصاویر', nav_about:'درباره ما', nav_contact:'تماس با ما',
+    hero_kicker:'🏊 مجموعه ورزشی و تفریحی در قم', hero_title:'محلی برای سلامتی، نشاط و آرامش', hero_desc:'فضایی مجهز برای شنا، ورزش و آرامش؛ با سانس‌های جداگانه آقایان و بانوان و امکانات کامل مجموعه.', hero_cta:'خرید بلیت و رزرو سانس ←', hero_play:' مشاهده فضای استخر',
+    sessions_eyebrow:'برنامه مجموعه', sessions_title:'معرفی سانس‌ها', sessions_desc:'زمان‌بندی استفاده از مجموعه برای آقایان و بانوان', men_title:'آقایان', men_days:'روزهای فرد و جمعه', men_time:'۱۵:۰۰ تا ۲۳:۰۰', women_title:'بانوان', women_days:'روزهای زوج', women_time:'۱۳:۰۰ تا ۱۹:۰۰', sessions_btn:'مشاهده سانس‌ها',
+    fac_eyebrow:'امکانات مجموعه', fac_title:'امکانات و خدمات', fac_desc:'امکاناتی برای یک تجربه کامل‌تر از حضور در استخر', fac_pool:'استخر', fac_sauna:'سونای خشک و بخار', fac_jacuzzi:'جکوزی', fac_cold:'حوضچه آب سرد', fac_shower:'دوش و رختکن', fac_parking:'پارکینگ', fac_hygiene:'محیط بهداشتی و مجهز',
+    gallery_eyebrow:'تصاویر مجموعه', gallery_title:'گالری تصاویر', gallery_desc:'نمایی از فضای استخر شهدای بسیج', gallery_cap1:'فضای استخر شهدای بسیج', gallery_cap2:'محیط استخر', gallery_cap3:'مجموعه ورزشی و تفریحی',
+    about_eyebrow:'درباره مجموعه', about_title:'درباره استخر شهدای بسیج', about_desc:'استخر شهدای بسیج در قم، فضایی برای ورزش، نشاط و آرامش با سانس‌های مجزا و امکانات متنوع مجموعه است.', check_men:'سانس مجزای آقایان', check_women:'سانس مجزای بانوان', check_sauna:'سونای خشک و بخار', check_jacuzzi:'جکوزی', check_cold:'حوضچه آب سرد', check_shower:'دوش و رختکن', check_parking:'پارکینگ', check_hygiene:'محیط بهداشتی و مجهز',
+    tickets_eyebrow:'تعرفه', tickets_title:'قیمت بلیت', free_ticket_title:'بلیط آزاد', free_ticket_price:'۲۵۰٬۰۰۰ تومان', discount_desc:'تخفیف ویژه شامل نیروهای مسلح و بسیجیان', reserve_title:'رزرو و مشاهده سانس', reserve_desc:'برای اطلاع از برنامه سانس‌ها و هماهنگی با مجموعه با ما در ارتباط باشید.', call_pool:'تماس با استخر',
+    info_eitaa_label:'ایتا', info_address_label:'آدرس', info_phone_label:'تلفن', info_price_label:'قیمت بلیت آزاد', address:'قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر', phone:'۰۹۳۳۰۵۵۵۰۳۶', info_price:'۲۵۰٬۰۰۰ تومان', footer_desc:'استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.', footer_quick_title:'دسترسی سریع', footer_contact_title:'ارتباط با ما', map_link:'مشاهده موقعیت روی نقشه', copyright:'© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.'
+  },
+  ar: {
+    brand:'مسبح شهداء البسيج', nav_home:'الرئيسية', nav_sessions:'المواعيد', nav_facilities:'المرافق', nav_gallery:'معرض الصور', nav_about:'عن المسبح', nav_contact:'اتصل بنا',
+    hero_kicker:'🏊 مجمع رياضي وترفيهي في قم', hero_title:'مكان للصحة والنشاط والراحة', hero_desc:'مساحة مجهزة للسباحة والرياضة والاسترخاء، مع أوقات منفصلة للرجال والنساء ومرافق متكاملة.', hero_cta:'شراء التذكرة وحجز الموعد ←', hero_play:' مشاهدة المسبح',
+    sessions_eyebrow:'برنامج المجمع', sessions_title:'مواعيد السباحة', sessions_desc:'جدول استخدام المسبح للرجال والنساء', men_title:'الرجال', men_days:'الأيام الفردية ويوم الجمعة', men_time:'۱۵:۰۰ إلى ۲۳:۰۰', women_title:'النساء', women_days:'الأيام الزوجية', women_time:'۱۳:۰۰ إلى ۱۹:۰۰', sessions_btn:'عرض المواعيد',
+    fac_eyebrow:'مرافق المجمع', fac_title:'المرافق والخدمات', fac_desc:'مرافق متكاملة لتجربة أفضل في المسبح', fac_pool:'المسبح', fac_sauna:'ساونا جافة وبخار', fac_jacuzzi:'جاكوزي', fac_cold:'حوض ماء بارد', fac_shower:'دُش وغرف تبديل الملابس', fac_parking:'موقف سيارات', fac_hygiene:'بيئة صحية ومجهزة',
+    gallery_eyebrow:'صور المجمع', gallery_title:'معرض الصور', gallery_desc:'لمحة عن أجواء مسبح شهداء البسيج', gallery_cap1:'مسبح شهداء البسيج', gallery_cap2:'بيئة المسبح', gallery_cap3:'المجمع الرياضي والترفيهي',
+    about_eyebrow:'عن المجمع', about_title:'عن مسبح شهداء البسيج', about_desc:'مسبح شهداء البسيج في قم هو مساحة للرياضة والنشاط والاسترخاء، مع أوقات منفصلة ومرافق متنوعة.', check_men:'موعد مخصص للرجال', check_women:'موعد مخصص للنساء', check_sauna:'ساونا جافة وبخار', check_jacuzzi:'جاكوزي', check_cold:'حوض ماء بارد', check_shower:'دُش وغرف تبديل الملابس', check_parking:'موقف سيارات', check_hygiene:'بيئة صحية ومجهزة',
+    tickets_eyebrow:'الأسعار', tickets_title:'أسعار التذاكر', free_ticket_title:'التذكرة العادية', free_ticket_price:'۲۵۰٬۰۰۰ تومان', discount_desc:'خصم خاص للقوات المسلحة وأعضاء البسيج', reserve_title:'الحجز ومعرفة المواعيد', reserve_desc:'لمعرفة جدول المواعيد والتنسيق مع المجمع، يرجى التواصل معنا.', call_pool:'الاتصال بالمسبح',
+    info_eitaa_label:'إيتا', info_address_label:'العنوان', info_phone_label:'الهاتف', info_price_label:'سعر التذكرة العادية', address:'قم، شارع أراك، بعد جسر حجتيه، بجانب الصالة الرياضية الشهيد لطفي نياسر', phone:'۰۹۳۳۰۵۵۵۰۳۶', info_price:'۲۵۰٬۰۰۰ تومان', footer_desc:'مسبح شهداء البسيج؛ تجربة مختلفة من الراحة والنشاط والرياضة.', footer_quick_title:'روابط سريعة', footer_contact_title:'تواصل معنا', map_link:'عرض الموقع على الخريطة', copyright:'© مسبح شهداء البسيج في قم — جميع الحقوق محفوظة.'
+  }
+};
+function applyLanguage(lang){
+  const t=translations[lang]||translations.fa;
+  document.documentElement.lang=lang;
+  document.documentElement.dir='rtl';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.dataset.i18n;
+    if(t[key]!==undefined){
+      if(el.classList.contains('play')){
+        const icon=el.querySelector('i');
+        el.innerHTML=''; if(icon) el.appendChild(icon); el.append(document.createTextNode(t[key]));
+      } else el.textContent=t[key];
+    }
+  });
+  document.title=lang==='ar'?'مسبح شهداء البسيج | قم':'استخر شهدای بسیج | قم';
+  const meta=document.querySelector('meta[name="description"]');
+  if(meta) meta.content=lang==='ar'?'مسبح شهداء البسيج في قم؛ المواعيد والمرافق وأسعار التذاكر وطرق التواصل':'استخر شهدای بسیج قم؛ سانس‌ها، امکانات، گالری، قیمت بلیت و راه‌های ارتباطی';
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  try{localStorage.setItem('poolLang',lang)}catch(e){}
+}
+const menu=document.getElementById('menu'), btn=document.getElementById('menuBtn');
+btn.addEventListener('click',()=>menu.classList.toggle('open'));
+document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLanguage(b.dataset.lang)));
+let saved='fa'; try{saved=localStorage.getItem('poolLang')||'fa'}catch(e){}
+applyLanguage(saved);
+const slides=document.getElementById('slides'), dots=[...document.querySelectorAll('.dot')]; let i=0;
+function go(n){i=(n+3)%3;slides.style.transform=`translateX(${i*100}%)`;dots.forEach((d,k)=>d.classList.toggle('active',k===i));}
+document.getElementById('prev').onclick=()=>go(i+1);
+document.getElementById('next').onclick=()=>go(i-1);
+dots.forEach((d,k)=>d.onclick=()=>go(k));
+setInterval(()=>go(i+1),5000);
+</script></body>
 </html>
