@@ -345,17 +345,8 @@ function applyLanguage(lang){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   try{localStorage.setItem('poolLang',lang)}catch(e){}
 }
-const menu=document.getElementById('menu'), btn=document.getElementById('menuBtn');
-btn.addEventListener('click',()=>menu.classList.toggle('open'));
-document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLanguage(b.dataset.lang)));
 let saved='fa'; try{saved=localStorage.getItem('poolLang')||'fa'}catch(e){}
 applyLanguage(saved);
-const slides=document.getElementById('slides'), dots=[...document.querySelectorAll('.dot')]; let i=0;
-function go(n){i=(n+3)%3;slides.style.transform=`translateX(${i*100}%)`;dots.forEach((d,k)=>d.classList.toggle('active',k===i));}
-document.getElementById('prev').onclick=()=>go(i+1);
-document.getElementById('next').onclick=()=>go(i-1);
-dots.forEach((d,k)=>d.onclick=()=>go(k));
-setInterval(()=>go(i+1),5000);
 </script></body>
 </html>
