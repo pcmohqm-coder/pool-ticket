@@ -116,7 +116,7 @@ section.block{padding:84px 0}
 .hours-card .hrs small{display:block;font-size:11px;color:var(--muted);font-weight:700}
 .badge-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;flex:none;font-size:22px}
 .women .badge-ic{background:var(--rose);color:#fff}.men .badge-ic{background:var(--men);color:#fff}
-.strip-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.strip-title{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .strip-title h3{font-size:19px;font-weight:900;color:var(--ink)}.strip-title span{font-size:13px;color:var(--muted)}
 .strip{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
 .day{position:relative;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:16px 8px 14px;border-radius:20px;border:1.5px solid var(--line);background:#fff}
@@ -132,15 +132,15 @@ section.block{padding:84px 0}
 
 /* facilities */
 .facilities{background:var(--foam)}
-.fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.fac{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
+.fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fac{position:relative;aspect-ratio:4/4.4;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
 .fac img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .fac:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,24,44,0) 38%,rgba(6,24,44,.92))}
 .fac:hover img{transform:scale(1.06)}
 .fac-body{position:absolute;inset:auto 0 0;padding:20px;color:#fff}
 .fac-body h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.4}
 .fac-body p{font-size:13px;color:#cfe2ef;margin-top:2px}
-.fac.dry:after,.fac.steam:after,.fac.jac:after,.fac.cold:after{content:"";position:absolute;top:16px;inset-inline-start:16px;width:34px;height:4px;border-radius:9px;background:var(--aqua)}
+.fac.dry:after,.fac.steam:after,.fac.jac:after,.fac.cold:after,.fac.pool:after,.fac.massage:after{content:"";position:absolute;top:16px;inset-inline-start:16px;width:34px;height:4px;border-radius:9px;background:var(--aqua)}
 .fac.dry:after{background:var(--wood)}
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
 .tile{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:#fff;border:1px solid var(--line)}
@@ -173,26 +173,9 @@ section.block{padding:84px 0}
 .opt{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:#fff;border:1.5px solid var(--line);transition:border-color .2s,transform .2s}
 .opt:hover{border-color:var(--blue);transform:translateY(-2px)}
 .opt .oi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;color:#fff;flex:none}
-.opt.call .oi{background:var(--ink)}.opt.eit .oi{background:#f58a1f}
+.opt.call .oi{background:var(--ink)}.opt.eit .oi{background:none;overflow:hidden}.opt.eit .oi img{width:100%;height:100%;display:block;border-radius:14px}
 .opt b{display:block;font-size:15px;color:var(--ink);line-height:1.5}.opt span{display:block;font-size:14px;color:var(--muted);font-weight:700;direction:ltr;text-align:start;unicode-bidi:plaintext}
 .opt .go{margin-inline-start:auto;color:var(--muted)}
-
-/* gallery */
-.gallery{background:var(--foam)}
-.g-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:12px}
-.g-item{position:relative;border:0;padding:0;border-radius:20px;overflow:hidden;cursor:zoom-in;background:var(--ink);isolation:isolate}
-.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.g-item:hover img{transform:scale(1.05)}
-.g-item:after{content:attr(data-cap);position:absolute;inset:auto 0 0;padding:26px 14px 10px;color:#fff;font-weight:800;font-size:13px;text-align:start;background:linear-gradient(0deg,rgba(6,24,44,.85),transparent)}
-.g-item.big{grid-column:span 2;grid-row:span 2}
-dialog.lb{border:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;padding:0;color:#fff}
-dialog.lb::backdrop{background:rgba(3,12,24,.92)}
-.lb-in{height:100%;display:grid;grid-template-rows:1fr auto;align-items:center;justify-items:center;padding:18px 12px 14px;gap:10px}
-.lb-in img{max-width:min(1100px,100%);max-height:calc(100vh - 110px);width:auto;height:auto;border-radius:14px;margin:auto}
-.lb-cap{font-weight:800;font-size:14px;text-align:center}
-.lb-btn{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(6,24,44,.7);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:20px}
-.lb-prev{inset-inline-end:14px}.lb-next{inset-inline-start:14px}
-.lb-close{position:fixed;top:14px;inset-inline-start:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(6,24,44,.7);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:20px}
 
 /* contact */
 .contact{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 85% -10%,rgba(52,211,227,.16),transparent 60%),var(--ink);color:#fff}
@@ -204,13 +187,13 @@ dialog.lb::backdrop{background:rgba(3,12,24,.92)}
 .c-card h3{font-family:var(--display);font-weight:400;font-size:27px;line-height:1.35}
 .c-card p{color:#bcd3e1;font-size:14px}
 .c-top{display:flex;align-items:center;gap:14px}
-.c-card.loc{min-height:100%;background:linear-gradient(150deg,rgba(52,211,227,.2),rgba(255,255,255,.04))}
-.map-art{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
-.c-card.loc>*:not(.map-art){position:relative;z-index:1}
-.c-card .addr{font-size:17px;font-weight:700;line-height:1.9;color:#fff;max-width:420px}
+.c-card.loc{min-height:min(100%,560px);justify-content:space-between;background:linear-gradient(150deg,rgba(52,211,227,.2),rgba(255,255,255,.04))}
+.loc-bg{position:absolute;inset:0;z-index:0}.loc-bg img{width:100%;height:100%;object-fit:cover}.loc-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,24,44,.9) 0,rgba(6,24,44,.62) 30%,rgba(6,24,44,.12) 58%,rgba(6,24,44,.92) 100%)}
+.c-card.loc>*:not(.loc-bg){position:relative;z-index:1}
+.fac.pool img{object-position:22% center}.c-card .addr{text-shadow:0 1px 8px rgba(0,0,0,.6);font-size:17px;font-weight:700;line-height:1.9;color:#fff;max-width:420px}
 .c-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 .phone-num{font-size:30px;font-weight:900;letter-spacing:.5px;direction:ltr;text-align:start;font-variant-numeric:tabular-nums}
-.c-card .ci.eit{background:linear-gradient(135deg,#ffb04d,#f58a1f)}
+.c-card .ci.eit{background:none;overflow:hidden}.c-card .ci.eit img{width:100%;height:100%;display:block;border-radius:18px}
 .handle{font-size:22px;font-weight:800;direction:ltr;text-align:start}
 .btn-white{background:#fff;color:var(--ink)}
 .btn-ghost2{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff}
@@ -224,7 +207,6 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
 .f-dev{margin-top:14px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#8aa3b4}
 .f-dev a{color:#55d7ef;font-weight:900}
 .copy{margin-top:10px;font-size:12px;color:#6f8799}
-.admin-link{display:inline-block;margin-top:10px;font-size:12px;color:#5d7688;opacity:.8}.admin-link:hover{color:var(--aqua);opacity:1}
 
 /* responsive */
 @media(max-width:1060px){
@@ -234,15 +216,11 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   .strip{grid-template-columns:repeat(4,1fr)}
   .fac-grid{grid-template-columns:repeat(2,1fr)}.fac{aspect-ratio:4/3}
   .tiles{grid-template-columns:repeat(2,1fr)}
-  .g-grid{grid-auto-rows:190px}
 }
 @media(max-width:820px){
   .today-card{grid-template-columns:1fr;gap:14px;text-align:center;padding:20px}
   .today-g{justify-content:center;flex-wrap:wrap}
   .hours-row,.buy-grid,.opts,.c-grid{grid-template-columns:1fr}
-  .g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
-  .g-item.big{grid-row:span 2}
-  .g-item.last{grid-column:span 2}
 }
 @media(max-width:620px){
   section.block{padding:62px 0}
@@ -256,7 +234,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   .day .nm{display:flex;flex-direction:column;align-items:flex-start}
   .day .dt{margin-inline-start:auto}
   .fac-grid{grid-template-columns:1fr}.fac{aspect-ratio:4/3}
-  .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{padding:13px;gap:10px}.tile .ti{width:42px;height:42px;font-size:20px}.tile h3{font-size:13px}
+  .c-card.loc{min-height:560px}.tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{padding:13px;gap:10px}.tile .ti{width:42px;height:42px;font-size:20px}.tile h3{font-size:13px}
   .price-card{padding:26px 22px}
   .c-card{padding:22px}.phone-num{font-size:25px}
   .hours-card{padding:18px;gap:12px;flex-wrap:wrap}.hours-card .hrs{width:100%;margin:0;font-size:20px}
@@ -264,7 +242,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":"https://pcmohqm-coder.github.io/pool-ticket/social-preview.png","logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/Royan313"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Monday","Wednesday"],"opens":"13:00","closes":"18:00"}]},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}
+{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":"https://pcmohqm-coder.github.io/pool-ticket/social-preview.png","logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"بلوار امیرکبیر (خیابان اراک)، بعد از پل حجتیه، روبه‌روی نمایندگی ایران‌خودرو","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/Royan313"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Monday","Wednesday"],"opens":"13:00","closes":"18:00"}]},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}
 </script>
 </head>
 <body>
@@ -279,6 +257,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol>
   <symbol id="i-shower" viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0H4z"/><path d="M12 2V1M8 13v2M12 13v4M16 13v2M6 18v1.5M10 20v1.5M14 20v1.5M18 18v1.5"/></symbol>
   <symbol id="i-parking" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9.5 17V7.5h3.2a2.9 2.9 0 0 1 0 5.8H9.5"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 8h11v6a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8z"/><path d="M16 9.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.5M12 3.5c0 1.2 1 1.4 1 2.5"/></symbol>
   <symbol id="i-spa" viewBox="0 0 24 24"><path d="M12 4c2.5 2.2 3.8 4.6 3.8 7.2S14.5 16 12 18c-2.5-2-3.8-4.2-3.8-6.8S9.5 6.2 12 4z"/><path d="M4.5 9.5c3 .2 5 1.6 6 3.8M19.5 9.5c-3 .2-5 1.6-6 3.8M7 21h10"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="i-women" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v9M8.5 17.5h7"/></symbol>
@@ -298,7 +277,6 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
       <a href="#sessions" data-i18n="nav_sessions">سانس‌ها</a>
       <a href="#facilities" data-i18n="nav_facilities">امکانات</a>
       <a href="#tickets" data-i18n="nav_tickets">بلیت</a>
-      <a href="#gallery" data-i18n="nav_gallery">گالری</a>
       <a href="#contact" data-i18n="nav_contact">مکان و تماس</a>
     </nav>
     <div class="bar-actions">
@@ -313,7 +291,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   <section class="hero" id="home">
     <div class="hero-media">
       <img src="img/hero.webp" alt="" fetchpriority="high">
-      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero.webp" aria-hidden="true"><source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4"></video>
+      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero.webp" aria-hidden="true"><source src="pool-tour.mp4" type="video/mp4"></video>
     </div>
     <div class="wrap hero-in">
       <div class="kicker"><i></i><span data-i18n="hero_kicker">مجموعه ورزشی و تفریحی در قم</span></div>
@@ -346,15 +324,17 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
     <div class="wrap">
       <div class="head"><div class="eyebrow" data-i18n="fac_eyebrow">تجربه کامل‌تر</div><h2 data-i18n="fac_title">امکانات و خدمات</h2><p data-i18n="fac_desc">بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.</p></div>
       <div class="fac-grid">
+        <article class="fac pool"><img src="img/amenity-pool.webp" alt="استخر" loading="lazy" width="900" height="563"><div class="fac-body"><h3 data-i18n="fac_pool">استخر</h3><p data-i18n="fac_pool_d">سالن شنا با سانس‌های جداگانه آقایان و بانوان</p></div></article>
         <article class="fac dry"><img src="img/amenity-dry.webp" alt="سونای خشک" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_dry">سونای خشک</h3><p data-i18n="fac_dry_d">اتاق چوبی با نیمکت‌های پله‌ای</p></div></article>
         <article class="fac steam"><img src="img/amenity-steam.webp" alt="سونای بخار" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_steam">سونای بخار</h3><p data-i18n="fac_steam_d">اتاق بخار کاشی‌کاری‌شده با نیمکت راحت</p></div></article>
         <article class="fac jac"><img src="img/amenity-jacuzzi.webp" alt="جکوزی" loading="lazy" width="805" height="604"><div class="fac-body"><h3 data-i18n="fac_jacuzzi">جکوزی</h3><p data-i18n="fac_jacuzzi_d">جکوزی با کاشی موزاییک کنار سونا</p></div></article>
         <article class="fac cold"><img src="img/amenity-cold.webp" alt="حوضچه آب سرد" loading="lazy" width="880" height="660"><div class="fac-body"><h3 data-i18n="fac_cold">حوضچه آب سرد</h3><p data-i18n="fac_cold_d">حوضچه آب سرد برای بعد از سونا</p></div></article>
+        <article class="fac massage"><img src="img/amenity-massage.webp" alt="ماساژ" loading="lazy" width="900" height="920"><div class="fac-body"><h3 data-i18n="fac_massage">ماساژ</h3><p data-i18n="fac_massage_d">ماساژ توسط ماساژور مجرب در اتاق اختصاصی</p></div></article>
       </div>
       <div class="tiles">
         <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shower"/></svg></div><h3 data-i18n="fac_shower">دوش و رختکن</h3></div>
+        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-cup"/></svg></div><h3 data-i18n="fac_buffet">بوفه</h3></div>
         <div class="tile"><div class="ti"><svg class="ic"><use href="#i-parking"/></svg></div><h3 data-i18n="fac_parking">پارکینگ</h3></div>
-        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-spa"/></svg></div><h3 data-i18n="fac_massage">ماساژ</h3></div>
         <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shield"/></svg></div><h3 data-i18n="fac_hygiene">محیط بهداشتی و مجهز</h3></div>
       </div>
     </div>
@@ -376,34 +356,21 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
         <p data-i18n="book_desc">برای رزرو یا پرسش درباره سانس‌ها از یکی از راه‌های زیر استفاده کنید.</p>
         <div class="opts">
           <a class="opt call" href="tel:09330555036"><div class="oi"><svg class="ic"><use href="#i-phone"/></svg></div><div><b data-i18n="opt_call">تماس تلفنی</b><span data-i18n="phone_show">۰۹۳۳۰۵۵۵۰۳۶</span></div><svg class="ic go"><use href="#i-chev"/></svg></a>
-          <a class="opt eit" href="https://eitaa.com/Royan313" target="_blank" rel="noopener"><div class="oi"><svg class="ic"><use href="#i-chat"/></svg></div><div><b data-i18n="opt_eitaa">پیام در ایتا</b><span>@Royan313</span></div><svg class="ic go"><use href="#i-chev"/></svg></a>
+          <a class="opt eit" href="https://eitaa.com/Royan313" target="_blank" rel="noopener"><div class="oi"><img src="img/eitaa.png" alt="" width="46" height="46"></div><div><b data-i18n="opt_eitaa">پیام در ایتا</b><span>@Royan313</span></div><svg class="ic go"><use href="#i-chev"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block gallery" id="gallery">
-    <div class="wrap">
-      <div class="head"><div class="eyebrow" data-i18n="gallery_eyebrow">تصاویر واقعی مجموعه</div><h2 data-i18n="gallery_title">گالری تصاویر</h2><p data-i18n="gallery_desc">فضای استخر</p></div>
-      <div class="g-grid" id="gGrid">
-        <button type="button" class="g-item big" data-i="0" data-capk="g1"><img src="img/gallery-1-s.webp" srcset="img/gallery-1-s.webp 520w, img/gallery-1.webp 1280w" sizes="(max-width:820px) 50vw, 600px" alt="سالن استخر" loading="lazy"></button>
-        <button type="button" class="g-item" data-i="1" data-capk="g2"><img src="img/gallery-2-s.webp" alt="جکوزی و حوضچه" loading="lazy"></button>
-        <button type="button" class="g-item" data-i="2" data-capk="g3"><img src="img/gallery-3-s.webp" alt="سونای بخار" loading="lazy"></button>
-        <button type="button" class="g-item" data-i="3" data-capk="g4"><img src="img/gallery-4-s.webp" alt="سونای خشک" loading="lazy"></button>
-        <button type="button" class="g-item" data-i="4" data-capk="g5"><img src="img/gallery-5-s.webp" alt="ورودی مجموعه" loading="lazy"></button>
-        <button type="button" class="g-item last" data-i="5" data-capk="g6"><img src="img/gallery-6-s.webp" alt="تابلوی مجموعه" loading="lazy"></button>
-      </div>
-    </div>
-  </section>
 
   <section class="block contact" id="contact">
     <div class="wrap">
       <div class="head"><div class="eyebrow" data-i18n="contact_eyebrow">دسترسی سریع</div><h2 data-i18n="contact_title">مکان و ارتباط با مجموعه</h2><p data-i18n="contact_desc">مسیر رسیدن، تماس مستقیم و کانال مجموعه را همین‌جا در دسترس داشته باشید.</p></div>
       <div class="c-grid">
         <article class="c-card loc">
-          <svg class="map-art" viewBox="0 0 520 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"><path d="M-10 90 C120 60 220 140 330 110 S480 40 540 70"/><path d="M-10 250 C90 230 170 300 290 270 S440 200 540 240"/><path d="M110 -10 C130 80 90 160 140 240 S190 340 170 400"/><path d="M360 -10 C340 90 400 170 370 250 S330 340 360 400"/></g><g fill="none" stroke="rgba(52,211,227,.28)" stroke-width="10" stroke-linecap="round"><path d="M-10 170 C100 150 200 210 300 190 S450 140 540 160"/><path d="M250 -10 C240 90 270 200 255 400"/></g><g fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1.5"><path d="M0 40h520M0 140h520M0 210h520M0 320h520M60 0v380M200 0v380M310 0v380M450 0v380"/></g></svg>
+          <div class="loc-bg" aria-hidden="true"><img src="img/location.webp" alt="" loading="lazy" width="1200" height="800"></div>
           <div class="c-top"><div class="ci"><svg class="ic"><use href="#i-pin"/></svg></div><h3 data-i18n="location_title">مکان و لوکیشن</h3></div>
-          <p class="addr" data-i18n="address">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</p>
+          <p class="addr" data-i18n="address">قم، بلوار امیرکبیر (خیابان اراک)، بعد از پل حجتیه، روبه‌روی نمایندگی ایران‌خودرو</p>
           <div class="c-actions">
             <a class="btn btn-white" href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank" rel="noopener"><svg class="ic"><use href="#i-pin"/></svg><span data-i18n="map_neshan">مسیریابی در نشان</span></a>
             <a class="btn btn-ghost2" href="https://maps.app.goo.gl/iuFsWtYyST8FVrzS7" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg><span data-i18n="map_maps">مسیریابی در Google Maps</span></a>
@@ -418,10 +385,10 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
             <div class="c-actions"><a class="btn btn-white" href="tel:09330555036"><svg class="ic"><use href="#i-phone"/></svg><span data-i18n="call_btn">تماس بگیرید</span></a><button class="btn btn-ghost2" type="button" data-copy="09330555036"><svg class="ic"><use href="#i-copy"/></svg><span data-i18n="copy_number">کپی شماره</span></button></div>
           </article>
           <article class="c-card">
-            <div class="c-top"><div class="ci eit"><svg class="ic"><use href="#i-send"/></svg></div><h3 data-i18n="channel_title">کانال مجموعه</h3></div>
+            <div class="c-top"><div class="ci eit"><img src="img/eitaa.png" alt="" width="56" height="56"></div><h3 data-i18n="channel_title">کانال مجموعه</h3></div>
             <p data-i18n="channel_desc">اخبار و برنامه‌های مجموعه را در کانال ایتا دنبال کنید.</p>
-            <div class="handle">@Royan313</div>
-            <div class="c-actions"><a class="btn btn-white" href="https://eitaa.com/Royan313" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg><span data-i18n="channel_btn">ورود به کانال</span></a></div>
+            <div class="handle">@bassijpool</div>
+            <div class="c-actions"><a class="btn btn-white" href="https://eitaa.com/bassijpool" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg><span data-i18n="channel_btn">ورود به کانال</span></a></div>
           </article>
         </div>
       </div>
@@ -433,19 +400,12 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   <div class="wrap">
     <img class="f-logo" src="img/logo.webp" alt="لوگوی استخر شهدای بسیج" loading="lazy" width="210" height="104">
     <p class="f-desc" data-i18n="footer_desc">استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p>
-    <nav class="f-links" aria-label="پیوندهای پایین صفحه"><a href="#sessions" data-i18n="nav_sessions">سانس‌ها</a><a href="#facilities" data-i18n="nav_facilities">امکانات</a><a href="#tickets" data-i18n="nav_tickets">بلیت</a><a href="#gallery" data-i18n="nav_gallery">گالری</a><a href="#contact" data-i18n="nav_contact">مکان و تماس</a></nav>
+    <nav class="f-links" aria-label="پیوندهای پایین صفحه"><a href="#sessions" data-i18n="nav_sessions">سانس‌ها</a><a href="#facilities" data-i18n="nav_facilities">امکانات</a><a href="#tickets" data-i18n="nav_tickets">بلیت</a><a href="#contact" data-i18n="nav_contact">مکان و تماس</a></nav>
     <div class="f-dev"><span data-i18n="footer_dev_prefix">طراحی و توسعه توسط </span><a href="https://pcmohqm-coder.github.io/pcmohqm/" target="_blank" rel="noopener" data-i18n="footer_dev_link">خدمات فنی محمد</a></div>
     <div class="copy" data-i18n="copyright">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div>
-    <a class="admin-link" href="admin.html" rel="nofollow" data-i18n="admin_link">ورود مدیر</a>
   </div>
 </footer>
 
-<dialog class="lb" id="lb" aria-label="گالری تصاویر">
-  <button class="lb-close" type="button" id="lbClose" aria-label="بستن"><svg class="ic"><use href="#i-x"/></svg></button>
-  <button class="lb-btn lb-prev" type="button" id="lbPrev" aria-label="قبلی"><svg class="ic"><use href="#i-chev"/></svg></button>
-  <button class="lb-btn lb-next" type="button" id="lbNext" aria-label="بعدی"><svg class="ic" style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button>
-  <div class="lb-in"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
-</dialog>
 
 <script>
 (function(){
@@ -455,7 +415,7 @@ var TZ='Asia/Tehran';
 var HOURS={women:[13,18],men:[15,22]};          /* session hours: start, end */
 var WOMEN_DOW=[6,1,3];                           /* Saturday, Monday, Wednesday */
 var PHONE='09330555036';
-var ADDRESS={fa:'قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر',ar:'قم، شارع أراك، بعد جسر حجتيه، بجانب الصالة الرياضية الشهيد لطفي نياسر'};
+var ADDRESS={fa:'قم، بلوار امیرکبیر (خیابان اراک)، بعد از پل حجتیه، روبه‌روی نمایندگی ایران‌خودرو',ar:'قم، بولفار أمير كبير (شارع أراك)، بعد جسر حجتيه، مقابل وكالة إيران خودرو'};
 
 /* ---------- text ---------- */
 var T={
@@ -467,7 +427,7 @@ women_title:'بانوان',men_title:'آقایان',women_days:'شنبه، دو�
 week_title:'وضعیت ۷ روز آینده',week_note:'روزهای تعطیل با برچسب قرمز مشخص شده‌اند.',closed:'تعطیل',today_tag:'امروز',
 fac_eyebrow:'تجربه کامل‌تر',fac_title:'امکانات و خدمات',fac_desc:'بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.',
 fac_dry:'سونای خشک',fac_dry_d:'اتاق چوبی با نیمکت‌های پله‌ای',fac_steam:'سونای بخار',fac_steam_d:'اتاق بخار کاشی‌کاری‌شده با نیمکت راحت',fac_jacuzzi:'جکوزی',fac_jacuzzi_d:'جکوزی با کاشی موزاییک کنار سونا',fac_cold:'حوضچه آب سرد',fac_cold_d:'حوضچه آب سرد برای بعد از سونا',
-fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_hygiene:'محیط بهداشتی و مجهز',
+fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_pool:'استخر',fac_pool_d:'سالن شنا با سانس‌های جداگانه آقایان و بانوان',fac_massage_d:'ماساژ توسط ماساژور مجرب در اتاق اختصاصی',fac_buffet:'بوفه',fac_hygiene:'محیط بهداشتی و مجهز',
 tickets_eyebrow:'تعرفه و خرید',tickets_title:'قیمت و خرید بلیت',tickets_desc:'بلیت را آنلاین بخرید یا برای رزرو سانس با مجموعه هماهنگ کنید.',
 price_label:'بلیت آزاد',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'تخفیف ویژه برای بسیجیان و نیروهای مسلح',
 buy_title:'خرید آنلاین بلیت',qom_name:'قم‌تیکت',qom_desc:'بلیت سانس را از سامانه قم‌تیکت تهیه کنید.',qom_btn:'خرید از قم‌تیکت',pool_name:'پول‌تیکت',pool_desc:'بلیت سانس را از سامانه پول‌تیکت تهیه کنید.',pool_btn:'خرید از پول‌تیکت',
@@ -488,7 +448,7 @@ women_title:'النساء',men_title:'الرجال',women_days:'السبت وا�
 week_title:'حالة الأيام السبعة القادمة',week_note:'الأيام المغلقة تظهر بعلامة حمراء.',closed:'مغلق',today_tag:'اليوم',
 fac_eyebrow:'تجربة متكاملة',fac_title:'المرافق والخدمات',fac_desc:'بعد السباحة، تابع استرخاءك في الساونا والجاكوزي.',
 fac_dry:'ساونا جافة',fac_dry_d:'غرفة خشبية بمقاعد متدرجة',fac_steam:'ساونا بخار',fac_steam_d:'غرفة بخار مبلطة بمقاعد مريحة',fac_jacuzzi:'جاكوزي',fac_jacuzzi_d:'جاكوزي بالفسيفساء بجانب الساونا',fac_cold:'حوض ماء بارد',fac_cold_d:'حوض ماء بارد لما بعد الساونا',
-fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_hygiene:'بيئة صحية ومجهزة',
+fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_pool:'المسبح',fac_pool_d:'صالة سباحة بمواعيد منفصلة للرجال والنساء',fac_massage_d:'تدليك على يد مدلّك متمرّس في غرفة خاصة',fac_buffet:'البوفيه',fac_hygiene:'بيئة صحية ومجهزة',
 tickets_eyebrow:'الأسعار والشراء',tickets_title:'سعر التذكرة وشراؤها',tickets_desc:'اشترِ التذكرة إلكترونياً أو نسّق مع المجمع لحجز الموعد.',
 price_label:'التذكرة العادية',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'خصم خاص لأعضاء البسيج وأفراد القوات المسلحة',
 buy_title:'شراء التذكرة إلكترونياً',qom_name:'QomTicket',qom_desc:'احصل على تذكرة الموعد من منصة QomTicket.',qom_btn:'الشراء من QomTicket',pool_name:'PoolTicket',pool_desc:'احصل على تذكرة الموعد من منصة PoolTicket.',pool_btn:'الشراء من PoolTicket',
@@ -582,8 +542,7 @@ function applyLanguage(l){
   document.title=t('title');var d=$('meta[name="description"]');if(d)d.content=t('desc');
   $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===lang)});
   $('#menuBtn').setAttribute('aria-label',t('menu'));$('.lang').setAttribute('aria-label',t('langs'));
-  $('#lbClose').setAttribute('aria-label',t('close'));$('#lbPrev').setAttribute('aria-label',t('prev'));$('#lbNext').setAttribute('aria-label',t('next'));
-  renderAll();
+    renderAll();
   try{localStorage.setItem('poolLang',lang)}catch(e){}
   try{history.replaceState(null,'',lang==='ar'?'?lang=ar':location.pathname)}catch(e){}
 }
@@ -605,28 +564,6 @@ $$('[data-copy]').forEach(function(btn){btn.addEventListener('click',function(){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(done,function(){fallback()})}else fallback();
   function fallback(){var ta=document.createElement('textarea');ta.value=v;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
 })});
-
-/* ---------- gallery lightbox ---------- */
-var FULL=['img/gallery-1.webp','img/gallery-2.webp','img/gallery-3.webp','img/gallery-4.webp','img/gallery-5.webp','img/gallery-6.webp'];
-var lb=$('#lb'),lbImg=$('#lbImg'),lbCap=$('#lbCap'),cur=0;
-function showLb(i){cur=(i+FULL.length)%FULL.length;lbImg.src=FULL[cur];var k='g'+(cur+1);lbImg.alt=t(k);lbCap.textContent=t(k)}
-$$('.g-item').forEach(function(b){b.addEventListener('click',function(){
-  var i=+b.getAttribute('data-i');
-  if(typeof lb.showModal!=='function'){window.open(FULL[i],'_blank');return}
-  showLb(i);lb.showModal();
-})});
-$('#lbClose').addEventListener('click',function(){lb.close()});
-$('#lbPrev').addEventListener('click',function(){showLb(cur-1)});
-$('#lbNext').addEventListener('click',function(){showLb(cur+1)});
-lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-in'))lb.close()});
-lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')showLb(cur-1);if(e.key==='ArrowLeft')showLb(cur+1)});
-
-/* ---------- hero video: skip for reduced motion, hide if it fails ---------- */
-var vid=$('#heroVideo');
-if(vid){
-  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){vid.remove()}
-  else{var src=vid.querySelector('source');if(src)src.addEventListener('error',function(){vid.remove()});vid.addEventListener('error',function(){vid.remove()})}
-}
 
 /* ---------- schedule from schedule.json (written by the admin page) ---------- */
 function normalize(j){
