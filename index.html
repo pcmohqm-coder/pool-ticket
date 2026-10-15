@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061b35">
+<meta name="theme-color" content="#06182c">
 <meta name="description" content="استخر در قم؛ استخر شهدای بسیج قم با سانس آقایان و بانوان، قیمت بلیت، امکانات، آدرس و امکان خرید بلیت آنلاین.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="keywords" content="استخر در قم, استخر قم, استخر شهدای بسیج قم, استخر شهدای بسیج, استخر آقایان قم, استخر بانوان قم, سانس استخر قم, بلیت استخر قم, سونای خشک, سونای بخار, جکوزی, حوضچه آب سرد, ماساژ, خیابان اراک قم">
@@ -18,87 +18,640 @@
 <link rel="alternate" hreflang="fa" href="https://pcmohqm-coder.github.io/pool-ticket/"><link rel="alternate" hreflang="ar" href="https://pcmohqm-coder.github.io/pool-ticket/?lang=ar"><link rel="alternate" hreflang="x-default" href="https://pcmohqm-coder.github.io/pool-ticket/">
 <title>استخر شهدای بسیج قم | استخر آقایان و بانوان قم | بلیت</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp" type="image/webp">
 <style>
-:root{--navy:#061a35;--navy2:#0a3158;--blue:#087dcc;--cyan:#18c7e9;--aqua:#48e0e7;--gold:#f8c94b;--bg:#f2f9fc;--card:#fff;--ink:#10263c;--muted:#6d8293;--line:#dcecf2;--shadow:0 18px 50px rgba(5,39,67,.11);--r:28px}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;overflow-x:hidden}a{text-decoration:none;color:inherit}button{font:inherit}.container{width:min(1180px,calc(100% - 30px));margin-inline:auto}
+/* Design plan: deep-navy header and hero over the real pool photo, white and foam sections, one warm wood accent for the saunas.
+   Water cyan = actions, rose and blue = women and men, green and red = open and closed. Vazirmatn for text, Lalezar for headings. */
+:root{
+  --ink:#06182c;--navy:#0a2a4a;--blue:#0b78c4;--aqua:#34d3e3;--foam:#f1f8fb;--paper:#fff;
+  --text:#12283d;--muted:#566d80;--line:#d8e7ee;--wood:#c98a3d;--gold:#f2c14e;
+  --rose:#c2306f;--rose-soft:#fde8f1;--men:#0b78c4;--men-soft:#e2f2fb;
+  --ok:#16874f;--ok-soft:#e0f5e9;--bad:#c62839;--bad-soft:#fde8ea;
+  --r:22px;--shadow:0 18px 44px rgba(6,24,44,.12);
+  --font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;--display:"Lalezar","Vazirmatn",Tahoma,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font);background:var(--foam);color:var(--text);line-height:1.85;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}img{max-width:100%;display:block}
+.wrap{width:min(1180px,calc(100% - 32px));margin-inline:auto}
+.ic{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;z-index:300;background:#fff;color:var(--ink);padding:9px 14px;border-radius:10px;font-weight:800}
+.skip:focus{top:10px}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+
+/* announcement */
+.notice{background:var(--gold);color:#3b2a00;font-weight:800;font-size:14px;text-align:center;padding:9px 16px;line-height:1.6}
+.notice[hidden]{display:none}
+
 /* header */
-header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(4,21,43,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.1)}
-.nav{height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;position:relative}.brand-title{grid-column:2;color:#fff;font-size:21px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:-.4px}.brand-title span{color:var(--gold)}
-.header-side{display:flex;align-items:center;gap:9px}.header-side.left{grid-column:1;justify-self:start}.header-side.right{grid-column:3;justify-self:end}.menu-btn{width:42px;height:42px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:23px}.lang-switch{display:flex;gap:3px;padding:3px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);border-radius:999px;direction:ltr}.lang-btn{border:0;background:transparent;color:#d8eaf4;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800;cursor:pointer;min-width:48px;position:relative;z-index:3}.lang-btn.active{background:var(--gold);color:var(--navy);box-shadow:0 4px 14px rgba(248,201,75,.2)}
-.menu{position:absolute;top:88px;right:0;width:min(310px,calc(100vw - 30px));display:none;background:rgba(5,25,49,.97);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:9px;box-shadow:0 25px 60px rgba(0,0,0,.3)}.menu.open{display:grid}.menu a{color:#eef8ff;padding:12px 14px;border-radius:14px;font-size:13px}.menu a:hover{background:rgba(72,224,231,.1);color:var(--aqua)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(6,24,44,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{height:72px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;flex:none}.brand img{height:42px;width:auto}
+.nav{display:flex;align-items:center;gap:4px;margin-inline-start:12px;flex:1}
+.nav a{color:#d6e7f3;font-size:14px;font-weight:600;padding:8px 13px;border-radius:12px;transition:background .2s,color .2s}
+.nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.bar-actions{display:flex;align-items:center;gap:10px;margin-inline-start:auto}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid rgba(255,255,255,.16);border-radius:999px;direction:ltr}
+.lang button{border:0;background:transparent;color:#cfe3f1;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer;min-width:52px}
+.lang button.on{background:var(--gold);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:14px;padding:12px 20px;font-weight:800;font-size:14px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;line-height:1.4}
+.btn:hover{transform:translateY(-2px)}
+.btn-aqua{background:linear-gradient(135deg,var(--aqua),#2aa7e0);color:#04243a;box-shadow:0 12px 26px rgba(52,211,227,.25)}
+.btn-glass{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);color:#fff;backdrop-filter:blur(8px)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-line{background:#fff;border:1.5px solid var(--line);color:var(--navy)}
+.btn-sm{padding:8px 15px;font-size:13px;border-radius:12px}
+.menu-btn{display:none;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;cursor:pointer;place-items:center}
+
 /* hero */
-.hero{position:relative;min-height:720px;display:grid;place-items:center;overflow:hidden;background:#03162c;padding-top:76px}.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:.68}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,17,35,.46),rgba(2,22,43,.62) 60%,rgba(2,18,35,.9));z-index:1}.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-90px;height:190px;background:radial-gradient(ellipse at center,rgba(24,199,233,.45),transparent 67%);z-index:1;filter:blur(8px)}
-.hero-content{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;padding:65px 0 85px}.hero-kicker{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:1px solid rgba(255,255,255,.17);background:rgba(255,255,255,.09);backdrop-filter:blur(10px);border-radius:999px;font-size:12px;font-weight:700;margin-bottom:18px}.hero-logo{width:min(470px,82vw);height:auto;max-height:190px;object-fit:contain;filter:drop-shadow(0 16px 30px rgba(0,0,0,.38));margin-bottom:20px}.hero h1{font-size:clamp(29px,5vw,55px);font-weight:900;line-height:1.3;margin-bottom:12px;text-shadow:0 5px 20px rgba(0,0,0,.25)}.hero p{max-width:690px;color:#e5f6fb;font-size:17px;margin-bottom:25px}.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:12px 20px;font-weight:800;cursor:pointer;transition:.25s}.btn-primary{background:linear-gradient(135deg,var(--aqua),var(--blue));color:#03213b;box-shadow:0 14px 30px rgba(24,199,233,.22)}.btn-primary:hover{transform:translateY(-3px)}.btn-ghost{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);color:#fff;backdrop-filter:blur(10px)}
-/* common */
-section{padding:86px 0}.section-head{text-align:center;margin-bottom:38px}.eyebrow{color:var(--blue);font-size:12px;font-weight:900;margin-bottom:5px}.section-head h2{font-size:clamp(26px,4vw,38px);color:var(--navy);font-weight:900}.section-head p{color:var(--muted);max-width:690px;margin:7px auto 0}.section-head h2:after{content:"";display:block;width:52px;height:4px;border-radius:20px;background:linear-gradient(90deg,var(--cyan),var(--gold));margin:9px auto 0}
+.hero{position:relative;isolation:isolate;color:#fff;display:grid;align-items:center;min-height:min(84vh,700px);overflow:hidden;background:var(--ink)}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,18,36,.62) 0%,rgba(4,18,36,.72) 50%,rgba(4,18,36,.96) 100%)}
+.hero-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 0 150px}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 4px rgba(52,211,227,.25)}
+.hero-logo{width:min(430px,76vw);height:auto;filter:drop-shadow(0 14px 28px rgba(0,0,0,.45));margin-bottom:18px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,5.4vw,60px);line-height:1.35;text-shadow:0 5px 22px rgba(0,0,0,.35)}
+.hero p{max-width:640px;color:#dbeaf3;font-size:clamp(15px,2vw,18px);margin:12px 0 28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* today card */
+.today{position:relative;z-index:5;margin-top:-92px}
+.today-card{background:#fff;border-radius:26px;box-shadow:0 26px 60px rgba(6,24,44,.2);padding:22px 26px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;border:1px solid var(--line)}
+.today-date small{display:block;color:var(--muted);font-size:12px;font-weight:700}
+.today-date strong{font-size:20px;font-weight:900;color:var(--navy);display:block;line-height:1.5}
+.today-g{display:flex;align-items:center;gap:12px;font-weight:800}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:900;white-space:nowrap}
+.chip.women{background:var(--rose-soft);color:var(--rose)}.chip.men{background:var(--men-soft);color:var(--men)}
+.today-hours{font-size:19px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:14px;font-weight:900;font-size:14px;line-height:1.5;text-align:center}
+.pill:before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;flex:none}
+.pill.open{background:var(--ok-soft);color:var(--ok)}.pill.closed{background:var(--bad-soft);color:var(--bad)}
+.pill.soon{background:#fff4d9;color:#8a5a00}.pill.done{background:#eef2f5;color:#566d80}
+.pill.open:before{animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,135,79,.5)}100%{box-shadow:0 0 0 9px rgba(22,135,79,0)}}
+
+/* common sections */
+section.block{padding:84px 0}
+.head{text-align:center;margin-bottom:40px}
+.eyebrow{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;margin-bottom:6px;letter-spacing:.2px}
+.head h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,44px);color:var(--ink);line-height:1.4}
+.head p{color:var(--muted);max-width:660px;margin:8px auto 0}
+.head h2:after{content:"";display:block;width:56px;height:4px;border-radius:9px;background:linear-gradient(90deg,var(--aqua),var(--gold));margin:10px auto 0}
+
 /* sessions */
-.sessions{background:#fff}.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.session-card{position:relative;overflow:hidden;padding:28px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(145deg,#fff,#f3fbfd);box-shadow:var(--shadow)}.session-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;left:-80px;top:-80px;background:rgba(24,199,233,.1)}.session-top{display:flex;align-items:center;gap:14px;position:relative}.session-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:19px;background:#e7f9fb;font-size:30px}.session-card h3{font-size:22px;color:var(--navy)}.days{color:var(--blue);font-weight:800;font-size:13px}.day-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:17px}.day-list span{padding:5px 9px;border-radius:999px;background:#edf8fb;color:#3c5d71;font-size:12px;font-weight:800}.time{display:inline-flex;margin-top:18px;padding:8px 13px;border-radius:12px;background:var(--navy);color:#fff;font-weight:900;font-size:13px}.session-top{display:flex;align-items:center;gap:14px}.session-top>div:nth-child(2){flex:1;min-width:0}.session-top .time{margin-inline-start:auto;white-space:nowrap}.session-top .time::before{content:"🕒 ";font-size:.9em}@media(max-width:560px){.session-top{align-items:flex-start;flex-wrap:wrap}.session-top .time{width:100%;margin-inline-start:0;margin-top:8px;text-align:center}}
-.session-card .btn{display:none}
+.sessions{background:var(--paper)}
+.hours-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:34px}
+.hours-card{display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:var(--r);border:1px solid var(--line);background:var(--foam)}
+.hours-card.women{background:linear-gradient(135deg,#fff,var(--rose-soft));border-color:#f3cfe0}
+.hours-card.men{background:linear-gradient(135deg,#fff,var(--men-soft));border-color:#c9e4f4}
+.hours-card h3{font-size:20px;font-weight:900;color:var(--ink)}
+.hours-card .days{font-size:13px;color:var(--muted);font-weight:600}
+.hours-card .hrs{margin-inline-start:auto;text-align:center;font-size:21px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hours-card.women .hrs{color:var(--rose)}.hours-card.men .hrs{color:var(--men)}
+.hours-card .hrs small{display:block;font-size:11px;color:var(--muted);font-weight:700}
+.badge-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;flex:none;font-size:22px}
+.women .badge-ic{background:var(--rose);color:#fff}.men .badge-ic{background:var(--men);color:#fff}
+.strip-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.strip-title h3{font-size:19px;font-weight:900;color:var(--ink)}.strip-title span{font-size:13px;color:var(--muted)}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.day{position:relative;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:16px 8px 14px;border-radius:20px;border:1.5px solid var(--line);background:#fff}
+.day .dn{font-weight:900;color:var(--ink);font-size:15px}.day .dd{font-size:12px;color:var(--muted);font-weight:700}
+.day .dt{font-size:14px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--navy);line-height:1.5}
+.day.women{background:linear-gradient(180deg,#fff,var(--rose-soft))}.day.men{background:linear-gradient(180deg,#fff,var(--men-soft))}
+.day.women .chip{background:var(--rose);color:#fff}.day.men .chip{background:var(--men);color:#fff}
+.day.today-d{border-color:var(--ink);box-shadow:0 10px 26px rgba(6,24,44,.16)}
+.day .tag{position:absolute;top:-11px;background:var(--ink);color:#fff;font-size:11px;font-weight:800;padding:1px 11px;border-radius:99px}
+.day.closed{background:repeating-linear-gradient(135deg,#fff,#fff 8px,var(--bad-soft) 8px,var(--bad-soft) 16px);border-color:#f1c3c8}
+.day.closed .chip{background:#e9edf0;color:#6a7c8b}
+.day.closed .dt{color:var(--bad);background:#fff;padding:1px 12px;border-radius:99px;border:1px solid #f1c3c8}
 
-/* session time visibility fix */
-.session-time{display:flex;align-items:center;gap:9px;margin-top:16px;padding:11px 14px;border-radius:14px;background:#e8f7fb;border:1px solid #c9e9f1;color:var(--navy);width:max-content;max-width:100%;position:relative;z-index:2}.time-label{font-size:12px;font-weight:900;color:#147fa8}.session-time .time{display:inline-flex!important;margin:0!important;padding:0!important;border-radius:0!important;background:transparent!important;color:var(--navy)!important;font-size:15px;font-weight:900;white-space:nowrap}.session-time .time::before{content:"🕒 ";font-size:.9em}@media(max-width:560px){.session-time{width:100%;justify-content:center}.session-time .time{width:auto!important;margin:0!important}}
 /* facilities */
-.facilities{background:linear-gradient(180deg,#f3fafc,#edf7fb)}.facility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.facility{min-height:165px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:24px;box-shadow:0 10px 30px rgba(8,67,94,.06);transition:.25s;position:relative;overflow:hidden}.facility:after{content:"";position:absolute;bottom:-35px;width:130px;height:70px;background:rgba(24,199,233,.08);border-radius:50%}.facility:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.facility .ico{width:66px;height:66px;display:grid;place-items:center;border-radius:21px;background:linear-gradient(145deg,#e5faff,#fff);border:1px solid #d5edf3;font-size:29px;margin-bottom:11px}.facility h3{font-size:14px;color:#19374d;position:relative;z-index:1}
-/* contact hub */
-.contact-hub{background:#061b35;color:#fff;position:relative;overflow:hidden}.contact-hub:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-180px;top:-220px;background:rgba(24,199,233,.1)}.contact-hub .section-head h2{color:#fff}.contact-hub .section-head p{color:#b9d2e1}.contact-hub .section-head h2:after{margin-top:9px}.contact-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:17px;position:relative}.contact-card{border:1px solid rgba(255,255,255,.1);border-radius:26px;padding:24px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.045));backdrop-filter:blur(10px);min-height:205px;display:flex;flex-direction:column;justify-content:space-between}.contact-card.location{background:linear-gradient(145deg,rgba(72,224,231,.17),rgba(255,255,255,.05))}.contact-card h3{font-size:19px}.contact-card p{color:#c4dbe8;font-size:13px;line-height:1.9;margin-top:6px}.contact-icon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;background:rgba(255,255,255,.1);font-size:25px;margin-bottom:12px}.contact-card .btn{margin-top:17px;background:#fff;color:var(--navy);width:max-content;max-width:100%}.map-actions{display:flex;gap:9px;flex-wrap:wrap}.map-actions .btn{margin-top:17px}.map-actions .map-maps{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)}.contact-card .btn:hover{transform:translateY(-2px)}
-/* gallery */
-.gallery{background:#fff}.gallery-shell{background:linear-gradient(145deg,#03172d,#0b3155);border-radius:30px;padding:14px;box-shadow:0 25px 70px rgba(3,24,45,.18);overflow:hidden}.slider{position:relative;border-radius:22px;overflow:hidden;background:#001021}.slides{display:flex;transition:transform .5s cubic-bezier(.22,.8,.25,1);touch-action:pan-y}.slide{min-width:100%;height:500px;position:relative;display:grid;place-items:center;background:#001021}.slide img{width:100%;height:100%;object-fit:contain;display:block}.slide:after{content:"";position:absolute;inset:auto 0 0;height:110px;background:linear-gradient(0deg,rgba(0,10,20,.72),transparent);pointer-events:none}.slide-caption{position:absolute;z-index:3;bottom:18px;right:20px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);color:#fff;font-size:13px;font-weight:800}.slider-btn{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(2,18,34,.72);color:#fff;display:grid;place-items:center;font-size:28px;cursor:pointer}.slider-btn:hover{background:rgba(24,199,233,.3)}.prev{right:16px}.next{left:16px}.thumbs{display:flex;gap:8px;overflow-x:auto;padding:12px 4px 2px;scrollbar-width:none}.thumbs::-webkit-scrollbar{display:none}.thumb{flex:0 0 86px;height:58px;border:2px solid transparent;border-radius:12px;padding:0;background:#0b2947;overflow:hidden;cursor:pointer;opacity:.62;transition:.2s}.thumb img{width:100%;height:100%;object-fit:cover}.thumb.active{border-color:var(--aqua);opacity:1;box-shadow:0 0 0 2px rgba(24,199,233,.12)}.gallery-meta{display:flex;justify-content:space-between;align-items:center;color:#b9d2e1;font-size:12px;padding:5px 5px 0}.gallery-meta strong{color:#fff}
-/* about */
-.about{background:#f3f9fc}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:25px;align-items:stretch}.about-img{min-height:350px;border-radius:28px;background-image:url("about-pool.png");background-size:cover;background-position:center;background-repeat:no-repeat;border:1px solid rgba(255,255,255,.55);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 18px 45px rgba(7,48,74,.16)}.about-img:before{content:"🏊";font-size:58px;opacity:.35}.about-img:after{content:"";position:absolute;inset:auto -10% -30px;height:120px;background:radial-gradient(ellipse,rgba(8,125,204,.16),transparent 70%)}.about-text{background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--shadow)}.about-text h2{font-size:31px;color:var(--navy);margin-bottom:10px}.about-text p{color:#5d7182;margin-bottom:20px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checks div{font-size:13px;color:#29485c}.checks div:before{content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e8fafb;color:#0784b5;font-weight:900;margin-left:7px}
-/* ticket */
-.tickets{background:#fff}.ticket-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}.price-card{border-radius:30px;padding:30px;background:linear-gradient(145deg,#08284b,#0a426b);color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}.price-card:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;left:-100px;bottom:-120px;background:rgba(72,224,231,.15)}.price-label{color:#9ddfee;font-size:13px;font-weight:800}.price{font-size:40px;font-weight:900;margin:8px 0}.price small{font-size:15px;font-weight:700;color:#c7dce7}.price-note{display:inline-block;background:var(--gold);color:var(--navy);padding:7px 11px;border-radius:10px;font-size:12px;font-weight:900}.reserve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.reserve-card{border:1px solid var(--line);border-radius:23px;padding:20px;background:linear-gradient(145deg,#fff,#f4fafc);box-shadow:0 10px 28px rgba(5,39,67,.06);display:flex;flex-direction:column;justify-content:space-between}.reserve-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:#e8f9fb;font-size:24px;margin-bottom:12px}.reserve-card h3{font-size:16px;color:var(--navy)}.reserve-card p{font-size:12px;color:var(--muted);margin:5px 0 14px}.reserve-card .btn{width:100%;font-size:12px}.ticket-links{display:grid;gap:9px}.ticket-links .btn{width:100%;font-size:12px}.btn-disabled{opacity:.45;cursor:not-allowed}
-/* footer */
-footer{background:#03111f;color:#dceaf3;padding:48px 0 22px;text-align:center}.footer-logo{width:205px;max-width:70%;height:auto;margin:0 auto 10px;display:block}.footer-desc{color:#a9bdca;font-size:13px}.footer-dev{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#91a8b8}.footer-dev a{color:#55d7ef;font-weight:900}.copy{margin-top:13px;color:#6f8799;font-size:11px}
-/* sessions refinement */
-.session-card{position:relative;overflow:hidden}.session-card:after{content:"";position:absolute;inset:auto -25px -45px auto;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}.session-top{align-items:center}.day-list{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.day-list span{padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);font-size:12px;font-weight:700}.time{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.12);font-weight:900}
-@media(max-width:960px){.facility-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr 1fr}.contact-card.location{grid-column:1/-1}.ticket-layout{grid-template-columns:1fr}.reserve-grid{grid-template-columns:repeat(3,1fr)}.slide{height:430px}}
-@media(max-width:700px){.container{width:calc(100% - 20px)}.nav{height:68px;grid-template-columns:42px 1fr 100px}.header-side.left{grid-column:1}.brand-title{grid-column:2;font-size:17px}.header-side.right{grid-column:3}.menu{right:0;top:78px}.lang-switch{gap:2px}.lang-btn{min-width:43px;padding:6px 6px;font-size:10px}.hero{min-height:620px;padding-top:68px}.hero video{object-fit:contain;opacity:.62}.hero:before{background:linear-gradient(180deg,rgba(2,17,35,.35),rgba(2,18,35,.82) 65%,rgba(2,18,35,.96))}.hero-content{padding:42px 0 65px}.hero-logo{width:min(370px,88vw);max-height:145px}.hero h1{font-size:29px}.hero p{font-size:14px}.hero-actions{width:100%;flex-direction:column}.hero-actions .btn,.hero-actions .btn-ghost{width:100%;max-width:330px}.session-grid{grid-template-columns:1fr}.facility-grid{grid-template-columns:1fr 1fr;gap:9px}.facility{min-height:142px;border-radius:20px}.facility .ico{width:57px;height:57px;font-size:25px}.facility h3{font-size:12px}.contact-grid{grid-template-columns:1fr}.contact-card.location{grid-column:auto}.contact-card{min-height:190px}.slide{height:315px}.slider-btn{width:40px;height:40px;font-size:23px}.prev{right:9px}.next{left:9px}.slide-caption{right:12px;bottom:12px}.thumb{flex-basis:72px;height:50px}.gallery-shell{padding:9px;border-radius:24px}.gallery-meta{font-size:11px}.about-grid{grid-template-columns:1fr}.about-img{min-height:220px}.about-text{padding:23px}.about-text h2{font-size:25px}.checks{grid-template-columns:1fr}.reserve-grid{grid-template-columns:1fr}.price{font-size:34px}.tickets section{padding-top:60px}}
-@media(max-width:430px){.brand-title{font-size:15px}.nav{grid-template-columns:40px 1fr 94px}.lang-btn{min-width:40px;padding-inline:4px}.hero{min-height:570px}.hero video{object-fit:contain}.hero-logo{width:82vw}.hero h1{font-size:25px}.section-head{margin-bottom:28px}.section-head h2{font-size:25px}}
+.facilities{background:var(--foam)}
+.fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fac{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
+.fac img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.fac:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,24,44,0) 38%,rgba(6,24,44,.92))}
+.fac:hover img{transform:scale(1.06)}
+.fac-body{position:absolute;inset:auto 0 0;padding:20px;color:#fff}
+.fac-body h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.4}
+.fac-body p{font-size:13px;color:#cfe2ef;margin-top:2px}
+.fac.dry:after,.fac.steam:after,.fac.jac:after,.fac.cold:after{content:"";position:absolute;top:16px;inset-inline-start:16px;width:34px;height:4px;border-radius:9px;background:var(--aqua)}
+.fac.dry:after{background:var(--wood)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.tile{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.tile .ti{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--men-soft);color:var(--blue);font-size:23px;flex:none}
+.tile h3{font-size:15px;font-weight:800;color:var(--ink);line-height:1.6}
 
-/* ticket price / special offer */
-.price-card .price{font-size:38px;font-weight:900;line-height:1.25;margin:10px 0 18px;color:#fff}
-.price-card .special-offer{display:inline-block;background:var(--gold);color:var(--navy);padding:10px 14px;border-radius:13px;font-size:13px;font-weight:900;box-shadow:0 8px 18px rgba(248,201,75,.18)}
-@media(max-width:700px){.price-card .price{font-size:31px}.price-card .special-offer{font-size:12px}}
+/* tickets */
+.tickets{background:var(--paper)}
+.price-card{position:relative;overflow:hidden;border-radius:28px;padding:34px;color:#fff;background:linear-gradient(140deg,var(--navy),#0b4a78);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.price-card:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;inset-inline-start:-120px;bottom:-170px;background:rgba(52,211,227,.16)}
+.price-card>*{position:relative;z-index:1}
+.price-label{color:#9fdcef;font-size:14px;font-weight:800}
+.price{font-size:clamp(34px,5vw,50px);font-weight:900;line-height:1.3}
+.special{background:var(--gold);color:#3b2a00;font-weight:900;font-size:14px;padding:11px 18px;border-radius:14px;max-width:340px}
+.sub-title{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:19px;font-weight:900;color:var(--ink)}
+.sub-title:after{content:"";height:1px;background:var(--line);flex:1}
+.buy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:34px}
+.buy{display:flex;flex-direction:column;gap:16px;padding:26px;border-radius:26px;border:2px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(6,24,44,.07);transition:transform .25s,box-shadow .25s}
+.buy:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.buy-top{display:flex;align-items:center;gap:14px}
+.buy .bi{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#fff;font-size:26px;flex:none}
+.buy h3{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;color:var(--ink)}
+.buy p{color:var(--muted);font-size:14px}
+.buy.qom{border-color:#bfe8d4}.buy.qom .bi{background:linear-gradient(135deg,#1aa56a,#0e7a4c)}.buy.qom .btn{background:linear-gradient(135deg,#1aa56a,#0e7a4c);color:#fff;box-shadow:0 12px 24px rgba(22,135,79,.25)}
+.buy.pool{border-color:#c4dcf6}.buy.pool .bi{background:linear-gradient(135deg,#2b8be6,#0d57b5)}.buy.pool .btn{background:linear-gradient(135deg,#2b8be6,#0d57b5);color:#fff;box-shadow:0 12px 24px rgba(13,87,181,.25)}
+.buy .btn{width:100%;padding:14px}
+.book{border-radius:26px;background:var(--foam);border:1px solid var(--line);padding:26px}
+.book h3{font-size:20px;font-weight:900;color:var(--ink)}.book>p{color:var(--muted);font-size:14px;margin:2px 0 16px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:#fff;border:1.5px solid var(--line);transition:border-color .2s,transform .2s}
+.opt:hover{border-color:var(--blue);transform:translateY(-2px)}
+.opt .oi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;color:#fff;flex:none}
+.opt.call .oi{background:var(--ink)}.opt.eit .oi{background:#f58a1f}
+.opt b{display:block;font-size:15px;color:var(--ink);line-height:1.5}.opt span{display:block;font-size:14px;color:var(--muted);font-weight:700;direction:ltr;text-align:start;unicode-bidi:plaintext}
+.opt .go{margin-inline-start:auto;color:var(--muted)}
+
+/* gallery */
+.gallery{background:var(--foam)}
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:12px}
+.g-item{position:relative;border:0;padding:0;border-radius:20px;overflow:hidden;cursor:zoom-in;background:var(--ink);isolation:isolate}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.g-item:hover img{transform:scale(1.05)}
+.g-item:after{content:attr(data-cap);position:absolute;inset:auto 0 0;padding:26px 14px 10px;color:#fff;font-weight:800;font-size:13px;text-align:start;background:linear-gradient(0deg,rgba(6,24,44,.85),transparent)}
+.g-item.big{grid-column:span 2;grid-row:span 2}
+dialog.lb{border:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;padding:0;color:#fff}
+dialog.lb::backdrop{background:rgba(3,12,24,.92)}
+.lb-in{height:100%;display:grid;grid-template-rows:1fr auto;align-items:center;justify-items:center;padding:18px 12px 14px;gap:10px}
+.lb-in img{max-width:min(1100px,100%);max-height:calc(100vh - 110px);width:auto;height:auto;border-radius:14px;margin:auto}
+.lb-cap{font-weight:800;font-size:14px;text-align:center}
+.lb-btn{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(6,24,44,.7);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:20px}
+.lb-prev{inset-inline-end:14px}.lb-next{inset-inline-start:14px}
+.lb-close{position:fixed;top:14px;inset-inline-start:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(6,24,44,.7);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:20px}
+
+/* contact */
+.contact{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 85% -10%,rgba(52,211,227,.16),transparent 60%),var(--ink);color:#fff}
+.contact .eyebrow{color:var(--aqua)}.contact .head h2{color:#fff}.contact .head p{color:#b8d0df}
+.c-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+.c-stack{display:grid;gap:18px}
+.c-card{position:relative;overflow:hidden;border-radius:28px;padding:28px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(150deg,rgba(255,255,255,.1),rgba(255,255,255,.03));display:flex;flex-direction:column;gap:14px}
+.c-card .ci{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:26px;color:#04243a;background:linear-gradient(135deg,var(--aqua),#2aa7e0);flex:none}
+.c-card h3{font-family:var(--display);font-weight:400;font-size:27px;line-height:1.35}
+.c-card p{color:#bcd3e1;font-size:14px}
+.c-top{display:flex;align-items:center;gap:14px}
+.c-card.loc{min-height:100%;background:linear-gradient(150deg,rgba(52,211,227,.2),rgba(255,255,255,.04))}
+.map-art{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.c-card.loc>*:not(.map-art){position:relative;z-index:1}
+.c-card .addr{font-size:17px;font-weight:700;line-height:1.9;color:#fff;max-width:420px}
+.c-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.phone-num{font-size:30px;font-weight:900;letter-spacing:.5px;direction:ltr;text-align:start;font-variant-numeric:tabular-nums}
+.c-card .ci.eit{background:linear-gradient(135deg,#ffb04d,#f58a1f)}
+.handle{font-size:22px;font-weight:800;direction:ltr;text-align:start}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-ghost2{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff}
+
+/* footer */
+footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
+.f-logo{width:210px;max-width:70%;height:auto;margin:0 auto 12px}
+.f-desc{color:#9fb6c6;font-size:14px}
+.f-links{display:flex;gap:6px 18px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+.f-links a{color:#bcd3e1;font-size:13px;font-weight:600}.f-links a:hover{color:var(--aqua)}
+.f-dev{margin-top:14px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#8aa3b4}
+.f-dev a{color:#55d7ef;font-weight:900}
+.copy{margin-top:10px;font-size:12px;color:#6f8799}
+.admin-link{display:inline-block;margin-top:10px;font-size:12px;color:#5d7688;opacity:.8}.admin-link:hover{color:var(--aqua);opacity:1}
+
+/* responsive */
+@media(max-width:1060px){
+  .nav{display:none;position:absolute;top:72px;inset-inline:0;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:10px 16px 14px;background:rgba(6,24,44,.98);border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav.open{display:flex}.nav a{padding:12px 14px}
+  .menu-btn{display:grid}
+  .strip{grid-template-columns:repeat(4,1fr)}
+  .fac-grid{grid-template-columns:repeat(2,1fr)}.fac{aspect-ratio:4/3}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .g-grid{grid-auto-rows:190px}
+}
+@media(max-width:820px){
+  .today-card{grid-template-columns:1fr;gap:14px;text-align:center;padding:20px}
+  .today-g{justify-content:center;flex-wrap:wrap}
+  .hours-row,.buy-grid,.opts,.c-grid{grid-template-columns:1fr}
+  .g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .g-item.big{grid-row:span 2}
+  .g-item.last{grid-column:span 2}
+}
+@media(max-width:620px){
+  section.block{padding:62px 0}
+  .bar{height:64px;gap:10px}.brand img{height:36px}.nav{top:64px}
+  .header-cta{display:none}
+  .lang button{padding:5px 9px;min-width:44px;font-size:11px}
+  .hero{min-height:560px}.hero-in{padding:40px 0 130px}
+  .strip{grid-template-columns:1fr;gap:9px}
+  .day{flex-direction:row;flex-wrap:wrap;justify-content:space-between;padding:13px 16px;text-align:start;gap:4px 10px}
+  .day .tag{top:-10px;inset-inline-end:14px}
+  .day .nm{display:flex;flex-direction:column;align-items:flex-start}
+  .day .dt{margin-inline-start:auto}
+  .fac-grid{grid-template-columns:1fr}.fac{aspect-ratio:4/3}
+  .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{padding:13px;gap:10px}.tile .ti{width:42px;height:42px;font-size:20px}.tile h3{font-size:13px}
+  .price-card{padding:26px 22px}
+  .c-card{padding:22px}.phone-num{font-size:25px}
+  .hours-card{padding:18px;gap:12px;flex-wrap:wrap}.hours-card .hrs{width:100%;margin:0;font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":"https://pcmohqm-coder.github.io/pool-ticket/social-preview.png","logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/Royan313"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Monday","Wednesday"],"opens":"13:00","closes":"19:00"}]},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}
+{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":"https://pcmohqm-coder.github.io/pool-ticket/social-preview.png","logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/Royan313"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Monday","Wednesday"],"opens":"13:00","closes":"18:00"}]},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}
 </script>
 </head>
 <body>
-<header><div class="container nav">
-<div class="header-side left"><button class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false">☰</button></div>
-<div class="brand-title"><a href="#home"><span>استخر</span> شهدای بسیج</a></div>
-<div class="header-side right"><div class="lang-switch" aria-label="انتخاب زبان"><button class="lang-btn active" data-lang="fa" type="button">فارسی</button><button class="lang-btn" data-lang="ar" type="button">العربية</button></div></div>
-<nav class="menu" id="menu"><a data-i18n="nav_home" href="#home">صفحه اصلی</a><a data-i18n="nav_sessions" href="#sessions">سانس‌ها</a><a data-i18n="nav_facilities" href="#facilities">امکانات</a><a data-i18n="nav_contact" href="#contact">مکان و ارتباط</a><a data-i18n="nav_gallery" href="#gallery">گالری تصاویر</a><a data-i18n="nav_about" href="#about">درباره مجموعه</a><a data-i18n="nav_tickets" href="#tickets">قیمت و رزرو</a></nav>
-</div></header>
-<main>
-<section class="hero" id="home"><video autoplay muted loop playsinline preload="metadata"><source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4"></video><div class="hero-content container"><div class="hero-kicker" data-i18n="hero_kicker">🏊 مجموعه ورزشی و تفریحی در قم</div><img class="hero-logo" src="typography.png" alt="استخر شهدای بسیج" loading="eager"><h1 data-i18n="hero_title">محلی برای سلامتی، نشاط و آرامش</h1><p data-i18n="hero_desc">استخر شهدای بسیج قم، فضایی مجهز برای شنا، ورزش و آرامش با سانس‌های جداگانه آقایان و بانوان و خدمات متنوع مجموعه.</p><div class="hero-actions"><a class="btn btn-primary" data-i18n="hero_cta" href="#tickets">خرید بلیت و رزرو سانس ←</a><a class="btn btn-ghost" data-i18n="hero_play" href="#gallery">مشاهده فضای استخر</a></div></div></section>
-<section class="sessions" id="sessions"><div class="container"><div class="section-head"><div class="eyebrow" data-i18n="sessions_eyebrow">برنامه مجموعه</div><h2 data-i18n="sessions_title">سانس‌های مجموعه</h2><p data-i18n="sessions_desc">زمان‌بندی استفاده از مجموعه برای آقایان و بانوان</p></div><div class="session-grid">
-<article class="session-card"><div class="session-top"><div class="session-icon">👨</div><div><h3 data-i18n="men_title">آقایان</h3><div class="days" data-i18n="men_days">روزهای فرد</div></div><div class="session-time"><span class="time-label" data-i18n="time_label">ساعت</span><span class="time" data-i18n="men_time">۱۵:۰۰ تا ۲۳:۰۰</span></div></div><div class="day-list"><span data-i18n="men_d1">یکشنبه</span><span data-i18n="men_d2">سه‌شنبه</span><span data-i18n="men_d3">پنجشنبه</span><span data-i18n="men_d4">جمعه</span></div></article>
-<article class="session-card"><div class="session-top"><div class="session-icon">👩</div><div><h3 data-i18n="women_title">بانوان</h3><div class="days" data-i18n="women_days">روزهای زوج</div></div><div class="session-time"><span class="time-label" data-i18n="time_label">ساعت</span><span class="time" data-i18n="women_time">۱۳:۰۰ تا ۱۹:۰۰</span></div></div><div class="day-list"><span data-i18n="women_d1">شنبه</span><span data-i18n="women_d2">دوشنبه</span><span data-i18n="women_d3">چهارشنبه</span></div></article>
-</div></div></section>
-<section class="facilities" id="facilities"><div class="container"><div class="section-head"><div class="eyebrow" data-i18n="fac_eyebrow">تجربه کامل‌تر</div><h2 data-i18n="fac_title">امکانات و خدمات</h2><p data-i18n="fac_desc">همه‌چیز برای یک تجربه راحت، کامل و لذت‌بخش</p></div><div class="facility-grid"><div class="facility"><div class="ico">🧖</div><h3 data-i18n="fac_dry">سونای خشک</h3></div><div class="facility"><div class="ico">💨</div><h3 data-i18n="fac_steam">سونای بخار</h3></div><div class="facility"><div class="ico">🛁</div><h3 data-i18n="fac_jacuzzi">جکوزی</h3></div><div class="facility"><div class="ico">❄️</div><h3 data-i18n="fac_cold">حوضچه آب سرد</h3></div><div class="facility"><div class="ico">🚿</div><h3 data-i18n="fac_shower">دوش و رختکن</h3></div><div class="facility"><div class="ico">🅿️</div><h3 data-i18n="fac_parking">پارکینگ</h3></div><div class="facility"><div class="ico">💆</div><h3 data-i18n="fac_massage">ماساژ</h3></div><div class="facility"><div class="ico">🧼</div><h3 data-i18n="fac_hygiene">محیط بهداشتی و مجهز</h3></div></div></div></section>
-<section class="tickets" id="tickets"><div class="container"><div class="section-head"><div class="eyebrow" data-i18n="tickets_eyebrow">تعرفه و رزرو</div><h2 data-i18n="tickets_title">قیمت بلیت و رزرو سانس</h2><p data-i18n="tickets_desc">سانس را انتخاب کنید و برای هماهنگی از یکی از راه‌های زیر اقدام کنید.</p></div><div class="ticket-layout"><article class="price-card"><div class="price-label" data-i18n="price_label">بلیت آزاد</div><div class="price" data-i18n="price_value">۲۵۰٬۰۰۰ تومان</div><div class="price-note special-offer" data-i18n="price_special">تخفیف ویژه برای بسیجیان و نیروهای مسلح</div></article><div class="reserve-grid"><article class="reserve-card"><div><div class="reserve-icon">📞</div><h3 data-i18n="reserve_contact_title">تماس با استخر</h3><p data-i18n="reserve_contact_desc">برای هماهنگی و رزرو سانس، مستقیم با مجموعه تماس بگیرید.</p></div><a class="btn btn-primary" data-i18n="reserve_contact_btn" href="tel:09330555036">تماس مستقیم</a></article><article class="reserve-card"><div><div class="reserve-icon">💬</div><h3 data-i18n="reserve_eitaa_title">ارتباط در ایتا</h3><p data-i18n="reserve_eitaa_desc">ارتباط و هماهنگی از طریق ایتا با شناسه @Royan313.</p></div><a class="btn btn-primary" data-i18n="reserve_eitaa_btn" href="https://eitaa.com/Royan313" target="_blank" rel="noopener">ورود به ایتا</a></article><article class="reserve-card"><div><div class="reserve-icon">🎟️</div><h3 data-i18n="reserve_payment_title">خرید بلیت</h3><p data-i18n="reserve_payment_desc">برای خرید بلیت آنلاین، یکی از سامانه‌های فروش بلیت را انتخاب کنید.</p></div><div class="ticket-links"><a class="btn btn-primary" data-i18n="reserve_poolticket_btn" href="https://www.poolticket.org/pool/shohadayebasijqom" target="_blank" rel="noopener">خرید از پول‌تیکت ↗</a><a class="btn btn-ghost" data-i18n="reserve_qomticket_btn" href="https://www.qomticket.com/%D8%A7%D8%B3%D8%AA%D8%AE%D8%B1-%D8%B4%D9%87%D8%AF%D8%A7%DB%8C-%D8%A8%D8%B3%DB%8C%D8%AC-%D9%82%D9%85" target="_blank" rel="noopener">خرید از قم‌تیکت ↗</a></div></article></div></div></div></section>
-<section class="contact-hub" id="contact"><div class="container"><div class="section-head"><div class="eyebrow" data-i18n="contact_eyebrow">دسترسی سریع</div><h2 data-i18n="contact_title">مکان و ارتباط با مجموعه</h2><p data-i18n="contact_desc">لوکیشن، تماس مستقیم و کانال مجموعه را همین‌جا در دسترس داشته باشید.</p></div><div class="contact-grid">
-<article class="contact-card location"><div><div class="contact-icon">📍</div><h3 data-i18n="location_title">مکان و لوکیشن</h3><p data-i18n="address">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</p></div><div class="map-actions"><a class="btn" data-i18n="map_neshan" href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank" rel="noopener">مشاهده در نشان ↗</a><a class="btn map-maps" data-i18n="map_maps" href="https://maps.app.goo.gl/iuFsWtYyST8FVrzS7" target="_blank" rel="noopener">مشاهده در نقشه Maps ↗</a></div></article>
-<article class="contact-card"><div><div class="contact-icon">📞</div><h3 data-i18n="call_title">تماس مستقیم</h3><p data-i18n="call_desc">برای هماهنگی و رزرو سانس با مجموعه تماس بگیرید.</p></div><a class="btn" href="tel:09330555036" data-i18n="call_btn">۰۹۳۳۰۵۵۵۰۳۶</a></article>
-<article class="contact-card"><div><div class="contact-icon">📣</div><h3 data-i18n="channel_title">کانال مجموعه</h3><p data-i18n="channel_desc">برای اطلاع از اخبار و برنامه‌ها، کانال مجموعه را دنبال کنید.</p></div><a class="btn" data-i18n="channel_btn" href="https://eitaa.com/Royan313" target="_blank" rel="noopener">ورود به کانال</a></article>
-</div></div></section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8z"/><path d="M14 6v2.5M14 10.8v2.4M14 15.5V18"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol>
+  <symbol id="i-shower" viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0H4z"/><path d="M12 2V1M8 13v2M12 13v4M16 13v2M6 18v1.5M10 20v1.5M14 20v1.5M18 18v1.5"/></symbol>
+  <symbol id="i-parking" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9.5 17V7.5h3.2a2.9 2.9 0 0 1 0 5.8H9.5"/></symbol>
+  <symbol id="i-spa" viewBox="0 0 24 24"><path d="M12 4c2.5 2.2 3.8 4.6 3.8 7.2S14.5 16 12 18c-2.5-2-3.8-4.2-3.8-6.8S9.5 6.2 12 4z"/><path d="M4.5 9.5c3 .2 5 1.6 6 3.8M19.5 9.5c-3 .2-5 1.6-6 3.8M7 21h10"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-women" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v9M8.5 17.5h7"/></symbol>
+  <symbol id="i-men" viewBox="0 0 24 24"><circle cx="10" cy="14" r="5"/><path d="M14 10l6-6M15 4h5v5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip" href="#main" data-i18n="skip">رفتن به محتوا</a>
+<div class="notice" id="notice" role="status" hidden></div>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="استخر شهدای بسیج"><img src="img/logo.webp" alt="استخر شهدای بسیج" width="84" height="42"></a>
+    <nav class="nav" id="nav" aria-label="منوی اصلی">
+      <a href="#sessions" data-i18n="nav_sessions">سانس‌ها</a>
+      <a href="#facilities" data-i18n="nav_facilities">امکانات</a>
+      <a href="#tickets" data-i18n="nav_tickets">بلیت</a>
+      <a href="#gallery" data-i18n="nav_gallery">گالری</a>
+      <a href="#contact" data-i18n="nav_contact">مکان و تماس</a>
+    </nav>
+    <div class="bar-actions">
+      <div class="lang" role="group" aria-label="انتخاب زبان"><button type="button" class="on" data-lang="fa">فارسی</button><button type="button" data-lang="ar">العربية</button></div>
+      <a class="btn btn-aqua btn-sm header-cta" href="#tickets"><svg class="ic"><use href="#i-ticket"/></svg><span data-i18n="header_cta">خرید بلیت</span></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="منو"><svg class="ic"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="home">
+    <div class="hero-media">
+      <img src="img/hero.webp" alt="" fetchpriority="high">
+      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero.webp" aria-hidden="true"><source src="https://raw.githubusercontent.com/pcmohqm-coder/pool-ticket/main/pool-tour.mp4" type="video/mp4"></video>
+    </div>
+    <div class="wrap hero-in">
+      <div class="kicker"><i></i><span data-i18n="hero_kicker">مجموعه ورزشی و تفریحی در قم</span></div>
+      <img class="hero-logo" src="img/logo.webp" alt="استخر شهدای بسیج" width="430" height="214">
+      <h1 data-i18n="hero_title">سلامتی، نشاط و آرامش در یک مجموعه</h1>
+      <p data-i18n="hero_desc">استخر شهدای بسیج قم؛ فضایی مجهز برای شنا و استراحت با سانس‌های جداگانه آقایان و بانوان، سونا، جکوزی و خدمات متنوع.</p>
+      <div class="hero-actions">
+        <a class="btn btn-aqua" href="#tickets"><span data-i18n="hero_cta">خرید بلیت</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-glass" href="#sessions"><span data-i18n="hero_cta2">مشاهده سانس‌ها</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="today wrap"><div class="today-card" id="todayCard" aria-live="polite"></div></div>
+
+  <section class="block sessions" id="sessions">
+    <div class="wrap">
+      <div class="head"><div class="eyebrow" data-i18n="sessions_eyebrow">برنامه مجموعه</div><h2 data-i18n="sessions_title">سانس‌های آقایان و بانوان</h2><p data-i18n="sessions_desc">هر روز مخصوص یک بخش است. وضعیت روزهای پیش‌رو را از همین‌جا ببینید.</p></div>
+      <div class="hours-row">
+        <article class="hours-card women"><div class="badge-ic"><svg class="ic"><use href="#i-women"/></svg></div><div><h3 data-i18n="women_title">بانوان</h3><div class="days" data-i18n="women_days">شنبه، دوشنبه و چهارشنبه</div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsWomen">۱۳:۰۰ تا ۱۸:۰۰</span></div></article>
+        <article class="hours-card men"><div class="badge-ic"><svg class="ic"><use href="#i-men"/></svg></div><div><h3 data-i18n="men_title">آقایان</h3><div class="days" data-i18n="men_days">یکشنبه، سه‌شنبه، پنجشنبه و جمعه</div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsMen">۱۵:۰۰ تا ۲۲:۰۰</span></div></article>
+      </div>
+      <div class="strip-title"><h3 data-i18n="week_title">وضعیت ۷ روز آینده</h3><span data-i18n="week_note">روزهای تعطیل با برچسب قرمز مشخص شده‌اند.</span></div>
+      <div class="strip" id="strip"></div>
+      <noscript><p style="margin-top:14px;color:var(--muted)">بانوان: شنبه، دوشنبه و چهارشنبه ۱۳:۰۰ تا ۱۸:۰۰ — آقایان: یکشنبه، سه‌شنبه، پنجشنبه و جمعه ۱۵:۰۰ تا ۲۲:۰۰</p></noscript>
+    </div>
+  </section>
+
+  <section class="block facilities" id="facilities">
+    <div class="wrap">
+      <div class="head"><div class="eyebrow" data-i18n="fac_eyebrow">تجربه کامل‌تر</div><h2 data-i18n="fac_title">امکانات و خدمات</h2><p data-i18n="fac_desc">بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.</p></div>
+      <div class="fac-grid">
+        <article class="fac dry"><img src="img/amenity-dry.webp" alt="سونای خشک" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_dry">سونای خشک</h3><p data-i18n="fac_dry_d">اتاق چوبی با نیمکت‌های پله‌ای</p></div></article>
+        <article class="fac steam"><img src="img/amenity-steam.webp" alt="سونای بخار" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_steam">سونای بخار</h3><p data-i18n="fac_steam_d">اتاق بخار کاشی‌کاری‌شده با نیمکت راحت</p></div></article>
+        <article class="fac jac"><img src="img/amenity-jacuzzi.webp" alt="جکوزی" loading="lazy" width="805" height="604"><div class="fac-body"><h3 data-i18n="fac_jacuzzi">جکوزی</h3><p data-i18n="fac_jacuzzi_d">جکوزی با کاشی موزاییک کنار سونا</p></div></article>
+        <article class="fac cold"><img src="img/amenity-cold.webp" alt="حوضچه آب سرد" loading="lazy" width="880" height="660"><div class="fac-body"><h3 data-i18n="fac_cold">حوضچه آب سرد</h3><p data-i18n="fac_cold_d">حوضچه آب سرد برای بعد از سونا</p></div></article>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shower"/></svg></div><h3 data-i18n="fac_shower">دوش و رختکن</h3></div>
+        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-parking"/></svg></div><h3 data-i18n="fac_parking">پارکینگ</h3></div>
+        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-spa"/></svg></div><h3 data-i18n="fac_massage">ماساژ</h3></div>
+        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shield"/></svg></div><h3 data-i18n="fac_hygiene">محیط بهداشتی و مجهز</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tickets" id="tickets">
+    <div class="wrap">
+      <div class="head"><div class="eyebrow" data-i18n="tickets_eyebrow">تعرفه و خرید</div><h2 data-i18n="tickets_title">قیمت و خرید بلیت</h2><p data-i18n="tickets_desc">بلیت را آنلاین بخرید یا برای رزرو سانس با مجموعه هماهنگ کنید.</p></div>
+      <div class="price-card"><div><div class="price-label" data-i18n="price_label">بلیت آزاد</div><div class="price" data-i18n="price_value">۲۵۰٬۰۰۰ تومان</div></div><div class="special" data-i18n="price_special">تخفیف ویژه برای بسیجیان و نیروهای مسلح</div></div>
+
+      <h3 class="sub-title" data-i18n="buy_title">خرید آنلاین بلیت</h3>
+      <div class="buy-grid">
+        <article class="buy qom"><div class="buy-top"><div class="bi"><svg class="ic"><use href="#i-ticket"/></svg></div><h3 data-i18n="qom_name">قم‌تیکت</h3></div><p data-i18n="qom_desc">بلیت سانس را از سامانه قم‌تیکت تهیه کنید.</p><a class="btn" href="https://www.qomticket.com/%D8%A7%D8%B3%D8%AA%D8%AE%D8%B1-%D8%B4%D9%87%D8%AF%D8%A7%DB%8C-%D8%A8%D8%B3%DB%8C%D8%AC-%D9%82%D9%85" target="_blank" rel="noopener"><span data-i18n="qom_btn">خرید از قم‌تیکت</span><svg class="ic"><use href="#i-ext"/></svg></a></article>
+        <article class="buy pool"><div class="buy-top"><div class="bi"><svg class="ic"><use href="#i-ticket"/></svg></div><h3 data-i18n="pool_name">پول‌تیکت</h3></div><p data-i18n="pool_desc">بلیت سانس را از سامانه پول‌تیکت تهیه کنید.</p><a class="btn" href="https://www.poolticket.org/pool/shohadayebasijqom" target="_blank" rel="noopener"><span data-i18n="pool_btn">خرید از پول‌تیکت</span><svg class="ic"><use href="#i-ext"/></svg></a></article>
+      </div>
+
+      <div class="book">
+        <h3 data-i18n="book_title">رزرو و هماهنگی سانس</h3>
+        <p data-i18n="book_desc">برای رزرو یا پرسش درباره سانس‌ها از یکی از راه‌های زیر استفاده کنید.</p>
+        <div class="opts">
+          <a class="opt call" href="tel:09330555036"><div class="oi"><svg class="ic"><use href="#i-phone"/></svg></div><div><b data-i18n="opt_call">تماس تلفنی</b><span data-i18n="phone_show">۰۹۳۳۰۵۵۵۰۳۶</span></div><svg class="ic go"><use href="#i-chev"/></svg></a>
+          <a class="opt eit" href="https://eitaa.com/Royan313" target="_blank" rel="noopener"><div class="oi"><svg class="ic"><use href="#i-chat"/></svg></div><div><b data-i18n="opt_eitaa">پیام در ایتا</b><span>@Royan313</span></div><svg class="ic go"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gallery" id="gallery">
+    <div class="wrap">
+      <div class="head"><div class="eyebrow" data-i18n="gallery_eyebrow">تصاویر واقعی مجموعه</div><h2 data-i18n="gallery_title">گالری تصاویر</h2><p data-i18n="gallery_desc">فضای استخر</p></div>
+      <div class="g-grid" id="gGrid">
+        <button type="button" class="g-item big" data-i="0" data-capk="g1"><img src="img/gallery-1-s.webp" srcset="img/gallery-1-s.webp 520w, img/gallery-1.webp 1280w" sizes="(max-width:820px) 50vw, 600px" alt="سالن استخر" loading="lazy"></button>
+        <button type="button" class="g-item" data-i="1" data-capk="g2"><img src="img/gallery-2-s.webp" alt="جکوزی و حوضچه" loading="lazy"></button>
+        <button type="button" class="g-item" data-i="2" data-capk="g3"><img src="img/gallery-3-s.webp" alt="سونای بخار" loading="lazy"></button>
+        <button type="button" class="g-item" data-i="3" data-capk="g4"><img src="img/gallery-4-s.webp" alt="سونای خشک" loading="lazy"></button>
+        <button type="button" class="g-item" data-i="4" data-capk="g5"><img src="img/gallery-5-s.webp" alt="ورودی مجموعه" loading="lazy"></button>
+        <button type="button" class="g-item last" data-i="5" data-capk="g6"><img src="img/gallery-6-s.webp" alt="تابلوی مجموعه" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <div class="head"><div class="eyebrow" data-i18n="contact_eyebrow">دسترسی سریع</div><h2 data-i18n="contact_title">مکان و ارتباط با مجموعه</h2><p data-i18n="contact_desc">مسیر رسیدن، تماس مستقیم و کانال مجموعه را همین‌جا در دسترس داشته باشید.</p></div>
+      <div class="c-grid">
+        <article class="c-card loc">
+          <svg class="map-art" viewBox="0 0 520 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"><path d="M-10 90 C120 60 220 140 330 110 S480 40 540 70"/><path d="M-10 250 C90 230 170 300 290 270 S440 200 540 240"/><path d="M110 -10 C130 80 90 160 140 240 S190 340 170 400"/><path d="M360 -10 C340 90 400 170 370 250 S330 340 360 400"/></g><g fill="none" stroke="rgba(52,211,227,.28)" stroke-width="10" stroke-linecap="round"><path d="M-10 170 C100 150 200 210 300 190 S450 140 540 160"/><path d="M250 -10 C240 90 270 200 255 400"/></g><g fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1.5"><path d="M0 40h520M0 140h520M0 210h520M0 320h520M60 0v380M200 0v380M310 0v380M450 0v380"/></g></svg>
+          <div class="c-top"><div class="ci"><svg class="ic"><use href="#i-pin"/></svg></div><h3 data-i18n="location_title">مکان و لوکیشن</h3></div>
+          <p class="addr" data-i18n="address">قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر</p>
+          <div class="c-actions">
+            <a class="btn btn-white" href="https://nshn.ir/96sbs-M4yxQJuj" target="_blank" rel="noopener"><svg class="ic"><use href="#i-pin"/></svg><span data-i18n="map_neshan">مسیریابی در نشان</span></a>
+            <a class="btn btn-ghost2" href="https://maps.app.goo.gl/iuFsWtYyST8FVrzS7" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg><span data-i18n="map_maps">مسیریابی در Google Maps</span></a>
+            <button class="btn btn-ghost2" type="button" data-copy="addr"><svg class="ic"><use href="#i-copy"/></svg><span data-i18n="copy_address">کپی آدرس</span></button>
+          </div>
+        </article>
+        <div class="c-stack">
+          <article class="c-card">
+            <div class="c-top"><div class="ci"><svg class="ic"><use href="#i-phone"/></svg></div><h3 data-i18n="call_title">تماس با استخر</h3></div>
+            <p data-i18n="call_desc">برای هماهنگی و رزرو سانس مستقیم تماس بگیرید.</p>
+            <div class="phone-num" data-i18n="phone_show">۰۹۳۳۰۵۵۵۰۳۶</div>
+            <div class="c-actions"><a class="btn btn-white" href="tel:09330555036"><svg class="ic"><use href="#i-phone"/></svg><span data-i18n="call_btn">تماس بگیرید</span></a><button class="btn btn-ghost2" type="button" data-copy="09330555036"><svg class="ic"><use href="#i-copy"/></svg><span data-i18n="copy_number">کپی شماره</span></button></div>
+          </article>
+          <article class="c-card">
+            <div class="c-top"><div class="ci eit"><svg class="ic"><use href="#i-send"/></svg></div><h3 data-i18n="channel_title">کانال مجموعه</h3></div>
+            <p data-i18n="channel_desc">اخبار و برنامه‌های مجموعه را در کانال ایتا دنبال کنید.</p>
+            <div class="handle">@Royan313</div>
+            <div class="c-actions"><a class="btn btn-white" href="https://eitaa.com/Royan313" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg><span data-i18n="channel_btn">ورود به کانال</span></a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container"><img class="footer-logo" src="typography.png" alt="لوگوی استخر شهدای بسیج" loading="lazy"><p class="footer-desc" data-i18n="footer_desc">استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p><div class="footer-dev"><span data-i18n="footer_dev_prefix">طراحی و توسعه توسط </span><a href="https://pcmohqm-coder.github.io/pcmohqm/" target="_blank" rel="noopener" data-i18n="footer_dev_link">خدمات فنی محمد</a></div><div class="copy" data-i18n="copyright">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div></div></footer>
+
+<footer>
+  <div class="wrap">
+    <img class="f-logo" src="img/logo.webp" alt="لوگوی استخر شهدای بسیج" loading="lazy" width="210" height="104">
+    <p class="f-desc" data-i18n="footer_desc">استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.</p>
+    <nav class="f-links" aria-label="پیوندهای پایین صفحه"><a href="#sessions" data-i18n="nav_sessions">سانس‌ها</a><a href="#facilities" data-i18n="nav_facilities">امکانات</a><a href="#tickets" data-i18n="nav_tickets">بلیت</a><a href="#gallery" data-i18n="nav_gallery">گالری</a><a href="#contact" data-i18n="nav_contact">مکان و تماس</a></nav>
+    <div class="f-dev"><span data-i18n="footer_dev_prefix">طراحی و توسعه توسط </span><a href="https://pcmohqm-coder.github.io/pcmohqm/" target="_blank" rel="noopener" data-i18n="footer_dev_link">خدمات فنی محمد</a></div>
+    <div class="copy" data-i18n="copyright">© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.</div>
+    <a class="admin-link" href="admin.html" rel="nofollow" data-i18n="admin_link">ورود مدیر</a>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="گالری تصاویر">
+  <button class="lb-close" type="button" id="lbClose" aria-label="بستن"><svg class="ic"><use href="#i-x"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" id="lbPrev" aria-label="قبلی"><svg class="ic"><use href="#i-chev"/></svg></button>
+  <button class="lb-btn lb-next" type="button" id="lbNext" aria-label="بعدی"><svg class="ic" style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button>
+  <div class="lb-in"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+</dialog>
+
 <script>
-const menu=document.getElementById('menu'),menuBtn=document.getElementById('menuBtn');
-menuBtn.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open?'true':'false')});document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!e.target.closest('.nav')&&menu.classList.contains('open')){menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}});
-const slides=document.getElementById('slides'),slideEls=[...document.querySelectorAll('.slide')],thumbs=document.getElementById('thumbs'),counter=document.getElementById('counter');let current=0,auto;
-slideEls.forEach((s,k)=>{const b=document.createElement('button');b.className='thumb'+(k===0?' active':'');b.type='button';b.setAttribute('aria-label',`نمایش تصویر ${k+1}`);b.innerHTML=`<img src="${s.querySelector('img').src}" alt="">`;b.addEventListener('click',()=>go(k));thumbs.appendChild(b)});const thumbEls=[...document.querySelectorAll('.thumb')];
-function go(n){current=(n+slideEls.length)%slideEls.length;slides.style.transform=`translateX(${current*100}%)`;thumbEls.forEach((b,k)=>b.classList.toggle('active',k===current));counter.textContent=`${current+1} / ${slideEls.length}`;}
-document.getElementById('prev').onclick=()=>go(current+1);document.getElementById('next').onclick=()=>go(current-1);function startAuto(){clearInterval(auto);auto=setInterval(()=>go(current+1),5500)}startAuto();document.getElementById('slider').addEventListener('mouseenter',()=>clearInterval(auto));document.getElementById('slider').addEventListener('mouseleave',startAuto);
-let sx=0;document.getElementById('slider').addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});document.getElementById('slider').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(current+(dx<0?1:-1));},{passive:true});
-const translations={
-fa:{brand:'استخر شهدای بسیج',nav_home:'صفحه اصلی',nav_sessions:'سانس‌ها',nav_facilities:'امکانات',nav_contact:'مکان و ارتباط',nav_gallery:'گالری تصاویر',nav_about:'درباره مجموعه',nav_tickets:'قیمت و رزرو',hero_kicker:'🏊 مجموعه ورزشی و تفریحی در قم',hero_title:'محلی برای سلامتی، نشاط و آرامش',hero_desc:'استخر شهدای بسیج قم، فضایی مجهز برای شنا، ورزش و آرامش با سانس‌های جداگانه آقایان و بانوان و خدمات متنوع مجموعه.',hero_cta:'خرید بلیت و رزرو سانس ←',hero_play:'مشاهده فضای استخر',sessions_eyebrow:'برنامه مجموعه',sessions_title:'سانس‌های مجموعه',sessions_desc:'زمان‌بندی استفاده از مجموعه برای آقایان و بانوان',men_title:'آقایان',men_days:'روزهای فرد',men_d1:'یکشنبه',men_d2:'سه‌شنبه',men_d3:'پنجشنبه',men_d4:'جمعه',men_time:'۱۵:۰۰ تا ۲۳:۰۰',time_label:'ساعت',women_title:'بانوان',women_days:'روزهای زوج',women_d1:'شنبه',women_d2:'دوشنبه',women_d3:'چهارشنبه',women_time:'۱۳:۰۰ تا ۱۹:۰۰',fac_eyebrow:'تجربه کامل‌تر',fac_title:'امکانات و خدمات',fac_desc:'همه‌چیز برای یک تجربه راحت، کامل و لذت‌بخش',fac_dry:'سونای خشک',fac_steam:'سونای بخار',fac_jacuzzi:'جکوزی',fac_cold:'حوضچه آب سرد',fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_hygiene:'محیط بهداشتی و مجهز',contact_eyebrow:'دسترسی سریع',contact_title:'مکان و ارتباط با مجموعه',contact_desc:'لوکیشن، تماس مستقیم و کانال مجموعه را همین‌جا در دسترس داشته باشید.',location_title:'مکان و لوکیشن',address:'قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر',map_neshan:'مشاهده در نشان ↗',map_maps:'مشاهده در نقشه Maps ↗',call_title:'تماس مستقیم',call_desc:'برای هماهنگی و رزرو سانس با مجموعه تماس بگیرید.',call_btn:'۰۹۳۳۰۵۵۵۰۳۶',channel_title:'کانال مجموعه',channel_desc:'برای اطلاع از اخبار و برنامه‌ها، کانال مجموعه را دنبال کنید.',channel_btn:'ورود به کانال',gallery_eyebrow:'تصاویر واقعی مجموعه',gallery_title:'گالری تصاویر',gallery_desc:'فضای استخر',gallery_caption:'فضای استخر',gallery_real:'تصاویر واقعی مجموعه',about_eyebrow:'درباره مجموعه',about_title:'درباره استخر شهدای بسیج',about_desc:'استخر شهدای بسیج قم، یک استخر در قم برای ورزش، نشاط و آرامش است؛ با سانس‌های مجزای آقایان و بانوان و امکانات و خدمات متنوع.',check_men:'سانس مجزای آقایان',check_women:'سانس مجزای بانوان',check_sauna:'سونای خشک و بخار',check_jacuzzi:'جکوزی',check_cold:'حوضچه آب سرد',check_shower:'دوش و رختکن',check_parking:'پارکینگ',check_hygiene:'محیط بهداشتی و مجهز',tickets_eyebrow:'تعرفه و رزرو',tickets_title:'قیمت بلیت و رزرو سانس',tickets_desc:'برای دریافت اطلاعات بلیت و هماهنگی با مجموعه، از راه‌های ارتباطی زیر استفاده کنید.',price_label:'بلیت آزاد',price_value:'۲۵۰٬۰۰۰ تومان',price_unit:'',price_note:'',price_special:'تخفیف ویژه برای بسیجیان و نیروهای مسلح',reserve_contact_title:'تماس با استخر',reserve_contact_desc:'برای هماهنگی و رزرو سانس، مستقیم با مجموعه تماس بگیرید.',reserve_contact_btn:'تماس مستقیم',reserve_eitaa_title:'ارتباط در ایتا',reserve_eitaa_desc:'ارتباط و هماهنگی از طریق ایتا با شناسه @Royan313.',reserve_eitaa_btn:'ورود به ایتا',reserve_payment_title:'خرید بلیت',reserve_payment_desc:'برای خرید بلیت آنلاین، یکی از سامانه‌های فروش بلیت را انتخاب کنید.',reserve_poolticket_btn:'خرید از پول‌تیکت ↗',reserve_qomticket_btn:'خرید از قم‌تیکت ↗',footer_desc:'استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.',footer_dev_prefix:'طراحی و توسعه توسط ',footer_dev_link:'خدمات فنی محمد',copyright:'© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.'},
-ar:{brand:'مسبح شهداء البسيج',nav_home:'الرئيسية',nav_sessions:'المواعيد',nav_facilities:'المرافق',nav_contact:'الموقع والتواصل',nav_gallery:'معرض الصور',nav_about:'عن المسبح',nav_tickets:'السعر والحجز',hero_kicker:'🏊 مجمع رياضي وترفيهي في قم',hero_title:'مكان للصحة والنشاط والراحة',hero_desc:'مساحة مجهزة للسباحة والرياضة والاسترخاء، مع أوقات منفصلة للرجال والنساء وخدمات متنوعة.',hero_cta:'شراء التذكرة وحجز الموعد ←',hero_play:'مشاهدة المسبح',sessions_eyebrow:'برنامج المجمع',sessions_title:'مواعيد السباحة',sessions_desc:'جدول استخدام المسبح للرجال والنساء',men_title:'الرجال',men_days:'الأيام الفردية',men_d1:'الأحد',men_d2:'الثلاثاء',men_d3:'الخميس',men_d4:'الجمعة',men_time:'۱۵:۰۰ إلى ۲۳:۰۰',women_title:'النساء',women_days:'الأيام الزوجية',women_d1:'السبت',women_d2:'الاثنين',women_d3:'الأربعاء',women_time:'۱۳:۰۰ إلى ۱۹:۰۰',fac_eyebrow:'تجربة متكاملة',fac_title:'المرافق والخدمات',fac_desc:'كل ما تحتاجه لتجربة مريحة ومتكاملة',fac_dry:'ساونا جافة',fac_steam:'ساونا بخار',fac_jacuzzi:'جاكوزي',fac_cold:'حوض ماء بارد',fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_hygiene:'بيئة صحية ومجهزة',contact_eyebrow:'وصول سريع',contact_title:'الموقع والتواصل مع المجمع',contact_desc:'الوصول إلى الموقع والاتصال المباشر وقناة المجمع من مكان واحد.',location_title:'الموقع والعنوان',address:'قم، شارع أراك، بعد جسر حجتيه، بجانب الصالة الرياضية الشهيد لطفي نياسر',map_neshan:'عرض في نشان ↗',map_maps:'عرض في خرائط Maps ↗',call_title:'اتصال مباشر',call_desc:'للتنسيق وحجز الموعد، اتصل بالمجمع مباشرة.',call_btn:'۰۹۳۳۰۵۵۵۰۳۶',channel_title:'قناة المجمع',channel_desc:'تابع قناة المجمع لمعرفة الأخبار والبرامج.',channel_btn:'الدخول إلى القناة',gallery_eyebrow:'صور حقيقية للمجمع',gallery_title:'معرض الصور',gallery_desc:'فضاء المسبح',gallery_caption:'فضاء المسبح',gallery_real:'صور حقيقية للمجمع',about_eyebrow:'عن المجمع',about_title:'عن مسبح شهداء البسيج',about_desc:'مسبح شهداء البسيج في قم هو مساحة للرياضة والنشاط والاسترخاء، مع أوقات منفصلة ومرافق وخدمات متنوعة.',check_men:'موعد مخصص للرجال',check_women:'موعد مخصص للنساء',check_sauna:'ساونا جافة وبخار',check_jacuzzi:'جاكوزي',check_cold:'حوض ماء بارد',check_shower:'دُش وغرف تبديل الملابس',check_parking:'موقف سيارات',check_hygiene:'بيئة صحية ومجهزة',tickets_eyebrow:'السعر والحجز',tickets_title:'سعر التذكرة وحجز الموعد',tickets_desc:'للاستفسار عن التذكرة والتنسيق مع المجمع، استخدم إحدى طرق التواصل التالية.',price_label:'التذكرة العادية',price_value:'۲۵۰٬۰۰۰ تومان',price_unit:'',price_note:'',price_special:'خصم خاص لأعضاء البسيج وأفراد القوات المسلحة',reserve_contact_title:'الاتصال بالمسبح',reserve_contact_desc:'للتنسيق وحجز الموعد، اتصل بالمجمع مباشرة.',reserve_contact_btn:'اتصال مباشر',reserve_eitaa_title:'التواصل عبر إيتا',reserve_eitaa_desc:'للتواصل والتنسيق عبر إيتا: @Royan313.',reserve_eitaa_btn:'الدخول إلى إيتا',reserve_payment_title:'شراء التذكرة',reserve_payment_desc:'لشراء التذكرة إلكترونياً، اختر إحدى منصات بيع التذاكر.',reserve_poolticket_btn:'الشراء من PoolTicket ↗',reserve_qomticket_btn:'الشراء من QomTicket ↗',footer_desc:'مسبح شهداء البسيج؛ تجربة مختلفة من الراحة والنشاط والرياضة.',footer_dev_prefix:'تصميم وتطوير بواسطة ',footer_dev_link:'خدمات فنی محمد',copyright:'© مسبح شهداء البسيج في قم — جميع الحقوق محفوظة.'}};
-function applyLanguage(lang){const t=translations[lang]||translations.fa;document.documentElement.lang=lang;document.documentElement.dir='rtl';document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k]});document.title=lang==='ar'?'مسبح شهداء البسيج قم | مواعيد الرجال والنساء | التذاكر':'استخر شهدای بسیج قم | استخر آقایان و بانوان قم | بلیت';const desc=document.querySelector('meta[name="description"]');if(desc)desc.content=lang==='ar'?'مسبح شهداء البسيج في قم؛ المواعيد والمرافق والخدمات وأسعار التذاكر والحجز وطرق التواصل.':'استخر در قم؛ استخر شهدای بسیج قم با سانس آقایان و بانوان، قیمت بلیت، امکانات، آدرس و امکان خرید بلیت آنلاین.';document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));try{localStorage.setItem('poolLang',lang)}catch(e){}try{history.replaceState(null,'',lang==='ar'?'?lang=ar':'?lang=fa')}catch(e){}}
-document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();applyLanguage(b.dataset.lang)}));let saved=new URLSearchParams(location.search).get('lang');if(saved!=='fa'&&saved!=='ar'){try{saved=localStorage.getItem('poolLang')||'fa'}catch(e){saved='fa'}}applyLanguage(saved);
+(function(){
+'use strict';
+/* ---------- settings ---------- */
+var TZ='Asia/Tehran';
+var HOURS={women:[13,18],men:[15,22]};          /* session hours: start, end */
+var WOMEN_DOW=[6,1,3];                           /* Saturday, Monday, Wednesday */
+var PHONE='09330555036';
+var ADDRESS={fa:'قم، خیابان اراک، بعد از پل حجتیه، جنب سالن ورزشی شهید لطفی نیاسر',ar:'قم، شارع أراك، بعد جسر حجتيه، بجانب الصالة الرياضية الشهيد لطفي نياسر'};
+
+/* ---------- text ---------- */
+var T={
+fa:{skip:'رفتن به محتوا',nav_sessions:'سانس‌ها',nav_facilities:'امکانات',nav_tickets:'بلیت',nav_gallery:'گالری',nav_contact:'مکان و تماس',header_cta:'خرید بلیت',
+hero_kicker:'مجموعه ورزشی و تفریحی در قم',hero_title:'سلامتی، نشاط و آرامش در یک مجموعه',hero_desc:'استخر شهدای بسیج قم؛ فضایی مجهز برای شنا و استراحت با سانس‌های جداگانه آقایان و بانوان، سونا، جکوزی و خدمات متنوع.',hero_cta:'خرید بلیت',hero_cta2:'مشاهده سانس‌ها',
+today:'امروز',st_open:'سانس در جریان است · تا ساعت {h}',st_soon:'شروع سانس امروز ساعت {h}',st_done:'سانس امروز به پایان رسید',st_closed:'امروز تعطیل است',
+sessions_eyebrow:'برنامه مجموعه',sessions_title:'سانس‌های آقایان و بانوان',sessions_desc:'هر روز مخصوص یک بخش است. وضعیت روزهای پیش‌رو را از همین‌جا ببینید.',
+women_title:'بانوان',men_title:'آقایان',women_days:'شنبه، دوشنبه و چهارشنبه',men_days:'یکشنبه، سه‌شنبه، پنجشنبه و جمعه',hours_label:'ساعت سانس',to:'تا',
+week_title:'وضعیت ۷ روز آینده',week_note:'روزهای تعطیل با برچسب قرمز مشخص شده‌اند.',closed:'تعطیل',today_tag:'امروز',
+fac_eyebrow:'تجربه کامل‌تر',fac_title:'امکانات و خدمات',fac_desc:'بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.',
+fac_dry:'سونای خشک',fac_dry_d:'اتاق چوبی با نیمکت‌های پله‌ای',fac_steam:'سونای بخار',fac_steam_d:'اتاق بخار کاشی‌کاری‌شده با نیمکت راحت',fac_jacuzzi:'جکوزی',fac_jacuzzi_d:'جکوزی با کاشی موزاییک کنار سونا',fac_cold:'حوضچه آب سرد',fac_cold_d:'حوضچه آب سرد برای بعد از سونا',
+fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_hygiene:'محیط بهداشتی و مجهز',
+tickets_eyebrow:'تعرفه و خرید',tickets_title:'قیمت و خرید بلیت',tickets_desc:'بلیت را آنلاین بخرید یا برای رزرو سانس با مجموعه هماهنگ کنید.',
+price_label:'بلیت آزاد',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'تخفیف ویژه برای بسیجیان و نیروهای مسلح',
+buy_title:'خرید آنلاین بلیت',qom_name:'قم‌تیکت',qom_desc:'بلیت سانس را از سامانه قم‌تیکت تهیه کنید.',qom_btn:'خرید از قم‌تیکت',pool_name:'پول‌تیکت',pool_desc:'بلیت سانس را از سامانه پول‌تیکت تهیه کنید.',pool_btn:'خرید از پول‌تیکت',
+book_title:'رزرو و هماهنگی سانس',book_desc:'برای رزرو یا پرسش درباره سانس‌ها از یکی از راه‌های زیر استفاده کنید.',opt_call:'تماس تلفنی',opt_eitaa:'پیام در ایتا',phone_show:'۰۹۳۳۰۵۵۵۰۳۶',
+gallery_eyebrow:'تصاویر واقعی مجموعه',gallery_title:'گالری تصاویر',gallery_desc:'فضای استخر',g1:'سالن استخر',g2:'جکوزی و حوضچه',g3:'سونای بخار',g4:'سونای خشک',g5:'ورودی مجموعه',g6:'تابلوی مجموعه',
+contact_eyebrow:'دسترسی سریع',contact_title:'مکان و ارتباط با مجموعه',contact_desc:'مسیر رسیدن، تماس مستقیم و کانال مجموعه را همین‌جا در دسترس داشته باشید.',
+location_title:'مکان و لوکیشن',address:ADDRESS.fa,map_neshan:'مسیریابی در نشان',map_maps:'مسیریابی در Google Maps',copy_address:'کپی آدرس',copied:'کپی شد',
+call_title:'تماس با استخر',call_desc:'برای هماهنگی و رزرو سانس مستقیم تماس بگیرید.',call_btn:'تماس بگیرید',copy_number:'کپی شماره',
+channel_title:'کانال مجموعه',channel_desc:'اخبار و برنامه‌های مجموعه را در کانال ایتا دنبال کنید.',channel_btn:'ورود به کانال',
+footer_desc:'استخر شهدای بسیج؛ تجربه‌ای متفاوت از آرامش، نشاط و ورزش.',footer_dev_prefix:'طراحی و توسعه توسط ',footer_dev_link:'خدمات فنی محمد',copyright:'© استخر شهدای بسیج قم — تمامی حقوق محفوظ است.',admin_link:'ورود مدیر',
+menu:'منو',close:'بستن',prev:'قبلی',next:'بعدی',langs:'انتخاب زبان',
+title:'استخر شهدای بسیج قم | استخر آقایان و بانوان قم | بلیت',desc:'استخر در قم؛ استخر شهدای بسیج قم با سانس آقایان و بانوان، قیمت بلیت، امکانات، آدرس و امکان خرید بلیت آنلاین.'},
+ar:{skip:'انتقل إلى المحتوى',nav_sessions:'المواعيد',nav_facilities:'المرافق',nav_tickets:'التذاكر',nav_gallery:'المعرض',nav_contact:'الموقع والتواصل',header_cta:'شراء تذكرة',
+hero_kicker:'مجمع رياضي وترفيهي في قم',hero_title:'الصحة والنشاط والراحة في مكان واحد',hero_desc:'مسبح شهداء البسيج في قم؛ مساحة مجهزة للسباحة والاسترخاء مع أوقات منفصلة للرجال والنساء، وساونا وجاكوزي وخدمات متنوعة.',hero_cta:'شراء تذكرة',hero_cta2:'عرض المواعيد',
+today:'اليوم',st_open:'الموعد جارٍ الآن · حتى الساعة {h}',st_soon:'يبدأ موعد اليوم الساعة {h}',st_done:'انتهى موعد اليوم',st_closed:'اليوم مغلق',
+sessions_eyebrow:'برنامج المجمع',sessions_title:'مواعيد الرجال والنساء',sessions_desc:'كل يوم مخصص لقسم واحد. تعرّف على حالة الأيام القادمة من هنا.',
+women_title:'النساء',men_title:'الرجال',women_days:'السبت والاثنين والأربعاء',men_days:'الأحد والثلاثاء والخميس والجمعة',hours_label:'وقت الموعد',to:'إلى',
+week_title:'حالة الأيام السبعة القادمة',week_note:'الأيام المغلقة تظهر بعلامة حمراء.',closed:'مغلق',today_tag:'اليوم',
+fac_eyebrow:'تجربة متكاملة',fac_title:'المرافق والخدمات',fac_desc:'بعد السباحة، تابع استرخاءك في الساونا والجاكوزي.',
+fac_dry:'ساونا جافة',fac_dry_d:'غرفة خشبية بمقاعد متدرجة',fac_steam:'ساونا بخار',fac_steam_d:'غرفة بخار مبلطة بمقاعد مريحة',fac_jacuzzi:'جاكوزي',fac_jacuzzi_d:'جاكوزي بالفسيفساء بجانب الساونا',fac_cold:'حوض ماء بارد',fac_cold_d:'حوض ماء بارد لما بعد الساونا',
+fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_hygiene:'بيئة صحية ومجهزة',
+tickets_eyebrow:'الأسعار والشراء',tickets_title:'سعر التذكرة وشراؤها',tickets_desc:'اشترِ التذكرة إلكترونياً أو نسّق مع المجمع لحجز الموعد.',
+price_label:'التذكرة العادية',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'خصم خاص لأعضاء البسيج وأفراد القوات المسلحة',
+buy_title:'شراء التذكرة إلكترونياً',qom_name:'QomTicket',qom_desc:'احصل على تذكرة الموعد من منصة QomTicket.',qom_btn:'الشراء من QomTicket',pool_name:'PoolTicket',pool_desc:'احصل على تذكرة الموعد من منصة PoolTicket.',pool_btn:'الشراء من PoolTicket',
+book_title:'الحجز والتنسيق',book_desc:'للحجز أو الاستفسار عن المواعيد استخدم إحدى الطرق التالية.',opt_call:'اتصال هاتفي',opt_eitaa:'رسالة في إيتا',phone_show:'٠٩٣٣٠٥٥٥٠٣٦',
+gallery_eyebrow:'صور حقيقية للمجمع',gallery_title:'معرض الصور',gallery_desc:'فضاء المسبح',g1:'صالة المسبح',g2:'الجاكوزي والحوض',g3:'ساونا بخار',g4:'ساونا جافة',g5:'مدخل المجمع',g6:'لافتة المجمع',
+contact_eyebrow:'وصول سريع',contact_title:'الموقع والتواصل مع المجمع',contact_desc:'الطريق إلينا والاتصال المباشر وقناة المجمع في مكان واحد.',
+location_title:'الموقع والعنوان',address:ADDRESS.ar,map_neshan:'المسار على نشان',map_maps:'المسار على Google Maps',copy_address:'نسخ العنوان',copied:'تم النسخ',
+call_title:'الاتصال بالمسبح',call_desc:'للتنسيق وحجز الموعد اتصل بنا مباشرة.',call_btn:'اتصل الآن',copy_number:'نسخ الرقم',
+channel_title:'قناة المجمع',channel_desc:'تابع أخبار المجمع وبرامجه على قناة إيتا.',channel_btn:'الدخول إلى القناة',
+footer_desc:'مسبح شهداء البسيج؛ تجربة مختلفة من الراحة والنشاط والرياضة.',footer_dev_prefix:'تصميم وتطوير بواسطة ',footer_dev_link:'خدمات فنی محمد',copyright:'© مسبح شهداء البسيج في قم — جميع الحقوق محفوظة.',admin_link:'دخول المدير',
+menu:'القائمة',close:'إغلاق',prev:'السابق',next:'التالي',langs:'اختيار اللغة',
+title:'مسبح شهداء البسيج قم | مواعيد الرجال والنساء | التذاكر',desc:'مسبح شهداء البسيج في قم؛ المواعيد والمرافق والخدمات وأسعار التذاكر والحجز وطرق التواصل.'}
+};
+var DAYS={fa:['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'],ar:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت']};
+var MONTHS_FA=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+var DIG={fa:'۰۱۲۳۴۵۶۷۸۹',ar:'٠١٢٣٤٥٦٧٨٩'};
+
+/* ---------- state ---------- */
+var lang='fa';
+var sched={closedWeekdays:[],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
+
+/* ---------- helpers ---------- */
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function t(k){return (T[lang]&&T[lang][k]!==undefined)?T[lang][k]:T.fa[k]}
+function pad2(n){return (n<10?'0':'')+n}
+function dig(s){return String(s).replace(/[0-9]/g,function(c){return DIG[lang][+c]})}
+function div(a,b){return Math.trunc(a/b)}
+function g2j(gy,gm,gd){var gdm=[0,31,59,90,120,151,181,212,243,273,304,334];var jy=gy>1600?979:0;gy-=gy>1600?1600:621;var gy2=gm>2?gy+1:gy;var days=365*gy+div(gy2+3,4)-div(gy2+99,100)+div(gy2+399,400)-80+gd+gdm[gm-1];jy+=33*div(days,12053);days%=12053;jy+=4*div(days,1461);days%=1461;if(days>365){jy+=div(days-1,365);days=(days-1)%365}var jm=days<186?1+div(days,31):7+div(days-186,30);var jd=1+(days<186?days%31:(days-186)%30);return [jy,jm,jd]}
+function tehranNow(){
+  var y,m,d,h,mi;
+  try{
+    var p=new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());
+    var g=function(n){return +p.filter(function(x){return x.type===n})[0].value};
+    y=g('year');m=g('month');d=g('day');h=g('hour')%24;mi=g('minute');
+  }catch(e){var n=new Date();y=n.getFullYear();m=n.getMonth()+1;d=n.getDate();h=n.getHours();mi=n.getMinutes()}
+  return {y:y,m:m,d:d,h:h,min:mi,dow:new Date(Date.UTC(y,m-1,d)).getUTCDay()};
+}
+function addDays(b,n){var u=new Date(Date.UTC(b.y,b.m-1,b.d+n));return {y:u.getUTCFullYear(),m:u.getUTCMonth()+1,d:u.getUTCDate(),dow:u.getUTCDay()}}
+function iso(x){return x.y+'-'+pad2(x.m)+'-'+pad2(x.d)}
+function genderOf(dow){return WOMEN_DOW.indexOf(dow)>-1?'women':'men'}
+function isClosed(x){return sched.closedWeekdays.indexOf(x.dow)>-1||sched.closedDates.indexOf(iso(x))>-1}
+function hrs(h){return dig(pad2(h)+':00')}
+function range(g){return hrs(HOURS[g][0])+' '+t('to')+' '+hrs(HOURS[g][1])}
+function dateLabel(x){
+  if(lang==='ar'){
+    try{return new Intl.DateTimeFormat('ar-u-ca-gregory-nu-arab',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(x.y,x.m-1,x.d)))}catch(e){}
+    return dig(x.d)+'/'+dig(x.m);
+  }
+  var j=g2j(x.y,x.m,x.d);return dig(j[2])+' '+MONTHS_FA[j[1]-1];
+}
+function icon(id){return '<svg class="ic"><use href="#'+id+'"/></svg>'}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* ---------- render ---------- */
+function renderToday(){
+  var n=tehranNow(),g=genderOf(n.dow),closed=isClosed(n),a=HOURS[g][0],b=HOURS[g][1],mins=n.h*60+n.min,cls,txt;
+  if(closed){cls='closed';txt=t('st_closed')}
+  else if(mins<a*60){cls='soon';txt=t('st_soon').replace('{h}',hrs(a))}
+  else if(mins<b*60){cls='open';txt=t('st_open').replace('{h}',hrs(b))}
+  else{cls='done';txt=t('st_done')}
+  $('#todayCard').innerHTML=
+    '<div class="today-date"><small>'+t('today')+'</small><strong>'+DAYS[lang][n.dow]+' · '+dateLabel(n)+'</strong></div>'+
+    '<div class="today-g"><span class="chip '+g+'">'+icon(g==='women'?'i-women':'i-men')+t(g+'_title')+'</span>'+(closed?'':'<span class="today-hours">'+range(g)+'</span>')+'</div>'+
+    '<div class="pill '+cls+'">'+txt+'</div>';
+}
+function renderStrip(){
+  var n=tehranNow(),out='';
+  for(var i=0;i<7;i++){
+    var x=addDays(n,i),g=genderOf(x.dow),c=isClosed(x);
+    out+='<article class="day '+g+(c?' closed':'')+(i===0?' today-d':'')+'">'+
+      (i===0?'<span class="tag">'+t('today_tag')+'</span>':'')+
+      '<div class="nm"><div class="dn">'+DAYS[lang][x.dow]+'</div><div class="dd">'+dateLabel(x)+'</div></div>'+
+      '<span class="chip">'+t(g+'_title')+'</span>'+
+      '<div class="dt">'+(c?t('closed'):range(g))+'</div></article>';
+  }
+  $('#strip').innerHTML=out;
+}
+function renderNotice(){
+  var el=$('#notice'),a=sched.announcement||{},txt=lang==='ar'?(a.ar||a.fa):(a.fa||a.ar);
+  if(a.enabled&&txt){el.textContent=txt;el.hidden=false}else{el.hidden=true;el.textContent=''}
+}
+function renderAll(){renderToday();renderStrip();renderNotice();$('#hrsWomen').textContent=range('women');$('#hrsMen').textContent=range('men')}
+
+/* ---------- language ---------- */
+function applyLanguage(l){
+  lang=T[l]?l:'fa';
+  document.documentElement.lang=lang;document.documentElement.dir='rtl';
+  $$('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(T[lang][k]!==undefined)el.textContent=T[lang][k]});
+  $$('[data-capk]').forEach(function(el){el.setAttribute('data-cap',t(el.getAttribute('data-capk')))});
+  document.title=t('title');var d=$('meta[name="description"]');if(d)d.content=t('desc');
+  $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===lang)});
+  $('#menuBtn').setAttribute('aria-label',t('menu'));$('.lang').setAttribute('aria-label',t('langs'));
+  $('#lbClose').setAttribute('aria-label',t('close'));$('#lbPrev').setAttribute('aria-label',t('prev'));$('#lbNext').setAttribute('aria-label',t('next'));
+  renderAll();
+  try{localStorage.setItem('poolLang',lang)}catch(e){}
+  try{history.replaceState(null,'',lang==='ar'?'?lang=ar':location.pathname)}catch(e){}
+}
+$$('.lang button').forEach(function(b){b.addEventListener('click',function(){applyLanguage(b.getAttribute('data-lang'))})});
+
+/* ---------- menu ---------- */
+var nav=$('#nav'),menuBtn=$('#menuBtn');
+function closeMenu(){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',function(e){e.stopPropagation();var o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o?'true':'false')});
+$$('#nav a').forEach(function(a){a.addEventListener('click',closeMenu)});
+document.addEventListener('click',function(e){if(!e.target.closest('.bar'))closeMenu()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+
+/* ---------- copy buttons ---------- */
+$$('[data-copy]').forEach(function(btn){btn.addEventListener('click',function(){
+  var v=btn.getAttribute('data-copy');if(v==='addr')v=ADDRESS[lang];
+  var label=btn.querySelector('span'),old=label.textContent;
+  function done(){label.textContent=t('copied');setTimeout(function(){label.textContent=old},1600)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(done,function(){fallback()})}else fallback();
+  function fallback(){var ta=document.createElement('textarea');ta.value=v;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
+})});
+
+/* ---------- gallery lightbox ---------- */
+var FULL=['img/gallery-1.webp','img/gallery-2.webp','img/gallery-3.webp','img/gallery-4.webp','img/gallery-5.webp','img/gallery-6.webp'];
+var lb=$('#lb'),lbImg=$('#lbImg'),lbCap=$('#lbCap'),cur=0;
+function showLb(i){cur=(i+FULL.length)%FULL.length;lbImg.src=FULL[cur];var k='g'+(cur+1);lbImg.alt=t(k);lbCap.textContent=t(k)}
+$$('.g-item').forEach(function(b){b.addEventListener('click',function(){
+  var i=+b.getAttribute('data-i');
+  if(typeof lb.showModal!=='function'){window.open(FULL[i],'_blank');return}
+  showLb(i);lb.showModal();
+})});
+$('#lbClose').addEventListener('click',function(){lb.close()});
+$('#lbPrev').addEventListener('click',function(){showLb(cur-1)});
+$('#lbNext').addEventListener('click',function(){showLb(cur+1)});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-in'))lb.close()});
+lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')showLb(cur-1);if(e.key==='ArrowLeft')showLb(cur+1)});
+
+/* ---------- hero video: skip for reduced motion, hide if it fails ---------- */
+var vid=$('#heroVideo');
+if(vid){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){vid.remove()}
+  else{var src=vid.querySelector('source');if(src)src.addEventListener('error',function(){vid.remove()});vid.addEventListener('error',function(){vid.remove()})}
+}
+
+/* ---------- schedule from schedule.json (written by the admin page) ---------- */
+function normalize(j){
+  var s={closedWeekdays:[],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
+  if(!j||typeof j!=='object')return s;
+  if(Array.isArray(j.closedWeekdays))s.closedWeekdays=j.closedWeekdays.filter(function(x){return Number.isInteger(x)&&x>=0&&x<=6});
+  if(Array.isArray(j.closedDates))s.closedDates=j.closedDates.filter(function(x){return /^\d{4}-\d{2}-\d{2}$/.test(x)});
+  var a=j.announcement;if(a&&typeof a==='object')s.announcement={enabled:!!a.enabled,fa:String(a.fa||'').slice(0,300),ar:String(a.ar||'').slice(0,300)};
+  return s;
+}
+function loadSchedule(){
+  fetch('schedule.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'})
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(j){if(j){sched=normalize(j);renderAll()}})
+    .catch(function(){});
+}
+
+/* ---------- start ---------- */
+var start=new URLSearchParams(location.search).get('lang');
+if(start!=='fa'&&start!=='ar'){try{start=localStorage.getItem('poolLang')||'fa'}catch(e){start='fa'}}
+applyLanguage(start);
+loadSchedule();
+setInterval(function(){renderToday();renderStrip()},60000);
+setInterval(loadSchedule,300000);
+})();
 </script>
-</body></html>
+</body>
+</html>
