@@ -1,7 +1,13 @@
 {
   "version": 1,
-  "updated": "",
-  "closedWeekdays": [],
+  "updated": "2026-10-16T08:56:10.065Z",
+  "closedWeekdays": [
+    6
+  ],
   "closedDates": [],
-  "announcement": { "enabled": false, "fa": "", "ar": "" }
+  "announcement": {
+    "enabled": false,
+    "fa": "",
+    "ar": ""
+  }
 }
