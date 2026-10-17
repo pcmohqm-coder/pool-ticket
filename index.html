@@ -69,7 +69,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}img{max-w
 /* hero */
 .hero{position:relative;isolation:isolate;color:#fff;display:grid;align-items:center;min-height:min(84vh,700px);overflow:hidden;background:var(--ink)}
 .hero-media{position:absolute;inset:0;z-index:-2}
-.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+#heroVideo{opacity:0;transition:opacity 1s}#heroVideo.on{opacity:1}.vbtn{position:absolute;top:88px;inset-inline-start:16px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(6,24,44,.55);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}.vbtn svg{width:18px;height:18px;fill:currentColor;stroke:none}.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,18,36,.62) 0%,rgba(4,18,36,.72) 50%,rgba(4,18,36,.96) 100%)}
 .hero-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 0 150px}
 .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px}
@@ -132,17 +132,17 @@ section.block{padding:84px 0}
 
 /* facilities */
 .facilities{background:var(--foam)}
-.fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.fac{position:relative;aspect-ratio:4/4.4;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
+.fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fac{position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow);isolation:isolate}
 .fac img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .fac:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,24,44,0) 38%,rgba(6,24,44,.92))}
 .fac:hover img{transform:scale(1.06)}
 .fac-body{position:absolute;inset:auto 0 0;padding:20px;color:#fff}
-.fac-body h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.4}
+.fac-body h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.4}
 .fac-body p{font-size:13px;color:#cfe2ef;margin-top:2px}
 .fac.dry:after,.fac.steam:after,.fac.jac:after,.fac.cold:after,.fac.pool:after,.fac.massage:after{content:"";position:absolute;top:16px;inset-inline-start:16px;width:34px;height:4px;border-radius:9px;background:var(--aqua)}
 .fac.dry:after{background:var(--wood)}
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
 .tile{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:#fff;border:1px solid var(--line)}
 .tile .ti{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--men-soft);color:var(--blue);font-size:23px;flex:none}
 .tile h3{font-size:15px;font-weight:800;color:var(--ink);line-height:1.6}
@@ -190,7 +190,7 @@ section.block{padding:84px 0}
 .c-card.loc{min-height:min(100%,560px);justify-content:space-between;background:linear-gradient(150deg,rgba(52,211,227,.2),rgba(255,255,255,.04))}
 .loc-bg{position:absolute;inset:0;z-index:0}.loc-bg img{width:100%;height:100%;object-fit:cover}.loc-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,24,44,.9) 0,rgba(6,24,44,.62) 30%,rgba(6,24,44,.12) 58%,rgba(6,24,44,.92) 100%)}
 .c-card.loc>*:not(.loc-bg){position:relative;z-index:1}
-.fac.pool img{object-position:22% center}.c-card .addr{text-shadow:0 1px 8px rgba(0,0,0,.6);font-size:17px;font-weight:700;line-height:1.9;color:#fff;max-width:420px}
+.fac img.sl{opacity:0;transition:opacity .9s ease}.fac img.sl.on{opacity:1}.dots{position:absolute;top:14px;inset-inline-end:14px;display:flex;gap:5px}.dots i{width:6px;height:6px;border-radius:9px;background:rgba(255,255,255,.55);transition:width .3s,background .3s}.dots i.on{width:16px;background:#fff}.c-card .addr{text-shadow:0 1px 8px rgba(0,0,0,.6);font-size:17px;font-weight:700;line-height:1.9;color:#fff;max-width:420px}
 .c-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 .phone-num{font-size:30px;font-weight:900;letter-spacing:.5px;direction:ltr;text-align:start;font-variant-numeric:tabular-nums}
 .c-card .ci.eit{background:none;overflow:hidden}.c-card .ci.eit img{width:100%;height:100%;display:block;border-radius:18px}
@@ -291,8 +291,9 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   <section class="hero" id="home">
     <div class="hero-media">
       <img src="img/hero.webp" alt="" fetchpriority="high">
-      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero.webp" aria-hidden="true"><source src="pool-tour.mp4" type="video/mp4"></video>
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/hero.webp" aria-hidden="true" disablepictureinpicture><source src="pool-tour.mp4" type="video/mp4"><source src="pool-tour.webm" type="video/webm"></video>
     </div>
+    <button class="vbtn" id="vbtn" type="button" aria-label="توقف ویدیو"><svg viewBox="0 0 24 24" id="vbtnIc"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
     <div class="wrap hero-in">
       <div class="kicker"><i></i><span data-i18n="hero_kicker">مجموعه ورزشی و تفریحی در قم</span></div>
       <img class="hero-logo" src="img/logo.webp" alt="استخر شهدای بسیج" width="430" height="214">
@@ -324,16 +325,16 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
     <div class="wrap">
       <div class="head"><div class="eyebrow" data-i18n="fac_eyebrow">تجربه کامل‌تر</div><h2 data-i18n="fac_title">امکانات و خدمات</h2><p data-i18n="fac_desc">بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.</p></div>
       <div class="fac-grid">
-        <article class="fac pool"><img src="img/amenity-pool.webp" alt="استخر" loading="lazy" width="900" height="563"><div class="fac-body"><h3 data-i18n="fac_pool">استخر</h3><p data-i18n="fac_pool_d">سالن شنا با سانس‌های جداگانه آقایان و بانوان</p></div></article>
-        <article class="fac dry"><img src="img/amenity-dry.webp" alt="سونای خشک" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_dry">سونای خشک</h3><p data-i18n="fac_dry_d">اتاق چوبی با نیمکت‌های پله‌ای</p></div></article>
-        <article class="fac steam"><img src="img/amenity-steam.webp" alt="سونای بخار" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_steam">سونای بخار</h3><p data-i18n="fac_steam_d">اتاق بخار کاشی‌کاری‌شده با نیمکت راحت</p></div></article>
-        <article class="fac jac"><img src="img/amenity-jacuzzi.webp" alt="جکوزی" loading="lazy" width="805" height="604"><div class="fac-body"><h3 data-i18n="fac_jacuzzi">جکوزی</h3><p data-i18n="fac_jacuzzi_d">جکوزی با کاشی موزاییک کنار سونا</p></div></article>
-        <article class="fac cold"><img src="img/amenity-cold.webp" alt="حوضچه آب سرد" loading="lazy" width="880" height="660"><div class="fac-body"><h3 data-i18n="fac_cold">حوضچه آب سرد</h3><p data-i18n="fac_cold_d">حوضچه آب سرد برای بعد از سونا</p></div></article>
-        <article class="fac massage"><img src="img/amenity-massage.webp" alt="ماساژ" loading="lazy" width="900" height="920"><div class="fac-body"><h3 data-i18n="fac_massage">ماساژ</h3><p data-i18n="fac_massage_d">ماساژ توسط ماساژور مجرب در اتاق اختصاصی</p></div></article>
+        <article class="fac pool"><img class="sl on" src="img/pool-1.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/pool-2.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/pool-3.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/pool-4.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_pool">استخر</h3><p data-i18n="fac_pool_d">سالن شنا با سانس‌های جداگانه آقایان و بانوان</p></div></article>
+        <article class="fac dry"><img class="sl on" src="img/amenity-dry.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_dry">سونای خشک</h3><p data-i18n="fac_dry_d">اتاق چوبی با نیمکت‌های پله‌ای</p></div></article>
+        <article class="fac steam"><img class="sl on" src="img/amenity-steam.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_steam">سونای بخار</h3><p data-i18n="fac_steam_d">اتاق بخار کاشی‌کاری‌شده با نیمکت راحت</p></div></article>
+        <article class="fac jac"><img class="sl on" src="img/amenity-jacuzzi.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_jacuzzi">جکوزی</h3><p data-i18n="fac_jacuzzi_d">جکوزی با کاشی موزاییک کنار سونا</p></div></article>
+        <article class="fac cold"><img class="sl on" src="img/cold-1.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/cold-2.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_cold">حوضچه آب سرد</h3><p data-i18n="fac_cold_d">حوضچه آب سرد برای بعد از سونا</p></div></article>
+        <article class="fac massage"><img class="sl on" src="img/massage.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_massage">ماساژ</h3><p data-i18n="fac_massage_d">ماساژ توسط ماساژور مجرب در اتاق اختصاصی</p></div></article>
+        <article class="fac buffet"><img class="sl on" src="img/buffet-1.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/buffet-2.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_buffet">بوفه</h3><p data-i18n="fac_buffet_d">نوشیدنی، تنقلات و لوازم شنا</p></div></article>
+        <article class="fac locker"><img class="sl on" src="img/locker-1.webp" alt="" loading="lazy" width="900" height="675"><img class="sl" src="img/locker-2.webp" alt="" loading="lazy" width="900" height="675"><div class="fac-body"><h3 data-i18n="fac_shower">دوش و رختکن</h3><p data-i18n="fac_shower_d">کمدهای شخصی و دوش‌های مجهز</p></div></article>
       </div>
       <div class="tiles">
-        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shower"/></svg></div><h3 data-i18n="fac_shower">دوش و رختکن</h3></div>
-        <div class="tile"><div class="ti"><svg class="ic"><use href="#i-cup"/></svg></div><h3 data-i18n="fac_buffet">بوفه</h3></div>
         <div class="tile"><div class="ti"><svg class="ic"><use href="#i-parking"/></svg></div><h3 data-i18n="fac_parking">پارکینگ</h3></div>
         <div class="tile"><div class="ti"><svg class="ic"><use href="#i-shield"/></svg></div><h3 data-i18n="fac_hygiene">محیط بهداشتی و مجهز</h3></div>
       </div>
@@ -427,7 +428,7 @@ women_title:'بانوان',men_title:'آقایان',women_days:'شنبه، دو�
 week_title:'وضعیت ۷ روز آینده',week_note:'روزهای تعطیل با برچسب قرمز مشخص شده‌اند.',closed:'تعطیل',today_tag:'امروز',
 fac_eyebrow:'تجربه کامل‌تر',fac_title:'امکانات و خدمات',fac_desc:'بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.',
 fac_dry:'سونای خشک',fac_dry_d:'اتاق چوبی با نیمکت‌های پله‌ای',fac_steam:'سونای بخار',fac_steam_d:'اتاق بخار کاشی‌کاری‌شده با نیمکت راحت',fac_jacuzzi:'جکوزی',fac_jacuzzi_d:'جکوزی با کاشی موزاییک کنار سونا',fac_cold:'حوضچه آب سرد',fac_cold_d:'حوضچه آب سرد برای بعد از سونا',
-fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_pool:'استخر',fac_pool_d:'سالن شنا با سانس‌های جداگانه آقایان و بانوان',fac_massage_d:'ماساژ توسط ماساژور مجرب در اتاق اختصاصی',fac_buffet:'بوفه',fac_hygiene:'محیط بهداشتی و مجهز',
+fac_shower:'دوش و رختکن',fac_parking:'پارکینگ',fac_massage:'ماساژ',fac_pool:'استخر',fac_pool_d:'سالن شنا با سانس‌های جداگانه آقایان و بانوان',fac_massage_d:'ماساژ توسط ماساژور مجرب در اتاق اختصاصی',fac_buffet:'بوفه',fac_buffet_d:'نوشیدنی، تنقلات و لوازم شنا',fac_shower_d:'کمدهای شخصی و دوش‌های مجهز',fac_hygiene:'محیط بهداشتی و مجهز',
 tickets_eyebrow:'تعرفه و خرید',tickets_title:'قیمت و خرید بلیت',tickets_desc:'بلیت را آنلاین بخرید یا برای رزرو سانس با مجموعه هماهنگ کنید.',
 price_label:'بلیت آزاد',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'تخفیف ویژه برای بسیجیان و نیروهای مسلح',
 buy_title:'خرید آنلاین بلیت',qom_name:'قم‌تیکت',qom_desc:'بلیت سانس را از سامانه قم‌تیکت تهیه کنید.',qom_btn:'خرید از قم‌تیکت',pool_name:'پول‌تیکت',pool_desc:'بلیت سانس را از سامانه پول‌تیکت تهیه کنید.',pool_btn:'خرید از پول‌تیکت',
@@ -448,7 +449,7 @@ women_title:'النساء',men_title:'الرجال',women_days:'السبت وا�
 week_title:'حالة الأيام السبعة القادمة',week_note:'الأيام المغلقة تظهر بعلامة حمراء.',closed:'مغلق',today_tag:'اليوم',
 fac_eyebrow:'تجربة متكاملة',fac_title:'المرافق والخدمات',fac_desc:'بعد السباحة، تابع استرخاءك في الساونا والجاكوزي.',
 fac_dry:'ساونا جافة',fac_dry_d:'غرفة خشبية بمقاعد متدرجة',fac_steam:'ساونا بخار',fac_steam_d:'غرفة بخار مبلطة بمقاعد مريحة',fac_jacuzzi:'جاكوزي',fac_jacuzzi_d:'جاكوزي بالفسيفساء بجانب الساونا',fac_cold:'حوض ماء بارد',fac_cold_d:'حوض ماء بارد لما بعد الساونا',
-fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_pool:'المسبح',fac_pool_d:'صالة سباحة بمواعيد منفصلة للرجال والنساء',fac_massage_d:'تدليك على يد مدلّك متمرّس في غرفة خاصة',fac_buffet:'البوفيه',fac_hygiene:'بيئة صحية ومجهزة',
+fac_shower:'دُش وغرف تبديل الملابس',fac_parking:'موقف سيارات',fac_massage:'تدليك',fac_pool:'المسبح',fac_pool_d:'صالة سباحة بمواعيد منفصلة للرجال والنساء',fac_massage_d:'تدليك على يد مدلّك متمرّس في غرفة خاصة',fac_buffet:'البوفيه',fac_buffet_d:'مشروبات ووجبات خفيفة ومستلزمات السباحة',fac_shower_d:'خزائن شخصية ودشّات مجهزة',fac_hygiene:'بيئة صحية ومجهزة',
 tickets_eyebrow:'الأسعار والشراء',tickets_title:'سعر التذكرة وشراؤها',tickets_desc:'اشترِ التذكرة إلكترونياً أو نسّق مع المجمع لحجز الموعد.',
 price_label:'التذكرة العادية',price_value:'۲۵۰٬۰۰۰ تومان',price_special:'خصم خاص لأعضاء البسيج وأفراد القوات المسلحة',
 buy_title:'شراء التذكرة إلكترونياً',qom_name:'QomTicket',qom_desc:'احصل على تذكرة الموعد من منصة QomTicket.',qom_btn:'الشراء من QomTicket',pool_name:'PoolTicket',pool_desc:'احصل على تذكرة الموعد من منصة PoolTicket.',pool_btn:'الشراء من PoolTicket',
@@ -564,6 +565,33 @@ $$('[data-copy]').forEach(function(btn){btn.addEventListener('click',function(){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(done,function(){fallback()})}else fallback();
   function fallback(){var ta=document.createElement('textarea');ta.value=v;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
 })});
+
+/* ---------- facility photo slideshows ---------- */
+$$('.fac').forEach(function(c,k){
+  var im=c.querySelectorAll('img.sl');if(im.length<2)return;
+  var dots=document.createElement('div');dots.className='dots';
+  for(var i=0;i<im.length;i++){dots.appendChild(document.createElement('i'))}
+  c.appendChild(dots);var cur=0,ds=dots.children;ds[0].className='on';
+  setInterval(function(){im[cur].classList.remove('on');ds[cur].className='';cur=(cur+1)%im.length;im[cur].classList.add('on');ds[cur].className='on'},3800+k*350);
+});
+/* ---------- hero video: muted autoplay with retries and a pause button ---------- */
+(function(){
+  var hv=$('#heroVideo'),btn=$('#vbtn');if(!hv)return;
+  hv.muted=true;hv.defaultMuted=true;hv.setAttribute('muted','');hv.playsInline=true;
+  var PLAY='<path d="M8 5v14l11-7z"/>',PAUSE='<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>',paused=false;
+  function label(){btn.setAttribute('aria-label',lang==='ar'?(paused?'تشغيل الفيديو':'إيقاف الفيديو'):(paused?'پخش ویدیو':'توقف ویدیو'))}
+  function go(){if(paused)return;var p=hv.play();if(p&&p.catch)p.catch(function(){})}
+  hv.addEventListener('playing',function(){hv.classList.add('on')});
+  hv.addEventListener('canplay',go);
+  hv.addEventListener('error',function(){btn.hidden=true},true);
+  btn.addEventListener('click',function(){
+    paused=!paused;if(paused)hv.pause();else go();
+    $('#vbtnIc').innerHTML=paused?PLAY:PAUSE;label();
+  });
+  ['touchstart','pointerdown','scroll','keydown'].forEach(function(e){addEventListener(e,go,{once:true,passive:true})});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)go()});
+  go();label();
+})();
 
 /* ---------- schedule from schedule.json (written by the admin page) ---------- */
 function normalize(j){
