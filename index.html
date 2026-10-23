@@ -19,7 +19,7 @@
 <title>استخر شهدای بسیج قم | استخر آقایان و بانوان قم | بلیت</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero.webp" type="image/webp">
+<link rel="preload" as="image" href="img/video-poster.jpg">
 <style>
 /* Design plan: deep-navy header and hero over the real pool photo, white and foam sections, one warm wood accent for the saunas.
    Water cyan = actions, rose and blue = women and men, green and red = open and closed. Vazirmatn for text, Lalezar for headings. */
@@ -69,7 +69,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}img{max-w
 /* hero */
 .hero{position:relative;isolation:isolate;color:#fff;display:grid;align-items:center;min-height:min(84vh,700px);overflow:hidden;background:var(--ink)}
 .hero-media{position:absolute;inset:0;z-index:-2}
-#heroVideo{opacity:0;transition:opacity 1s}#heroVideo.on{opacity:1}.vbtn{position:absolute;top:88px;inset-inline-start:16px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(6,24,44,.55);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}.vplay{position:absolute;top:88px;inset-inline-start:66px;height:42px;width:max-content;z-index:3;display:none;align-items:center;gap:8px;padding:0 16px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,24,44,.72);color:#fff;font:800 13px var(--font,inherit);cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35)}.vplay.show{display:inline-flex}.vplay svg{width:20px;height:20px;fill:currentColor}.vbtn svg{width:18px;height:18px;fill:currentColor;stroke:none}.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+#heroVideo{opacity:1}.vbtn{position:absolute;top:88px;inset-inline-start:16px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(6,24,44,.55);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}.vplay{position:absolute;top:88px;inset-inline-start:66px;height:42px;width:max-content;z-index:3;display:none;align-items:center;gap:8px;padding:0 16px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,24,44,.72);color:#fff;font:800 13px var(--font,inherit);cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35)}.vplay.show{display:inline-flex}.vplay svg{width:20px;height:20px;fill:currentColor}.vbtn svg{width:18px;height:18px;fill:currentColor;stroke:none}.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,18,36,.62) 0%,rgba(4,18,36,.72) 50%,rgba(4,18,36,.96) 100%)}
 .hero-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 0 150px}
 .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px}
@@ -239,9 +239,51 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
   .c-card{padding:22px}.phone-num{font-size:25px}
   .hours-card{padding:18px;gap:12px;flex-wrap:wrap}.hours-card .hrs{width:100%;margin:0;font-size:20px}
 }
+
+/* ---- v20 polish: bigger hero, hexagon-tile texture (echoes the pool mosaic), softer depth, reveal, mobile action bar ---- */
+:root{--hex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='none' stroke='%230b78c4' stroke-opacity='.075' stroke-width='1'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero{min-height:min(94vh,800px)}
+.hero:before{background:linear-gradient(180deg,rgba(4,18,36,.5) 0%,rgba(4,18,36,.36) 32%,rgba(4,18,36,.5) 62%,rgba(4,18,36,.95) 100%)}.hero h1,.hero p,.kicker,.hero-logo{text-shadow:0 3px 18px rgba(0,0,0,.55)}
+.hero-in{padding:64px 0 168px}
+.hero h1{letter-spacing:-.2px}
+.hl{list-style:none;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px;max-width:760px}
+.hl li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);font-size:13px;font-weight:700;color:#e8f4fb}
+.hl li:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 3px rgba(52,211,227,.25)}
+.btn-aqua{box-shadow:0 14px 32px rgba(52,211,227,.32)}
+.today-card{border:0;box-shadow:0 30px 70px rgba(6,24,44,.24),0 0 0 1px rgba(6,24,44,.05);position:relative;overflow:hidden}
+.today-card:before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:6px;background:linear-gradient(180deg,var(--aqua),var(--blue))}
+section.block{padding:100px 0}
+.head{margin-bottom:46px}
+.eyebrow{background:rgba(11,120,196,.09);padding:4px 16px;border-radius:99px;margin-bottom:12px}
+.contact .eyebrow{background:rgba(52,211,227,.12)}
+.sessions,.facilities{background-image:var(--hex)}
+.sessions{background-color:#fff}
+.hours-card,.day,.price-card,.buy,.book,.tile{box-shadow:0 10px 28px rgba(6,24,44,.06)}
+.hours-card,.day,.tile,.buy,.c-card{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.hours-card:hover,.day:hover,.tile:hover,.buy:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(6,24,44,.12)}
+.fac{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.fac:hover{transform:translateY(-6px);box-shadow:0 26px 54px rgba(6,24,44,.22)}
+.fac-body h3{text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.nav a.active{background:rgba(52,211,227,.16);color:#fff}
+.contact:before{content:"";position:absolute;inset:0;background-image:var(--hex);opacity:.5;filter:invert(1) brightness(2);mix-blend-mode:soft-light;pointer-events:none}
+.contact>.wrap{position:relative}
+footer{position:relative;border-top:1px solid rgba(52,211,227,.25)}
+footer:before{content:"";position:absolute;inset-inline:0;top:-1px;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),var(--gold),transparent)}
+html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+html.js .rv.in{opacity:1;transform:none}
+.mbar{display:none}
+@media(max-width:760px){
+  .mbar{position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;display:grid;grid-template-columns:1fr 1.5fr;gap:8px;padding:7px;border-radius:22px;background:rgba(6,24,44,.93);backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1)}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;border-radius:16px;font-weight:900;font-size:14px;color:#fff;background:rgba(255,255,255,.1)}
+  .mbar a.m-buy{background:linear-gradient(135deg,var(--aqua),#2aa7e0);color:#04243a}
+  body{padding-bottom:92px}
+  .hero-in{padding:44px 0 150px}
+  section.block{padding:72px 0}
+  .hl li{font-size:12px;padding:7px 12px}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":["https://pcmohqm-coder.github.io/pool-ticket/img/site-1x1.jpg","https://pcmohqm-coder.github.io/pool-ticket/img/site-4x3.jpg","https://pcmohqm-coder.github.io/pool-ticket/img/site-16x9.jpg"],"logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"بلوار امیرکبیر (خیابان اراک)، بعد از پل حجتیه، روبه‌روی نمایندگی ایران‌خودرو","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/bassijpool"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Monday","Wednesday"],"opens":"13:00","closes":"18:00"}],"hasMap":"https://maps.app.goo.gl/iuFsWtYyST8FVrzS7","priceRange":"250000 IRR toman"},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["HealthClub","LocalBusiness"],"@id":"https://pcmohqm-coder.github.io/pool-ticket/#business","name":"استخر شهدای بسیج","alternateName":"مسبح شهداء البسيج","url":"https://pcmohqm-coder.github.io/pool-ticket/","telephone":"+989330555036","image":["https://pcmohqm-coder.github.io/pool-ticket/img/site-1x1.jpg","https://pcmohqm-coder.github.io/pool-ticket/img/site-4x3.jpg","https://pcmohqm-coder.github.io/pool-ticket/img/site-16x9.jpg"],"logo":"https://pcmohqm-coder.github.io/pool-ticket/favicon.png","address":{"@type":"PostalAddress","streetAddress":"بلوار امیرکبیر (خیابان اراک)، بعد از پل حجتیه، روبه‌روی نمایندگی ایران‌خودرو","addressLocality":"قم","addressRegion":"قم","addressCountry":"IR"},"sameAs":["https://eitaa.com/bassijpool"],"areaServed":{"@type":"City","name":"قم"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"خدمات و امکانات استخر شهدای بسیج","itemListElement":[{"@type":"Service","name":"سونای خشک"},{"@type":"Service","name":"سونای بخار"},{"@type":"Service","name":"جکوزی"},{"@type":"Service","name":"حوضچه آب سرد"},{"@type":"Service","name":"ماساژ"}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Tuesday","Thursday","Friday"],"opens":"15:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday"],"opens":"13:00","closes":"18:00"}],"hasMap":"https://maps.app.goo.gl/iuFsWtYyST8FVrzS7","priceRange":"250000 IRR toman"},{"@type":"WebSite","url":"https://pcmohqm-coder.github.io/pool-ticket/","name":"استخر شهدای بسیج","inLanguage":["fa-IR","ar"]}]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -288,8 +330,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
 <main id="main">
   <section class="hero" id="home">
     <div class="hero-media">
-      <img src="img/hero.webp" alt="" fetchpriority="high">
-      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/hero.webp" aria-hidden="true" disablepictureinpicture><source src="pool-tour.mp4" type="video/mp4"><source src="pool-tour.webm" type="video/webm"></video>
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/video-poster.jpg" aria-hidden="true" disablepictureinpicture><source src="pool-tour.mp4" type="video/mp4"><source src="pool-tour.webm" type="video/webm"></video>
     </div>
     <button class="vbtn" id="vbtn" type="button" aria-label="توقف ویدیو"><svg viewBox="0 0 24 24" id="vbtnIc"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
     <button class="vplay" id="vplay" type="button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span id="vplayT">پخش ویدیو استخر</span></button>
@@ -302,6 +343,7 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
         <a class="btn btn-aqua" href="#tickets"><span data-i18n="hero_cta">خرید بلیت</span><svg class="ic"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-glass" href="#sessions"><span data-i18n="hero_cta2">مشاهده سانس‌ها</span></a>
       </div>
+      <ul class="hl"><li data-i18n="hl1">سانس جداگانه آقایان و بانوان</li><li data-i18n="hl2">سونای خشک و بخار</li><li data-i18n="hl3">جکوزی و حوضچه آب سرد</li><li data-i18n="hl4">رزرو و خرید بلیت آنلاین</li></ul>
     </div>
   </section>
 
@@ -311,12 +353,12 @@ footer{background:#030f1c;color:#cfe0ec;padding:50px 0 24px;text-align:center}
     <div class="wrap">
       <div class="head"><div class="eyebrow" data-i18n="sessions_eyebrow">برنامه مجموعه</div><h2 data-i18n="sessions_title">سانس‌های آقایان و بانوان</h2><p data-i18n="sessions_desc">هر روز مخصوص یک بخش است. وضعیت روزهای پیش‌رو را از همین‌جا ببینید.</p></div>
       <div class="hours-row">
-        <article class="hours-card women"><div class="badge-ic"><svg class="ic"><use href="#i-women"/></svg></div><div><h3 data-i18n="women_title">بانوان</h3><div class="days" data-i18n="women_days">شنبه، دوشنبه و چهارشنبه</div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsWomen">۱۳:۰۰ تا ۱۸:۰۰</span></div></article>
-        <article class="hours-card men"><div class="badge-ic"><svg class="ic"><use href="#i-men"/></svg></div><div><h3 data-i18n="men_title">آقایان</h3><div class="days" data-i18n="men_days">یکشنبه، سه‌شنبه، پنجشنبه و جمعه</div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsMen">۱۵:۰۰ تا ۲۲:۰۰</span></div></article>
+        <article class="hours-card women"><div class="badge-ic"><svg class="ic"><use href="#i-women"/></svg></div><div><h3 data-i18n="women_title">بانوان</h3><div class="days" id="daysWomen"></div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsWomen">۱۳:۰۰ تا ۱۸:۰۰</span></div></article>
+        <article class="hours-card men"><div class="badge-ic"><svg class="ic"><use href="#i-men"/></svg></div><div><h3 data-i18n="men_title">آقایان</h3><div class="days" id="daysMen"></div></div><div class="hrs"><small data-i18n="hours_label">ساعت سانس</small><span id="hrsMen">۱۵:۰۰ تا ۲۲:۰۰</span></div></article>
       </div>
       <div class="strip-title"><h3 data-i18n="week_title">وضعیت ۷ روز آینده</h3><span data-i18n="week_note">روزهای تعطیل با برچسب قرمز مشخص شده‌اند.</span></div>
       <div class="strip" id="strip"></div>
-      <noscript><p style="margin-top:14px;color:var(--muted)">بانوان: شنبه، دوشنبه و چهارشنبه ۱۳:۰۰ تا ۱۸:۰۰ — آقایان: یکشنبه، سه‌شنبه، پنجشنبه و جمعه ۱۵:۰۰ تا ۲۲:۰۰</p></noscript>
+      <noscript><p style="margin-top:14px;color:var(--muted)">بانوان: دوشنبه و چهارشنبه ۱۳:۰۰ تا ۱۸:۰۰ — آقایان: یکشنبه، سه‌شنبه، پنجشنبه و جمعه ۱۵:۰۰ تا ۲۲:۰۰</p></noscript>
     </div>
   </section>
 
@@ -423,7 +465,7 @@ fa:{skip:'رفتن به محتوا',nav_sessions:'سانس‌ها',nav_facilitie
 hero_kicker:'مجموعه ورزشی و تفریحی در قم',hero_title:'سلامتی، نشاط و آرامش در یک مجموعه',hero_desc:'استخر شهدای بسیج قم؛ فضایی مجهز برای شنا و استراحت با سانس‌های جداگانه آقایان و بانوان، سونا، جکوزی و خدمات متنوع.',hero_cta:'خرید بلیت',hero_cta2:'مشاهده سانس‌ها',
 today:'امروز',st_open:'سانس در جریان است · تا ساعت {h}',st_soon:'شروع سانس امروز ساعت {h}',st_done:'سانس امروز به پایان رسید',st_closed:'امروز تعطیل است',
 sessions_eyebrow:'برنامه مجموعه',sessions_title:'سانس‌های آقایان و بانوان',sessions_desc:'هر روز مخصوص یک بخش است. وضعیت روزهای پیش‌رو را از همین‌جا ببینید.',
-women_title:'بانوان',men_title:'آقایان',women_days:'شنبه، دوشنبه و چهارشنبه',men_days:'یکشنبه، سه‌شنبه، پنجشنبه و جمعه',hours_label:'ساعت سانس',to:'تا',
+hl1:'سانس جداگانه آقایان و بانوان',hl2:'سونای خشک و بخار',hl3:'جکوزی و حوضچه آب سرد',hl4:'رزرو و خرید بلیت آنلاین',mb_call:'تماس',mb_buy:'خرید بلیت',women_title:'بانوان',men_title:'آقایان',women_days:'دوشنبه و چهارشنبه',men_days:'یکشنبه، سه‌شنبه، پنجشنبه و جمعه',hours_label:'ساعت سانس',to:'تا',
 week_title:'وضعیت ۷ روز آینده',week_note:'روزهای تعطیل با برچسب قرمز مشخص شده‌اند.',closed:'تعطیل',today_tag:'امروز',
 fac_eyebrow:'تجربه کامل‌تر',fac_title:'امکانات و خدمات',fac_desc:'بعد از شنا، آرامش را در سونا و جکوزی ادامه دهید.',
 fac_dry:'سونای خشک',fac_dry_d:'اتاق چوبی با نیمکت‌های پله‌ای',fac_steam:'سونای بخار',fac_steam_d:'اتاق بخار کاشی‌کاری‌شده با نیمکت راحت',fac_jacuzzi:'جکوزی',fac_jacuzzi_d:'جکوزی با کاشی موزاییک کنار سونا',fac_cold:'حوضچه آب سرد',fac_cold_d:'حوضچه آب سرد برای بعد از سونا',
@@ -444,7 +486,7 @@ ar:{skip:'انتقل إلى المحتوى',nav_sessions:'المواعيد',nav_
 hero_kicker:'مجمع رياضي وترفيهي في قم',hero_title:'الصحة والنشاط والراحة في مكان واحد',hero_desc:'مسبح شهداء البسيج في قم؛ مساحة مجهزة للسباحة والاسترخاء مع أوقات منفصلة للرجال والنساء، وساونا وجاكوزي وخدمات متنوعة.',hero_cta:'شراء تذكرة',hero_cta2:'عرض المواعيد',
 today:'اليوم',st_open:'الموعد جارٍ الآن · حتى الساعة {h}',st_soon:'يبدأ موعد اليوم الساعة {h}',st_done:'انتهى موعد اليوم',st_closed:'اليوم مغلق',
 sessions_eyebrow:'برنامج المجمع',sessions_title:'مواعيد الرجال والنساء',sessions_desc:'كل يوم مخصص لقسم واحد. تعرّف على حالة الأيام القادمة من هنا.',
-women_title:'النساء',men_title:'الرجال',women_days:'السبت والاثنين والأربعاء',men_days:'الأحد والثلاثاء والخميس والجمعة',hours_label:'وقت الموعد',to:'إلى',
+hl1:'مواعيد منفصلة للرجال والنساء',hl2:'ساونا جافة وبخارية',hl3:'جاكوزي وحوض مياه باردة',hl4:'الحجز وشراء التذاكر أونلاين',mb_call:'اتصال',mb_buy:'شراء التذاكر',women_title:'النساء',men_title:'الرجال',women_days:'الاثنين والأربعاء',men_days:'الأحد والثلاثاء والخميس والجمعة',hours_label:'وقت الموعد',to:'إلى',
 week_title:'حالة الأيام السبعة القادمة',week_note:'الأيام المغلقة تظهر بعلامة حمراء.',closed:'مغلق',today_tag:'اليوم',
 fac_eyebrow:'تجربة متكاملة',fac_title:'المرافق والخدمات',fac_desc:'بعد السباحة، تابع استرخاءك في الساونا والجاكوزي.',
 fac_dry:'ساونا جافة',fac_dry_d:'غرفة خشبية بمقاعد متدرجة',fac_steam:'ساونا بخار',fac_steam_d:'غرفة بخار مبلطة بمقاعد مريحة',fac_jacuzzi:'جاكوزي',fac_jacuzzi_d:'جاكوزي بالفسيفساء بجانب الساونا',fac_cold:'حوض ماء بارد',fac_cold_d:'حوض ماء بارد لما بعد الساونا',
@@ -468,7 +510,7 @@ var DIG={fa:'۰۱۲۳۴۵۶۷۸۹',ar:'٠١٢٣٤٥٦٧٨٩'};
 
 /* ---------- state ---------- */
 var lang='fa';
-var sched={closedWeekdays:[],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
+var sched={closedWeekdays:[6],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
 
 /* ---------- helpers ---------- */
 function $(s,r){return (r||document).querySelector(s)}
@@ -512,7 +554,7 @@ function renderToday(){
   else{cls='done';txt=t('st_done')}
   $('#todayCard').innerHTML=
     '<div class="today-date"><small>'+t('today')+'</small><strong>'+DAYS[lang][n.dow]+' · '+dateLabel(n)+'</strong></div>'+
-    '<div class="today-g"><span class="chip '+g+'">'+icon(g==='women'?'i-women':'i-men')+t(g+'_title')+'</span>'+(closed?'':'<span class="today-hours">'+range(g)+'</span>')+'</div>'+
+    '<div class="today-g">'+(closed?'':'<span class="chip '+g+'">'+icon(g==='women'?'i-women':'i-men')+t(g+'_title')+'</span><span class="today-hours">'+range(g)+'</span>')+'</div>'+
     '<div class="pill '+cls+'">'+txt+'</div>';
 }
 function renderStrip(){
@@ -522,7 +564,7 @@ function renderStrip(){
     out+='<article class="day '+g+(c?' closed':'')+(i===0?' today-d':'')+'">'+
       (i===0?'<span class="tag">'+t('today_tag')+'</span>':'')+
       '<div class="nm"><div class="dn">'+DAYS[lang][x.dow]+'</div><div class="dd">'+dateLabel(x)+'</div></div>'+
-      '<span class="chip">'+t(g+'_title')+'</span>'+
+      (c?'':'<span class="chip">'+t(g+'_title')+'</span>')+
       '<div class="dt">'+(c?t('closed'):range(g))+'</div></article>';
   }
   $('#strip').innerHTML=out;
@@ -531,7 +573,15 @@ function renderNotice(){
   var el=$('#notice'),a=sched.announcement||{},txt=lang==='ar'?(a.ar||a.fa):(a.fa||a.ar);
   if(a.enabled&&txt){el.textContent=txt;el.hidden=false}else{el.hidden=true;el.textContent=''}
 }
-function renderAll(){renderToday();renderStrip();renderNotice();$('#hrsWomen').textContent=range('women');$('#hrsMen').textContent=range('men')}
+function daysText(g){
+  var order=[6,0,1,2,3,4,5],names=[];
+  order.forEach(function(d){if(genderOf(d)===g&&sched.closedWeekdays.indexOf(d)===-1)names.push(DAYS[lang][d])});
+  if(!names.length)return t('closed');
+  if(names.length===1)return names[0];
+  var last=names.pop();
+  return names.join('، ')+(lang==='ar'?' و':' و ')+last;
+}
+function renderAll(){$('#daysWomen').textContent=daysText('women');$('#daysMen').textContent=daysText('men');renderToday();renderStrip();renderNotice();$('#hrsWomen').textContent=range('women');$('#hrsMen').textContent=range('men')}
 
 /* ---------- language ---------- */
 function applyLanguage(l){
@@ -599,7 +649,7 @@ $$('.fac').forEach(function(c,k){
 
 /* ---------- schedule from schedule.json (written by the admin page) ---------- */
 function normalize(j){
-  var s={closedWeekdays:[],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
+  var s={closedWeekdays:[6],closedDates:[],announcement:{enabled:false,fa:'',ar:''}};
   if(!j||typeof j!=='object')return s;
   if(Array.isArray(j.closedWeekdays))s.closedWeekdays=j.closedWeekdays.filter(function(x){return Number.isInteger(x)&&x>=0&&x<=6});
   if(Array.isArray(j.closedDates))s.closedDates=j.closedDates.filter(function(x){return /^\d{4}-\d{2}-\d{2}$/.test(x)});
@@ -613,6 +663,22 @@ function loadSchedule(){
     .catch(function(){});
 }
 
+
+/* ---------- reveal on scroll + active nav link ---------- */
+(function(){
+  document.documentElement.classList.add('js');
+  var sel='.head,.hours-card,.strip,.fac,.tile,.price-card,.buy,.book,.c-card,.hl';
+  var els=$$(sel);
+  if(!('IntersectionObserver' in window)){return}
+  els.forEach(function(e,i){e.classList.add('rv');e.style.transitionDelay=Math.min((i%4)*70,210)+'ms'});
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+  setTimeout(function(){els.forEach(function(e){e.classList.add('in')})},4000);
+  var links=$$('#nav a'),secs=links.map(function(a){return document.getElementById((a.getAttribute('href')||'').slice(1))}).filter(Boolean);
+  var so=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(x){so.observe(x)});
+})();
+
 /* ---------- start ---------- */
 var start=new URLSearchParams(location.search).get('lang');
 if(start!=='fa'&&start!=='ar'){try{start=localStorage.getItem('poolLang')||'fa'}catch(e){start='fa'}}
@@ -622,5 +688,6 @@ setInterval(function(){renderToday();renderStrip()},60000);
 setInterval(loadSchedule,300000);
 })();
 </script>
+<nav class="mbar" aria-label="دسترسی سریع"><a class="m-call" href="tel:09330555036"><svg class="ic"><use href="#i-phone"/></svg><span data-i18n="mb_call">تماس</span></a><a class="m-buy" href="#tickets"><svg class="ic"><use href="#i-ticket"/></svg><span data-i18n="mb_buy">خرید بلیت</span></a></nav>
 </body>
 </html>

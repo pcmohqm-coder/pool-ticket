@@ -1,7 +1,1 @@
-{
-  "version": 1,
-  "updated": "",
-  "closedWeekdays": [],
-  "closedDates": [],
-  "announcement": { "enabled": false, "fa": "", "ar": "" }
-}
+{"version":1,"updated":"","closedWeekdays":[6],"closedDates":[],"announcement":{"enabled":false,"fa":"","ar":""}}

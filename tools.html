@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ابزارهای پوستر استخر</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<style>
+/* Layout: poster preview beside an editor (RTL), stacked on phones. Two tabs: weekly A4 list, daily square poster.
+   Colors: ink, paper, men-blue, women-pink, line.  Type: Vazirmatn for UI and for the text drawn on posters. */
+:root {
+  --bg: #f3f6fb;
+  --panel: #ffffff;
+  --fg: #12233f;
+  --muted: #5d6c86;
+  --line: #d5dded;
+  --men: #1d5fd6;
+  --women: #c0268b;
+  --men-soft: #e4eeff;
+  --women-soft: #fde6f4;
+  --ok: #17803d;
+  --warn: #b4361c;
+  --font: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1626; --panel: #16223a; --fg: #e8eefb; --muted: #9db0d0; --line: #2a3a5c;
+    --men: #6aa0ff; --women: #ff6fc4; --men-soft: #1a2c52; --women-soft: #4a1c3d;
+    --ok: #5ad58a; --warn: #ff9a85; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1626; --panel: #16223a; --fg: #e8eefb; --muted: #9db0d0; --line: #2a3a5c;
+  --men: #6aa0ff; --women: #ff6fc4; --men-soft: #1a2c52; --women-soft: #4a1c3d;
+  --ok: #5ad58a; --warn: #ff9a85; color-scheme: dark;
+}
+html { direction: rtl; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 15px; line-height: 1.7;
+  padding-inline: 16px; padding-block: 20px 32px;
+}
+.tabs { max-width: 1040px; margin: 0 auto 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+.tab {
+  font: inherit; font-weight: 600; cursor: pointer; color: var(--fg); background: var(--panel);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 7px 16px;
+}
+.tab[aria-selected="true"] { background: var(--men); border-color: var(--men); color: #fff; }
+.app { max-width: 1040px; margin-inline: auto; display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 860px) {
+  .app { grid-template-columns: minmax(0, 1fr) minmax(0, 400px); align-items: start; }
+  .app.wk { grid-template-columns: minmax(0, 1fr) minmax(0, 450px); }
+}
+.stage { min-width: 0; }
+.stage canvas, .stage img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 6px 28px rgba(10, 30, 70, .22); }
+.wk .stage canvas, .wk .stage img { max-width: 560px; margin-inline: auto; }
+.hint { margin: 10px 2px 0; color: var(--muted); font-size: 13px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 18px; min-width: 0; }
+h1 { margin: 0; font-size: 20px; font-weight: 800; }
+.sub { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend, label.cap { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; padding: 0; }
+.days { display: flex; flex-wrap: wrap; gap: 8px; }
+.day {
+  flex: 1 1 82px; min-width: 0; font: inherit; cursor: pointer; color: var(--fg);
+  background: var(--panel); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 6px;
+  display: grid; gap: 0; justify-items: center; line-height: 1.4;
+}
+.day b { font-weight: 800; font-size: 15px; }
+.day small { font-size: 12px; color: var(--muted); }
+.day[data-g="m"] { border-color: color-mix(in srgb, var(--men) 45%, var(--line)); }
+.day[data-g="w"] { border-color: color-mix(in srgb, var(--women) 45%, var(--line)); }
+.day[aria-pressed="true"][data-g="m"] { background: var(--men); border-color: var(--men); color: #fff; }
+.day[aria-pressed="true"][data-g="w"] { background: var(--women); border-color: var(--women); color: #fff; }
+.day[aria-pressed="true"] small { color: #fff; opacity: .92; }
+.tab:focus-visible, .day:focus-visible, button.act:focus-visible, input:focus-visible, .mini:focus-visible { outline: 3px solid var(--men); outline-offset: 2px; }
+input[type=text] {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 12px; text-align: center;
+}
+input[type=text][aria-invalid="true"] { border-color: var(--warn); }
+input[type=text]:disabled { opacity: .45; cursor: not-allowed; }
+.row { display: flex; gap: 8px; align-items: stretch; }
+.row input { flex: 1 1 auto; min-width: 0; }
+.mini { font: inherit; font-size: 13px; cursor: pointer; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 0 12px; white-space: nowrap; }
+.times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.times span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; text-align: center; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+button.act { flex: 1 1 140px; font: inherit; font-weight: 800; cursor: pointer; border: 0; border-radius: 10px; padding: 11px 14px; color: #fff; background: var(--men); }
+button.act.alt { background: transparent; color: var(--fg); border: 1.5px solid var(--line); font-weight: 600; }
+body[data-g="w"] #viewD button.act:not(.alt) { background: var(--women); }
+.status { min-height: 1.6em; margin: 0; font-size: 13px; color: var(--muted); }
+.status.ok { color: var(--ok); } .status.err { color: var(--warn); }
+
+/* weekly editor */
+.today { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin: 6px 0 0; font-weight: 600; }
+.today .tag { font-size: 12px; font-weight: 800; padding: 1px 10px; border-radius: 99px; color: #fff; }
+.today .tag[data-g="m"] { background: var(--men); }
+.today .tag[data-g="w"] { background: var(--women); }
+.whead, .wrow { display: grid; grid-template-columns: 78px 92px minmax(0, 1fr) minmax(0, 1fr); gap: 6px; align-items: center; }
+.whead { font-size: 12px; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.wrows { display: grid; gap: 6px; }
+.wrow { padding: 4px; border-radius: 12px; border: 1.5px solid transparent; }
+.wrow.is-today { border-color: var(--men); background: color-mix(in srgb, var(--men) 7%, var(--panel)); }
+.wrow.is-today[data-g="w"] { border-color: var(--women); background: color-mix(in srgb, var(--women) 7%, var(--panel)); }
+.wrow.locked { opacity: .55; }
+.chip { font-weight: 800; font-size: 13px; text-align: center; border-radius: 8px; padding: 4px 4px; line-height: 1.35; }
+.chip small { display: block; font-size: 11px; font-weight: 600; }
+.chip[data-g="m"] { background: var(--men-soft); color: var(--men); }
+.chip[data-g="w"] { background: var(--women-soft); color: var(--women); }
+.wdate { text-align: center; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 600; direction: ltr; }
+.wrow input[type=text] { padding: 8px 4px; font-size: 15px; direction: ltr; font-variant-numeric: tabular-nums; }
+.note { margin: 0; font-size: 13px; color: var(--muted); }
+.mini.reset { justify-self: start; padding: 7px 14px; }
+
+/* private sessions editor */
+.plist { display: grid; gap: 10px; }
+.pcard { display: grid; gap: 8px; padding: 12px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); min-width: 0; }
+.pcard .top { display: flex; gap: 8px; align-items: stretch; }
+.pcard select {
+  flex: 1 1 auto; min-width: 0; font: inherit; font-size: 15px; color: var(--fg); background: var(--panel);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px;
+}
+.pcard select:focus-visible { outline: 3px solid var(--men); outline-offset: 2px; }
+.pcard .del { flex: 0 0 auto; font: inherit; font-size: 18px; line-height: 1; cursor: pointer; color: var(--warn); background: var(--panel); border: 1.5px solid var(--line); border-radius: 10px; width: 40px; }
+.pcard .del:focus-visible { outline: 3px solid var(--men); outline-offset: 2px; }
+.pcard .times2 { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
+.pcard .times2 input { direction: ltr; font-variant-numeric: tabular-nums; }
+.pcard input[type=text] { background: var(--panel); }
+.mini.add { padding: 8px 14px; font-weight: 600; }
+.mini.add:disabled { opacity: .45; cursor: not-allowed; }
+.row .note { align-self: center; }
+@media (prefers-reduced-motion: no-preference) { .day, button.act, .mini, .tab { transition: background .15s, border-color .15s; } }
+.wrow.closedrow input { background: #fdeeee; }
+.wrow.closedrow input::placeholder { color: #c62839; opacity: .85; font-weight: 800; }
+button.day:disabled { opacity: .45; cursor: not-allowed; }
+</style>
+
+</head>
+<body data-g="w">
+<div class="tabs" role="tablist" aria-label="نوع پوستر">
+  <button type="button" class="tab" role="tab" id="tabW" aria-selected="true" aria-controls="viewW">لیست هفتگی A4</button>
+  <button type="button" class="tab" role="tab" id="tabP" aria-selected="false" aria-controls="viewP">سانس‌های خصوصی</button>
+  <button type="button" class="tab" role="tab" id="tabD" aria-selected="false" aria-controls="viewD">پوستر روزانه</button>
+</div>
+
+<main class="app wk" id="viewW" role="tabpanel" aria-labelledby="tabW" lang="fa" dir="rtl">
+  <section class="stage" aria-label="پیش‌نمایش لیست هفتگی">
+    <canvas id="wposter" width="1055" height="1490" role="img" aria-label="لیست هفتگی سانس‌ها"></canvas>
+    <img id="wfallback" alt="لیست هفتگی سانس‌ها" hidden>
+    <p class="hint" id="wfallbackHint" hidden>دکمه ذخیره در این نمایش فعال نیست. روی عکس نگه دارید و «ذخیره تصویر» را بزنید.</p>
+  </section>
+
+  <section class="panel">
+    <div>
+      <h1>لیست هفتگی سانس‌ها</h1>
+      <p class="today" id="todayLine"></p>
+    </div>
+
+    <div>
+      <div class="whead" aria-hidden="true"><span>روز</span><span>تاریخ</span><span>ساعت شروع</span><span>ساعت پایان</span></div>
+      <div class="wrows" id="wrows"></div>
+    </div>
+
+    <p class="note">تاریخ شمسی خودکار پر می‌شود. ساعت معمول بانوان ۱۳:۰۰ تا ۱۸:۰۰ و آقایان ۱۵:۰۰ تا ۲۲:۰۰ است و هر روز را می‌توانید عوض کنید (مثل ۱۶:۳۰ یا ۱۶۳۰). روزهای بعد از امروز قفل‌اند و تا رسیدن روزشان روی پوستر خالی می‌مانند.</p>
+    <button type="button" class="mini reset" id="wReset">برگرداندن ساعت‌ها به حالت معمول</button>
+
+    <div class="actions">
+      <button type="button" class="act" id="wSavePng">ذخیره PNG برای چاپ</button>
+      <button type="button" class="act alt" id="wSaveJpg">ذخیره JPG (کم‌حجم)</button>
+    </div>
+    <p class="status" id="wstatus" role="status" aria-live="polite"></p>
+  </section>
+</main>
+
+<main class="app wk" id="viewP" role="tabpanel" aria-labelledby="tabP" lang="fa" dir="rtl" hidden>
+  <section class="stage" aria-label="پیش‌نمایش لیست سانس‌های خصوصی">
+    <canvas id="pposter" width="1055" height="1490" role="img" aria-label="لیست سانس‌های خصوصی"></canvas>
+    <img id="pfallback" alt="لیست سانس‌های خصوصی" hidden>
+    <p class="hint" id="pfallbackHint" hidden>دکمه ذخیره در این نمایش فعال نیست. روی عکس نگه دارید و «ذخیره تصویر» را بزنید.</p>
+  </section>
+
+  <section class="panel">
+    <div>
+      <h1>سانس‌های خصوصی</h1>
+      <p class="sub">برای هر گروه یک کارت بسازید: روز، ساعت شروع و پایان، نام گروه. تاریخ شمسی خودکار نوشته می‌شود و لیست روی پوستر به ترتیب تاریخ مرتب می‌شود.</p>
+    </div>
+    <div class="plist" id="plist"></div>
+    <div class="row">
+      <button type="button" class="mini add" id="pAdd">افزودن سانس خصوصی</button>
+      <span class="note" id="pCount"></span>
+    </div>
+    <div class="actions">
+      <button type="button" class="act" id="pSavePng">ذخیره PNG برای چاپ</button>
+      <button type="button" class="act alt" id="pSaveJpg">ذخیره JPG (کم‌حجم)</button>
+    </div>
+    <p class="status" id="pstatus" role="status" aria-live="polite"></p>
+  </section>
+</main>
+
+<main class="app" id="viewD" role="tabpanel" aria-labelledby="tabD" lang="fa" dir="rtl" hidden>
+  <section class="stage" aria-label="پیش‌نمایش پوستر">
+    <canvas id="poster" width="1254" height="1254" role="img" aria-label="پوستر سانس‌های امروز"></canvas>
+    <img id="fallback" alt="پوستر سانس‌های امروز" hidden>
+    <p class="hint" id="fallbackHint" hidden>دکمه ذخیره در این نمایش فعال نیست. روی عکس نگه دارید و «ذخیره تصویر» را بزنید.</p>
+  </section>
+
+  <section class="panel">
+    <div>
+      <h1>پوستر سانس امروز</h1>
+      <p class="sub">روز را انتخاب کنید؛ نسخه آقایان یا بانوان خودکار عوض می‌شود.</p>
+    </div>
+
+    <fieldset>
+      <legend>روز هفته</legend>
+      <div class="days" id="days"></div>
+    </fieldset>
+
+    <div>
+      <label class="cap" for="date">تاریخ</label>
+      <div class="row">
+        <input type="text" id="date" autocomplete="off" placeholder="مثلاً ۱۴۰۵/۰۷/۱۹">
+        <button type="button" class="mini" id="autoDate">تاریخ خودکار</button>
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>ساعت‌های سانس</legend>
+      <div class="times">
+        <div><span>ساعت اول</span><input type="text" id="t1" inputmode="text" autocomplete="off" placeholder="۱۶:۰۰"></div>
+        <div><span>ساعت دوم</span><input type="text" id="t2" inputmode="text" autocomplete="off" placeholder="۱۷:۳۰"></div>
+        <div><span>ساعت سوم</span><input type="text" id="t3" inputmode="text" autocomplete="off" placeholder="۱۹:۰۰"></div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" class="act" id="savePng">ذخیره PNG</button>
+      <button type="button" class="act alt" id="saveJpg">ذخیره JPG (کم‌حجم)</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+</main>
+
+<script>
+const IMGS = { m: "img/tools/m.jpg", w: "img/tools/w.jpg", week: "img/tools/week.jpg", priv: "img/tools/priv.jpg" };
+const INK = "#0b2b72";
+const $ = (id) => document.getElementById(id);
+const fa = (s) => String(s).replace(/[0-9]/g, (c) => "۰۱۲۳۴۵۶۷۸۹"[+c]);
+const pad2 = (n) => String(n).padStart(2, "0");
+const div = (a, b) => Math.trunc(a / b);
+const GN = { m: "آقایان", w: "بانوان" };
+
+/* Gregorian -> Jalali (Iran). Checked: 2026-10-11 = 1405/07/19 */
+function g2j(gy, gm, gd) {
+  const gdm = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+  let jy = gy > 1600 ? 979 : 0;
+  gy -= gy > 1600 ? 1600 : 621;
+  const gy2 = gm > 2 ? gy + 1 : gy;
+  let days = 365 * gy + div(gy2 + 3, 4) - div(gy2 + 99, 100) + div(gy2 + 399, 400) - 80 + gd + gdm[gm - 1];
+  jy += 33 * div(days, 12053); days %= 12053;
+  jy += 4 * div(days, 1461); days %= 1461;
+  if (days > 365) { jy += div(days - 1, 365); days = (days - 1) % 365; }
+  const jm = days < 186 ? 1 + div(days, 31) : 7 + div(days - 186, 30);
+  const jd = 1 + (days < 186 ? days % 31 : (days - 186) % 30);
+  return [jy, jm, jd];
+}
+/* today's calendar day in Tehran, whatever the device time zone is */
+function tehranToday() {
+  let y, m, d;
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Tehran", year: "numeric", month: "numeric", day: "numeric" }).formatToParts(new Date());
+    const get = (t) => +parts.find((p) => p.type === t).value;
+    y = get("year"); m = get("month"); d = get("day");
+  } catch (e) { const n = new Date(); y = n.getFullYear(); m = n.getMonth() + 1; d = n.getDate(); }
+  return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d)).getUTCDay() };
+}
+function addDays(t, n) {
+  const u = new Date(Date.UTC(t.y, t.m - 1, t.d + n));
+  return { y: u.getUTCFullYear(), m: u.getUTCMonth() + 1, d: u.getUTCDate(), dow: u.getUTCDay() };
+}
+function jstr(t) { const [jy, jm, jd] = g2j(t.y, t.m, t.d); return `${jy}/${pad2(jm)}/${pad2(jd)}`; }
+
+function toLatin(s) {
+  return s.replace(/[۰-۹]/g, (c) => String(c.charCodeAt(0) - 0x06f0)).replace(/[٠-٩]/g, (c) => String(c.charCodeAt(0) - 0x0660));
+}
+/* "" = empty, null = invalid, else "HH:MM" */
+function normTime(raw) {
+  const s = toLatin(String(raw || "")).trim().replace(/[\s٫٬.,/;؛-]+/g, ":");
+  if (!s) return "";
+  let h, m, r;
+  if ((r = /^(\d{1,2}):(\d{1,2})$/.exec(s))) { h = +r[1]; m = +r[2]; }
+  else if ((r = /^(\d{1,2})$/.exec(s))) { h = +r[1]; m = 0; }
+  else if ((r = /^(\d{3,4})$/.exec(s))) { const v = r[1].padStart(4, "0"); h = +v.slice(0, 2); m = +v.slice(2); }
+  else return null;
+  if (h > 23 || m > 59) return null;
+  return pad2(h) + ":" + pad2(m);
+}
+function fitText(ctx, text, x, y, maxW, size, color) {
+  if (!text) return;
+  let s = size;
+  for (; s > 18; s -= 2) {
+    ctx.font = `800 ${s}px Vazirmatn, Tahoma, sans-serif`;
+    if (ctx.measureText(text).width <= maxW) break;
+  }
+  ctx.fillStyle = color;
+  ctx.fillText(text, x, y);
+}
+function loadImg(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
+/* plain browser download (this page runs on its own, not inside Claude) */
+async function getDownloads() {
+  return { save: async ({ filename, data }) => {
+    const u = URL.createObjectURL(data), a = document.createElement("a");
+    a.href = u; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(u), 1500);
+  } };
+}
+function toBlob(c, type, q) { return new Promise((r) => c.toBlob(r, type, q)); }
+const fontsReady = document.fonts.load("800 40px Vazirmatn", "آقایان ۱۲۳۴۵۶۷۸۹۰ مهر شنبه").catch(() => null);
+
+/* ───────────── tabs ───────────── */
+(function tabs() {
+  const T = [["tabW", "viewW"], ["tabP", "viewP"], ["tabD", "viewD"]];
+  T.forEach(([t, v]) => $(t).addEventListener("click", () => T.forEach(([t2, v2]) => {
+    $(t2).setAttribute("aria-selected", String(t2 === t)); $(v2).hidden = v2 !== v;
+  })));
+})();
+
+/* closed weekdays follow the admin page (schedule.json); Saturday is closed unless the admin opens it */
+let CLOSED = [6];
+const isClosedDow = (d) => CLOSED.indexOf(d) > -1;
+const closedReady = fetch("schedule.json?v=" + Date.now(), { cache: "no-store" })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((j) => { if (j && Array.isArray(j.closedWeekdays)) CLOSED = j.closedWeekdays.filter(Number.isInteger); })
+  .catch(() => {});
+
+/* ───────────── weekly A4 list ───────────── */
+(function weekly() {
+  const NAMES = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+  const G = ["w", "m", "w", "m", "w", "m", "m"];
+  /* box centers measured on the 1055x1490 template */
+  const ROW_Y = [588, 682, 780, 878, 975, 1072, 1169];
+  const DATE_X = 541, DATE_W = 160, TIME_X = 250, TIME_W = 340;
+  const KEY = "pool-week-v2";
+  /* usual session hours; each day can be edited after it is filled in */
+  const DEFAULT = { w: ["13:00", "18:00"], m: ["15:00", "22:00"] };
+  const fresh = () => G.map((g) => DEFAULT[g].slice());
+  const canvas = $("wposter");
+  let img = null, ready = false, hasDl = null, fbTimer = 0;
+  let today = tehranToday(), ti = (today.dow + 1) % 7, sat = addDays(today, -ti), wkey = jstr(sat);
+  let rows = fresh();
+  const els = [];
+  const closedRow = (i) => isClosedDow((i + 6) % 7);
+
+  function load() {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (v && v.key === wkey && Array.isArray(v.rows) && v.rows.length === 7) rows = v.rows.map((r) => [String(r[0] || ""), String(r[1] || "")]);
+    } catch (e) {}
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify({ key: wkey, rows })); } catch (e) {} }
+
+  function say(msg, cls) { const s = $("wstatus"); s.textContent = msg; s.className = "status" + (cls ? " " + cls : ""); }
+
+  function build() {
+    const box = $("wrows");
+    for (let i = 0; i < 7; i++) {
+      const r = document.createElement("div");
+      r.className = "wrow"; r.dataset.g = G[i];
+      const chip = document.createElement("div"); chip.className = "chip"; chip.dataset.g = G[i];
+      chip.innerHTML = `${NAMES[i]}<small>${GN[G[i]]}</small>`;
+      const date = document.createElement("div"); date.className = "wdate";
+      const mk = (j, label) => {
+        const inp = document.createElement("input");
+        inp.type = "text"; inp.id = `w-${j ? "e" : "s"}${i}`; inp.setAttribute("aria-label", `${label} ${NAMES[i]}`);
+        inp.inputMode = "numeric"; inp.autocomplete = "off"; inp.placeholder = j ? "17:30" : "16:00"; inp.dir = "ltr";
+        inp.addEventListener("input", () => { rows[i][j] = inp.value; mark(inp); save(); render(); });
+        inp.addEventListener("blur", () => { const n = normTime(inp.value); if (n) { inp.value = n; rows[i][j] = n; save(); } mark(inp); render(); });
+        return inp;
+      };
+      const s = mk(0, "ساعت شروع"), e = mk(1, "ساعت پایان");
+      r.append(chip, date, s, e); box.appendChild(r);
+      els.push({ r, date, s, e });
+    }
+  }
+  function mark(inp) { inp.setAttribute("aria-invalid", String(normTime(inp.value) === null)); }
+  function refresh() {
+    els.forEach((x, i) => {
+      const locked = i > ti;
+      x.r.classList.toggle("locked", locked);
+      x.r.classList.toggle("is-today", i === ti);
+      const cl = closedRow(i);
+      x.r.classList.toggle("closedrow", cl);
+      x.s.disabled = locked || cl; x.e.disabled = locked || cl;
+      x.s.placeholder = cl ? "تعطیل" : "16:00"; x.e.placeholder = cl ? "تعطیل" : "17:30";
+      x.date.textContent = locked ? "—" : fa(jstr(addDays(sat, i)));
+      x.s.value = locked || cl ? "" : rows[i][0]; x.e.value = locked || cl ? "" : rows[i][1];
+      mark(x.s); mark(x.e);
+    });
+    const g = G[ti];
+    $("todayLine").innerHTML = `امروز ${NAMES[ti]} ${fa(jstr(today))} <span class="tag" data-g="${g}">${GN[g]}</span>`;
+  }
+
+  function draw(c, scale) {
+    const x = c.getContext("2d");
+    x.setTransform(1, 0, 0, 1, 0, 0);
+    x.clearRect(0, 0, c.width, c.height);
+    x.imageSmoothingQuality = "high";
+    x.drawImage(img, 0, 0, c.width, c.height);
+    x.scale(scale, scale);
+    x.direction = "rtl"; x.textAlign = "center"; x.textBaseline = "middle";
+    for (let i = 0; i <= ti; i++) {
+      const y = ROW_Y[i] + 2;
+      fitText(x, fa(jstr(addDays(sat, i))), DATE_X, y, DATE_W, 34, INK);
+      if (closedRow(i)) { fitText(x, "تعطیل", TIME_X, y, TIME_W, 40, "#c62839"); continue; }
+      const a = normTime(rows[i][0]), b = normTime(rows[i][1]);
+      let t = "";
+      if (a && b) t = `${fa(a)} تا ${fa(b)}`; else if (a) t = `از ${fa(a)}`; else if (b) t = `تا ${fa(b)}`;
+      fitText(x, t, TIME_X, y, TIME_W, 40, INK);
+    }
+  }
+  function warn() {
+    for (let i = 0; i <= ti; i++) {
+      if (closedRow(i)) continue;
+      const a = normTime(rows[i][0]), b = normTime(rows[i][1]);
+      if (rows[i][0] && a === null || rows[i][1] && b === null) return `ساعت ${NAMES[i]} را مثل ۱۶:۳۰ بنویسید.`;
+      if (a && b && b <= a) return `ساعت پایان ${NAMES[i]} باید بعد از ساعت شروع باشد.`;
+    }
+    return "";
+  }
+  function render() {
+    if (!ready) return;
+    draw(canvas, 1);
+    const w = warn(); say(w, w ? "err" : "");
+    if (hasDl === false) { clearTimeout(fbTimer); fbTimer = setTimeout(() => { $("wfallback").src = canvas.toDataURL("image/jpeg", 0.92); }, 250); }
+  }
+
+  async function exportFile(type) {
+    if (!ready) return;
+    const dl = await getDownloads();
+    if (!dl) { say("ذخیره مستقیم در این نمایش ممکن نیست. روی عکس نگه دارید و ذخیره کنید.", "err"); return; }
+    const png = type === "image/png";
+    const c = document.createElement("canvas");
+    const sc = png ? 2 : 1; c.width = 1055 * sc; c.height = 1490 * sc;
+    draw(c, sc);
+    const blob = await toBlob(c, type, 0.92);
+    try {
+      await dl.save({ filename: `pool-weekly-${wkey.replace(/\//g, "-")}.${png ? "png" : "jpg"}`, data: blob });
+      say("لیست هفتگی ذخیره شد.", "ok");
+    } catch (e) { say(e && e.code === "declined" ? "ذخیره لغو شد." : "ذخیره انجام نشد. دوباره امتحان کنید.", "err"); }
+  }
+
+  /* day change while the page stays open: unlock the new day, start a fresh week on Saturday */
+  setInterval(() => {
+    const t = tehranToday();
+    if (t.y === today.y && t.m === today.m && t.d === today.d) return;
+    today = t; ti = (t.dow + 1) % 7; sat = addDays(t, -ti);
+    const k = jstr(sat);
+    if (k !== wkey) { wkey = k; rows = fresh(); save(); }
+    refresh(); render();
+  }, 60000);
+
+  build(); load(); refresh();
+  closedReady.then(() => { refresh(); render(); });
+  $("wReset").addEventListener("click", () => { rows = fresh(); save(); refresh(); render(); say("ساعت‌ها به حالت معمول برگشت.", "ok"); });
+  $("wSavePng").addEventListener("click", () => exportFile("image/png"));
+  $("wSaveJpg").addEventListener("click", () => exportFile("image/jpeg"));
+  Promise.all([loadImg(IMGS.week), fontsReady]).then(([i]) => {
+    img = i; ready = true; render();
+    return document.fonts.ready.then(render);
+  }).catch(() => say("بارگذاری تصویر لیست انجام نشد.", "err"));
+  getDownloads().then((dl) => {
+    hasDl = !!dl;
+    if (!dl) { $("wSavePng").hidden = true; $("wSaveJpg").hidden = true; canvas.hidden = true; $("wfallback").hidden = false; $("wfallbackHint").hidden = false; render(); }
+  });
+  window.__weekly = { rows: () => rows, ti: () => ti, wkey: () => wkey };
+})();
+
+/* ───────────── private sessions list ───────────── */
+(function priv() {
+  const DOW = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
+  const KEY = "pool-private-v1", MAX = 7, DAYS_AHEAD = 30;
+  const canvas = $("pposter");
+  /* panel and column geometry on the 1055x1490 template */
+  const PANEL = { x: 38, y: 443, w: 979, h: 779 };
+  const HEAD_Y = 462, HEAD_H = 66, ROW_Y0 = 553, ROW_PITCH = 96.5, ROW_H = 72;
+  const COLS = [
+    { k: "day", x: 841, w: 148, t: "روز" }, { k: "date", x: 641, w: 190, t: "تاریخ" },
+    { k: "time", x: 411, w: 220, t: "ساعت" }, { k: "group", x: 66, w: 335, t: "نام گروه" }
+  ];
+  const blank = () => ({ d: "", s: "", e: "", n: "" });
+  let list = [blank(), blank(), blank()];
+  let img = null, ready = false, hasDl = null, fbTimer = 0;
+  const today = tehranToday();
+
+  const iso = (t) => `${t.y}-${pad2(t.m)}-${pad2(t.d)}`;
+  function parts(s) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || "");
+    if (!m) return null;
+    const y = +m[1], mo = +m[2], d = +m[3];
+    return { y, m: mo, d, dow: new Date(Date.UTC(y, mo - 1, d)).getUTCDay() };
+  }
+  const label = (t) => `${DOW[t.dow]} ${fa(jstr(t))}`;
+
+  function load() {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (Array.isArray(v) && v.length) {
+        list = v.slice(0, MAX).map((r) => ({ d: String(r.d || ""), s: String(r.s || ""), e: String(r.e || ""), n: String(r.n || "") }));
+      }
+    } catch (e) {}
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} }
+  function say(msg, cls) { const s = $("pstatus"); s.textContent = msg; s.className = "status" + (cls ? " " + cls : ""); }
+
+  function options(selected) {
+    const seen = new Set(), out = ['<option value="">انتخاب روز</option>'];
+    const add = (t) => { const k = iso(t); if (seen.has(k)) return; seen.add(k); out.push(`<option value="${k}"${k === selected ? " selected" : ""}>${label(t)}</option>`); };
+    const sp = parts(selected);
+    if (sp && iso(sp) < iso(today)) add(sp);
+    for (let i = 0; i < DAYS_AHEAD; i++) add(addDays(today, i));
+    if (sp && !seen.has(selected)) add(sp);
+    return out.join("");
+  }
+
+  function buildList() {
+    const box = $("plist"); box.innerHTML = "";
+    list.forEach((r, i) => {
+      const card = document.createElement("div"); card.className = "pcard";
+      const top = document.createElement("div"); top.className = "top";
+      const sel = document.createElement("select"); sel.id = `p-d${i}`; sel.setAttribute("aria-label", `روز و تاریخ سانس خصوصی ${fa(i + 1)}`);
+      sel.innerHTML = options(r.d);
+      sel.addEventListener("change", () => { r.d = sel.value; save(); render(); });
+      const del = document.createElement("button"); del.type = "button"; del.className = "del"; del.textContent = "×";
+      del.setAttribute("aria-label", `حذف سانس خصوصی ${fa(i + 1)}`);
+      del.addEventListener("click", () => { list.splice(i, 1); if (!list.length) list.push(blank()); save(); buildList(); render(); });
+      top.append(sel, del);
+      const tw = document.createElement("div"); tw.className = "times2";
+      const mkT = (key, id, ph, lab) => {
+        const inp = document.createElement("input"); inp.type = "text"; inp.id = id; inp.value = r[key]; inp.placeholder = ph;
+        inp.inputMode = "numeric"; inp.autocomplete = "off"; inp.setAttribute("aria-label", `${lab} سانس خصوصی ${fa(i + 1)}`);
+        inp.setAttribute("aria-invalid", String(normTime(inp.value) === null));
+        inp.addEventListener("input", () => { r[key] = inp.value; inp.setAttribute("aria-invalid", String(normTime(inp.value) === null)); save(); render(); });
+        inp.addEventListener("blur", () => { const n = normTime(inp.value); if (n) { inp.value = n; r[key] = n; save(); } render(); });
+        return inp;
+      };
+      tw.append(mkT("s", `p-s${i}`, "شروع 16:00", "ساعت شروع"), document.createTextNode("تا"), mkT("e", `p-e${i}`, "پایان 17:30", "ساعت پایان"));
+      const nm = document.createElement("input"); nm.type = "text"; nm.id = `p-n${i}`; nm.value = r.n; nm.placeholder = "نام گروه";
+      nm.autocomplete = "off"; nm.setAttribute("aria-label", `نام گروه سانس خصوصی ${fa(i + 1)}`);
+      nm.addEventListener("input", () => { r.n = nm.value; save(); render(); });
+      card.append(top, tw, nm); box.appendChild(card);
+    });
+    $("pAdd").disabled = list.length >= MAX;
+    $("pCount").textContent = list.length >= MAX ? "جای پوستر پر شد (حداکثر ۷ سانس)." : `${fa(list.length)} از ${fa(MAX)}`;
+  }
+
+  function rr(x, X, Y, W, H, R) {
+    x.beginPath(); x.moveTo(X + R, Y); x.arcTo(X + W, Y, X + W, Y + H, R); x.arcTo(X + W, Y + H, X, Y + H, R);
+    x.arcTo(X, Y + H, X, Y, R); x.arcTo(X, Y, X + W, Y, R); x.closePath();
+  }
+  function shown() {
+    return list.filter((r) => r.d || r.n.trim() || normTime(r.s) || normTime(r.e)).sort((a, b) =>
+      (a.d || "9").localeCompare(b.d || "9") || (normTime(a.s) || "99").localeCompare(normTime(b.s) || "99"));
+  }
+  function draw(c, scale) {
+    const x = c.getContext("2d");
+    x.setTransform(1, 0, 0, 1, 0, 0);
+    x.clearRect(0, 0, c.width, c.height);
+    x.imageSmoothingQuality = "high";
+    x.drawImage(img, 0, 0, c.width, c.height);
+    x.scale(scale, scale);
+    x.direction = "rtl"; x.textAlign = "center"; x.textBaseline = "middle";
+    /* banner title (the template's old title is removed in the base image) */
+    x.save(); x.shadowColor = "rgba(0,20,90,.55)"; x.shadowBlur = 6; x.shadowOffsetY = 3;
+    fitText(x, "سانس‌های خصوصی", 540, 387, 520, 64, "#ffffff");
+    x.restore();
+    /* glass panel */
+    x.save(); x.shadowColor = "rgba(0,40,120,.35)"; x.shadowBlur = 26; x.shadowOffsetY = 8;
+    const pg = x.createLinearGradient(0, PANEL.y, 0, PANEL.y + PANEL.h);
+    pg.addColorStop(0, "#f3f9ff"); pg.addColorStop(1, "#d5e9ff");
+    rr(x, PANEL.x, PANEL.y, PANEL.w, PANEL.h, 38); x.fillStyle = pg; x.fill(); x.restore();
+    x.lineWidth = 3; x.strokeStyle = "rgba(255,255,255,.95)"; rr(x, PANEL.x, PANEL.y, PANEL.w, PANEL.h, 38); x.stroke();
+    const blue = (y, h) => { const g = x.createLinearGradient(0, y, 0, y + h); g.addColorStop(0, "#2b7cee"); g.addColorStop(1, "#0a43b4"); return g; };
+    COLS.forEach((col) => {
+      rr(x, col.x, HEAD_Y, col.w, HEAD_H, 26); x.fillStyle = blue(HEAD_Y, HEAD_H); x.fill();
+      fitText(x, col.t, col.x + col.w / 2, HEAD_Y + HEAD_H / 2 + 2, col.w - 24, 36, "#ffffff");
+    });
+    const data = shown();
+    for (let i = 0; i < MAX; i++) {
+      const y = ROW_Y0 + i * ROW_PITCH, cy = y + ROW_H / 2 + 2, r = data[i], t = r && parts(r.d);
+      COLS.forEach((col) => {
+        const filledDay = col.k === "day" && t;
+        rr(x, col.x, y, col.w, ROW_H, 22);
+        if (filledDay) { x.fillStyle = blue(y, ROW_H); x.fill(); }
+        else { x.fillStyle = "#e6f3ff"; x.fill(); x.lineWidth = 2.5; x.strokeStyle = "#86c3f2"; x.stroke(); }
+      });
+      if (!r) continue;
+      const cx = (col) => col.x + col.w / 2;
+      if (t) {
+        fitText(x, DOW[t.dow], cx(COLS[0]), cy, COLS[0].w - 20, 38, "#ffffff");
+        fitText(x, fa(jstr(t)), cx(COLS[1]), cy, COLS[1].w - 24, 34, INK);
+      }
+      const a = normTime(r.s), b = normTime(r.e);
+      let tm = ""; if (a && b) tm = `${fa(a)} تا ${fa(b)}`; else if (a) tm = `از ${fa(a)}`; else if (b) tm = `تا ${fa(b)}`;
+      fitText(x, tm, cx(COLS[2]), cy, COLS[2].w - 24, 38, INK);
+      fitText(x, r.n.trim(), cx(COLS[3]), cy, COLS[3].w - 30, 40, INK);
+    }
+  }
+  function warn() {
+    for (let i = 0; i < list.length; i++) {
+      const r = list[i], a = normTime(r.s), b = normTime(r.e);
+      if ((r.s && a === null) || (r.e && b === null)) return `ساعت سانس خصوصی ${fa(i + 1)} را مثل ۱۶:۳۰ بنویسید.`;
+      if (a && b && b <= a) return `ساعت پایان سانس خصوصی ${fa(i + 1)} باید بعد از شروع باشد.`;
+    }
+    return "";
+  }
+  function render() {
+    if (!ready) return;
+    draw(canvas, 1);
+    const w = warn(); say(w, w ? "err" : "");
+    if (hasDl === false) { clearTimeout(fbTimer); fbTimer = setTimeout(() => { $("pfallback").src = canvas.toDataURL("image/jpeg", 0.92); }, 250); }
+  }
+  async function exportFile(type) {
+    if (!ready) return;
+    const dl = await getDownloads();
+    if (!dl) { say("ذخیره مستقیم در این نمایش ممکن نیست. روی عکس نگه دارید و ذخیره کنید.", "err"); return; }
+    const png = type === "image/png", sc = png ? 2 : 1;
+    const c = document.createElement("canvas"); c.width = 1055 * sc; c.height = 1490 * sc;
+    draw(c, sc);
+    const blob = await toBlob(c, type, 0.92);
+    try {
+      await dl.save({ filename: `pool-private-${jstr(today).replace(/\//g, "-")}.${png ? "png" : "jpg"}`, data: blob });
+      say("لیست سانس‌های خصوصی ذخیره شد.", "ok");
+    } catch (e) { say(e && e.code === "declined" ? "ذخیره لغو شد." : "ذخیره انجام نشد. دوباره امتحان کنید.", "err"); }
+  }
+
+  load(); buildList();
+  $("pAdd").addEventListener("click", () => { if (list.length >= MAX) return; list.push(blank()); save(); buildList(); render(); const n = $(`p-d${list.length - 1}`); if (n) n.focus(); });
+  $("pSavePng").addEventListener("click", () => exportFile("image/png"));
+  $("pSaveJpg").addEventListener("click", () => exportFile("image/jpeg"));
+  Promise.all([loadImg(IMGS.priv), fontsReady]).then(([i]) => {
+    img = i; ready = true; render();
+    return document.fonts.ready.then(render);
+  }).catch(() => say("بارگذاری تصویر لیست انجام نشد.", "err"));
+  getDownloads().then((dl) => {
+    hasDl = !!dl;
+    if (!dl) { $("pSavePng").hidden = true; $("pSaveJpg").hidden = true; canvas.hidden = true; $("pfallback").hidden = false; $("pfallbackHint").hidden = false; render(); }
+  });
+})();
+
+/* ───────────── daily square poster ───────────── */
+(function daily() {
+  const DAYS = [
+    { k: 6, n: "شنبه", g: "w" }, { k: 0, n: "یکشنبه", g: "m" }, { k: 1, n: "دوشنبه", g: "w" },
+    { k: 2, n: "سه‌شنبه", g: "m" }, { k: 3, n: "چهارشنبه", g: "w" }, { k: 4, n: "پنج‌شنبه", g: "m" },
+    { k: 5, n: "جمعه", g: "m" }
+  ];
+  /* where the empty boxes sit on the 1254px sample posters */
+  const SPOT = { m: { dayY: 880, dateY: 880, timeY: 978 }, w: { dayY: 877, dateY: 874, timeY: 976 } };
+  const DAY_X = 829, DAY_W = 300, DATE_X = 278, DATE_W = 330, TIME_X = [735, 473, 207], TIME_W = 175;
+  const canvas = $("poster"), ctx = canvas.getContext("2d");
+  const state = { day: DAYS.find((d) => d.k === tehranToday().dow) || DAYS[0], dateDirty: false };
+  const pics = {};
+  let ready = false, hasDl = null, fbTimer = 0;
+
+  function nextDateText(k) {
+    const t = tehranToday();
+    return fa(jstr(addDays(t, (k - t.dow + 7) % 7)));
+  }
+  function render() {
+    if (!ready) return;
+    const g = state.day.g, sp = SPOT[g];
+    ctx.clearRect(0, 0, 1254, 1254);
+    ctx.drawImage(pics[g], 0, 0, 1254, 1254);
+    ctx.direction = "rtl"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    fitText(ctx, state.day.n, DAY_X, sp.dayY, DAY_W, 50, INK);
+    fitText(ctx, fa($("date").value.trim()), DATE_X, sp.dateY, DATE_W, 46, INK);
+    ["t1", "t2", "t3"].forEach((id, i) => fitText(ctx, fa($(id).value.trim()), TIME_X[i], sp.timeY, TIME_W, 48, INK));
+    canvas.setAttribute("aria-label", `پوستر سانس‌های امروز ${GN[g]}، ${state.day.n}`);
+    document.body.dataset.g = g;
+    if (hasDl === false) { clearTimeout(fbTimer); fbTimer = setTimeout(() => { $("fallback").src = canvas.toDataURL("image/png"); }, 250); }
+  }
+  function buildDays() {
+    const box = $("days");
+    DAYS.forEach((d) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "day"; b.dataset.g = d.g; b.dataset.k = d.k;
+      b.innerHTML = `<b>${d.n}</b><small>${GN[d.g]}</small>`;
+      b.addEventListener("click", () => pick(d));
+      box.appendChild(b);
+    });
+    markDays();
+  }
+  function markDays() { document.querySelectorAll(".day").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.k === state.day.k))); }
+  function pick(d) {
+    state.day = d;
+    if (!state.dateDirty) $("date").value = nextDateText(d.k);
+    markDays(); render();
+  }
+  function say(msg, cls) { const s = $("status"); s.textContent = msg; s.className = "status" + (cls ? " " + cls : ""); }
+  async function save(type) {
+    if (!ready) return;
+    const dl = await getDownloads();
+    if (!dl) { say("ذخیره مستقیم در این نمایش ممکن نیست. روی عکس نگه دارید و ذخیره کنید.", "err"); return; }
+    const ext = type === "image/png" ? "png" : "jpg";
+    let blob;
+    if (type === "image/jpeg") {
+      const c = document.createElement("canvas"); c.width = 1254; c.height = 1254;
+      const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, 1254, 1254); x.drawImage(canvas, 0, 0);
+      blob = await toBlob(c, type, 0.92);
+    } else blob = await toBlob(canvas, type);
+    try {
+      await dl.save({ filename: `pool-${state.day.k}-${state.day.g === "m" ? "men" : "women"}.${ext}`, data: blob });
+      say("پوستر ذخیره شد.", "ok");
+    } catch (e) { say(e && e.code === "declined" ? "ذخیره لغو شد." : "ذخیره انجام نشد. دوباره امتحان کنید.", "err"); }
+  }
+  function store() { try { localStorage.setItem("pool-times", JSON.stringify(["t1", "t2", "t3"].map((id) => $(id).value))); } catch (e) {} }
+  function restore() {
+    try {
+      const v = JSON.parse(localStorage.getItem("pool-times") || "null");
+      if (Array.isArray(v)) ["t1", "t2", "t3"].forEach((id, i) => { $(id).value = v[i] || ""; });
+    } catch (e) {}
+  }
+
+  function applyClosed() {
+    document.querySelectorAll(".day").forEach((b) => {
+      const cl = isClosedDow(+b.dataset.k);
+      b.disabled = cl; b.querySelector("small").textContent = cl ? "تعطیل" : GN[b.dataset.g];
+    });
+    if (isClosedDow(state.day.k)) { const o = DAYS.find((d) => !isClosedDow(d.k)); if (o) pick(o); }
+  }
+  buildDays();
+  closedReady.then(applyClosed);
+  $("date").value = nextDateText(state.day.k);
+  $("t1").value = "۱۶:۰۰"; $("t2").value = "۱۷:۳۰"; $("t3").value = "۱۹:۰۰";
+  restore();
+  $("date").addEventListener("input", () => { state.dateDirty = true; render(); });
+  $("autoDate").addEventListener("click", () => { state.dateDirty = false; $("date").value = nextDateText(state.day.k); render(); });
+  ["t1", "t2", "t3"].forEach((id) => $(id).addEventListener("input", () => { store(); render(); }));
+  $("savePng").addEventListener("click", () => save("image/png"));
+  $("saveJpg").addEventListener("click", () => save("image/jpeg"));
+  Promise.all([loadImg(IMGS.m), loadImg(IMGS.w), fontsReady]).then(([m, w]) => {
+    pics.m = m; pics.w = w; ready = true; render();
+    return document.fonts.ready.then(render);
+  }).catch(() => say("بارگذاری تصویر پوستر انجام نشد.", "err"));
+  getDownloads().then((dl) => {
+    hasDl = !!dl;
+    if (!dl) { $("savePng").hidden = true; $("saveJpg").hidden = true; canvas.hidden = true; $("fallback").hidden = false; $("fallbackHint").hidden = false; render(); }
+  });
+})();
+
+/* embedded mode (inside the admin page): ?t=w|p|d shows one tool, hides the tab bar, reports its height to the parent */
+(function embed() {
+  const q = new URLSearchParams(location.search).get("t"), map = { w: "tabW", p: "tabP", d: "tabD" };
+  if (!map[q]) return;
+  document.querySelector(".tabs").style.display = "none"; document.body.style.padding = "0"; document.body.style.background = "transparent";
+  $(map[q]).click();
+  const send = () => { try { parent.postMessage({ poolToolsHeight: Math.ceil((document.querySelector("main.app:not([hidden])") || document.body).getBoundingClientRect().bottom + scrollY + 24) }, location.origin); } catch (e) {} };
+  new ResizeObserver(send).observe(document.querySelector("main.app:not([hidden])") || document.body); addEventListener("load", send); setTimeout(send, 600); setTimeout(send, 2000);
+})();
+</script>
+</body>
+</html>

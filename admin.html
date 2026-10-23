@@ -59,13 +59,29 @@ code{background:#eef4f8;padding:1px 6px;border-radius:6px;font-size:13px;directi
 .sw-line{display:flex;gap:10px;align-items:center;margin-bottom:12px}
 .savebar{position:sticky;bottom:0;background:rgba(241,248,251,.94);backdrop-filter:blur(8px);padding:12px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
 [hidden]{display:none!important}
-@media(max-width:560px){.card{padding:18px}.wd-row{padding:12px}}
+.atabs{display:flex;gap:8px;overflow-x:auto;padding:4px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 18px rgba(6,24,44,.05)}
+.atabs button{flex:1 0 auto;border:0;border-radius:13px;padding:12px 16px;font-weight:800;font-size:14px;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap}
+.atabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.atabs button:not([aria-selected="true"]):hover{background:var(--foam);color:var(--ink)}
+main.wide{width:min(1120px,100% - 32px)}
+#toolFrame{display:block;width:100%;height:900px;border:0;border-radius:22px;background:#f3f6fb}
+@media(max-width:560px){.atabs{display:grid;grid-template-columns:1fr 1fr}.atabs button{white-space:normal;padding:11px 8px}.card{padding:18px}.wd-row{padding:12px}}
 </style>
 </head>
 <body>
 <header><div class="hd"><img src="img/logo.webp" alt="" width="76" height="38"><h1>پنل مدیر</h1><div class="sp"><a href="index.html">مشاهده سایت</a><button class="btn line" type="button" id="logout" hidden style="padding:7px 14px">خروج</button></div></div></header>
 
-<main>
+<main id="mainBox">
+  <nav class="atabs" id="atabs" role="tablist" aria-label="بخش‌های پنل" hidden>
+    <button type="button" role="tab" id="at-sched" aria-selected="true" data-tab="sched">برنامه و تعطیلی سایت</button>
+    <button type="button" role="tab" id="at-w" aria-selected="false" data-tab="w">لیست هفتگی A4</button>
+    <button type="button" role="tab" id="at-p" aria-selected="false" data-tab="p">سانس‌های خصوصی</button>
+    <button type="button" role="tab" id="at-d" aria-selected="false" data-tab="d">پوستر روزانه</button>
+  </nav>
+  <section id="toolView" hidden aria-live="polite">
+    <iframe id="toolFrame" title="ابزار پوستر" loading="lazy"></iframe>
+  </section>
+
   <!-- step 1: sign in with the GitHub token -->
   <section class="card" id="loginCard">
     <h2>ورود مدیر</h2>
@@ -152,7 +168,7 @@ function label(x){var j=g2j(x.y,x.m,x.d);return DAYS[x.dow]+' '+fa(j[2])+' '+MON
 var cfg={token:'',repo:'pcmohqm-coder/pool-ticket',branch:'main',path:'schedule.json'};
 var data=defaults();
 var sha=null;                                    /* current file sha on GitHub, null if the file does not exist yet */
-function defaults(){return {version:1,updated:'',closedWeekdays:[],closedDates:[],announcement:{enabled:false,fa:'',ar:''}}}
+function defaults(){return {version:1,updated:'',closedWeekdays:[6],closedDates:[],announcement:{enabled:false,fa:'',ar:''}}}
 function normalize(j){
   var s=defaults();if(!j||typeof j!=='object')return s;
   if(Array.isArray(j.closedWeekdays))s.closedWeekdays=j.closedWeekdays.filter(function(x){return Number.isInteger(x)&&x>=0&&x<=6});
@@ -238,8 +254,22 @@ function renderAll(){renderWeek();renderDates();renderAnn()}
 function readAnn(){data.announcement={enabled:$('#annOn').checked,fa:$('#annFa').value.trim(),ar:$('#annAr').value.trim()}}
 
 function enter(){
-  $('#loginCard').hidden=true;$('#editor').hidden=false;$('#logout').hidden=false;renderAll();
+  $('#loginCard').hidden=true;$('#logout').hidden=false;$('#atabs').hidden=false;renderAll();showTab('sched');
 }
+/* top tabs: site schedule (editor) or one of the three poster tools in an iframe */
+function showTab(k){
+  var tool=k!=='sched';
+  document.querySelectorAll('#atabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.tab===k))});
+  $('#editor').hidden=tool;$('#toolView').hidden=!tool;$('#mainBox').classList.toggle('wide',tool);
+  if(tool){var f=$('#toolFrame'),src='tools.html?t='+k;if(f.getAttribute('data-src')!==src){f.setAttribute('data-src',src);f.style.height='900px';f.src=src}}
+  try{sessionStorage.setItem('poolTab',k)}catch(e){}
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('#atabs button').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.tab)})});
+window.addEventListener('message',function(e){
+  if(e.origin!==location.origin||!e.data||typeof e.data.poolToolsHeight!=='number')return;
+  $('#toolFrame').style.height=Math.max(500,Math.min(4000,e.data.poolToolsHeight+8))+'px';
+});
 function loginFlow(auto){
   var tok=$('#token').value.trim()||cfg.token;
   if(!tok){show($('#loginMsg'),'err','توکن را وارد کنید.');return}
@@ -257,7 +287,7 @@ $('#login').addEventListener('click',function(){loginFlow(false)});
 $('#token').addEventListener('keydown',function(e){if(e.key==='Enter')loginFlow(false)});
 $('#logout').addEventListener('click',function(){
   try{localStorage.removeItem('poolAdmin')}catch(e){}
-  cfg.token='';$('#token').value='';$('#editor').hidden=true;$('#logout').hidden=true;$('#loginCard').hidden=false;
+  cfg.token='';$('#token').value='';$('#editor').hidden=true;$('#toolView').hidden=true;$('#atabs').hidden=true;$('#mainBox').classList.remove('wide');$('#toolFrame').removeAttribute('src');$('#toolFrame').removeAttribute('data-src');$('#logout').hidden=true;$('#loginCard').hidden=false;
 });
 $('#addDate').addEventListener('click',function(){var v=$('#dateSel').value;if(v&&data.closedDates.indexOf(v)===-1){data.closedDates.push(v);data.closedDates.sort();renderDates()}});
 $('#annOn').addEventListener('change',function(){$('#annState').textContent='نمایش پیام: '+($('#annOn').checked?'روشن':'خاموش')});
