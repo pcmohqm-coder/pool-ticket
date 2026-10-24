@@ -85,7 +85,13 @@ main.wide{width:min(1120px,100% - 32px)}
   <!-- step 1: sign in with the GitHub token -->
   <section class="card" id="loginCard">
     <h2>ورود مدیر</h2>
-    <p class="lead">برای تغییر برنامه، یک بار کلید دسترسی گیت‌هاب (توکن) را وارد کنید. این کلید فقط در همین مرورگر ذخیره می‌شود و به جای دیگری فرستاده نمی‌شود.</p>
+    <div id="unlockBox" hidden>
+      <p class="lead">رمز خود را وارد کنید.</p>
+      <div class="field"><label for="pw">رمز</label><input type="password" id="pw" autocomplete="current-password" spellcheck="false"></div>
+      <p class="hint"><a href="#" id="newToken">ورود با توکن جدید یا فراموشی رمز</a></p>
+    </div>
+    <div id="setupBox">
+    <p class="lead">بار اول، کلید دسترسی گیت‌هاب (توکن) را وارد کنید و یک رمز دلخواه بگذارید. دفعه‌های بعد فقط رمز را می‌زنید. توکن فقط رمزگذاری‌شده در همین مرورگر می‌ماند و جای دیگری فرستاده نمی‌شود.</p>
     <details>
       <summary>توکن را از کجا بسازم؟</summary>
       <ol>
@@ -97,12 +103,14 @@ main.wide{width:min(1120px,100% - 32px)}
       </ol>
     </details>
     <div class="field"><label for="token">توکن گیت‌هاب</label><input type="password" id="token" autocomplete="off" spellcheck="false" dir="ltr" placeholder="github_pat_..."></div>
+    <div class="field"><label for="pwNew">رمز دلخواه شما</label><input type="password" id="pwNew" autocomplete="new-password" spellcheck="false"><span class="hint">حداقل ۶ کاراکتر. فقط روی همین دستگاه کار می‌کند.</span></div>
     <details>
       <summary>تنظیمات پیشرفته مخزن</summary>
       <div class="field" style="margin-top:12px"><label for="repo">مخزن (صاحب/نام)</label><input type="text" id="repo" dir="ltr" value="pcmohqm-coder/pool-ticket"></div>
       <div class="field"><label for="branch">شاخه</label><input type="text" id="branch" dir="ltr" value="main"></div>
       <div class="field"><label for="path">فایل برنامه</label><input type="text" id="path" dir="ltr" value="schedule.json"></div>
     </details>
+    </div>
     <div class="row"><button class="btn pri" type="button" id="login">ورود</button></div>
     <div class="msg err" id="loginMsg" hidden role="alert"></div>
   </section>
@@ -270,24 +278,65 @@ window.addEventListener('message',function(e){
   if(e.origin!==location.origin||!e.data||typeof e.data.poolToolsHeight!=='number')return;
   $('#toolFrame').style.height=Math.max(500,Math.min(4000,e.data.poolToolsHeight+8))+'px';
 });
-function loginFlow(auto){
-  var tok=$('#token').value.trim()||cfg.token;
-  if(!tok){show($('#loginMsg'),'err','توکن را وارد کنید.');return}
-  cfg.token=tok;cfg.repo=$('#repo').value.trim()||cfg.repo;cfg.branch=$('#branch').value.trim()||cfg.branch;cfg.path=$('#path').value.trim()||cfg.path;
-  $('#login').disabled=true;$('#loginMsg').hidden=true;
-  loadFile().then(function(){
-    try{localStorage.setItem('poolAdmin',JSON.stringify(cfg))}catch(e){}
-    enter();
-  }).catch(function(e){
-    cfg.token='';show($('#loginMsg'),'err',errText(e));$('#loginCard').hidden=false;
-    if(auto)try{localStorage.removeItem('poolAdmin')}catch(x){}
-  }).then(function(){$('#login').disabled=false});
+/* ---- password login: the GitHub token is stored encrypted (AES-GCM, key from the password via PBKDF2) ---- */
+var VAULT='poolAdminVault',mode='setup';
+function b64(buf){var a=new Uint8Array(buf),s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s)}
+function unb64(t){var s=atob(t),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+function deriveKey(pw,salt){
+  return crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']).then(function(m){
+    return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:250000,hash:'SHA-256'},m,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+  });
 }
-$('#login').addEventListener('click',function(){loginFlow(false)});
-$('#token').addEventListener('keydown',function(e){if(e.key==='Enter')loginFlow(false)});
+function sealVault(pw,obj){
+  var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
+  return deriveKey(pw,salt).then(function(k){return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,new TextEncoder().encode(JSON.stringify(obj)))}).then(function(ct){
+    localStorage.setItem(VAULT,JSON.stringify({v:1,salt:b64(salt),iv:b64(iv),ct:b64(ct)}));
+  });
+}
+function openVault(pw){
+  var v=JSON.parse(localStorage.getItem(VAULT));
+  return deriveKey(pw,unb64(v.salt)).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(v.iv)},k,unb64(v.ct))}).then(function(pt){return JSON.parse(new TextDecoder().decode(pt))});
+}
+function hasVault(){try{return !!localStorage.getItem(VAULT)}catch(e){return false}}
+function setMode(m){
+  mode=m;$('#unlockBox').hidden=m!=='unlock';$('#setupBox').hidden=m!=='setup';$('#loginMsg').hidden=true;
+  setTimeout(function(){try{(m==='unlock'?$('#pw'):$('#token')).focus()}catch(e){}},50);
+}
+function finishLogin(){
+  return loadFile().then(function(){enter()});
+}
+function loginFlow(){
+  if(!window.crypto||!crypto.subtle){show($('#loginMsg'),'err','این مرورگر رمزگذاری را پشتیبانی نمی‌کند. صفحه را با https باز کنید.');return}
+  $('#loginMsg').hidden=true;
+  var b=$('#login');b.disabled=true;
+  var done=function(){b.disabled=false};
+  if(mode==='unlock'){
+    var pw=$('#pw').value;
+    if(!pw){show($('#loginMsg'),'err','رمز را وارد کنید.');done();return}
+    openVault(pw).then(function(o){cfg=o;return finishLogin()},function(){throw Object.assign(new Error('bad'),{badPw:true})})
+      .catch(function(e){show($('#loginMsg'),'err',e&&e.badPw?'رمز اشتباه است.':errText(e));$('#loginCard').hidden=false})
+      .then(function(){$('#pw').value='';done()});
+    return;
+  }
+  var tok=$('#token').value.trim(),pn=$('#pwNew').value;
+  if(!tok){show($('#loginMsg'),'err','توکن را وارد کنید.');done();return}
+  if(pn.length<6){show($('#loginMsg'),'err','رمز باید حداقل ۶ کاراکتر باشد.');done();return}
+  cfg.token=tok;cfg.repo=$('#repo').value.trim()||cfg.repo;cfg.branch=$('#branch').value.trim()||cfg.branch;cfg.path=$('#path').value.trim()||cfg.path;
+  finishLogin().then(function(){return sealVault(pn,cfg)}).then(function(){$('#token').value='';$('#pwNew').value=''})
+    .catch(function(e){cfg.token='';show($('#loginMsg'),'err',errText(e));$('#loginCard').hidden=false})
+    .then(done);
+}
+$('#login').addEventListener('click',loginFlow);
+$('#token').addEventListener('keydown',function(e){if(e.key==='Enter')$('#pwNew').focus()});
+$('#pwNew').addEventListener('keydown',function(e){if(e.key==='Enter')loginFlow()});
+$('#pw').addEventListener('keydown',function(e){if(e.key==='Enter')loginFlow()});
+$('#newToken').addEventListener('click',function(e){
+  e.preventDefault();
+  if(confirm('توکن و رمز ذخیره‌شده روی این دستگاه پاک می‌شود و باید توکن جدید وارد کنید. ادامه می‌دهید؟')){try{localStorage.removeItem(VAULT)}catch(x){}setMode('setup')}
+});
 $('#logout').addEventListener('click',function(){
-  try{localStorage.removeItem('poolAdmin')}catch(e){}
-  cfg.token='';$('#token').value='';$('#editor').hidden=true;$('#toolView').hidden=true;$('#atabs').hidden=true;$('#mainBox').classList.remove('wide');$('#toolFrame').removeAttribute('src');$('#toolFrame').removeAttribute('data-src');$('#logout').hidden=true;$('#loginCard').hidden=false;
+  cfg.token='';$('#editor').hidden=true;$('#toolView').hidden=true;$('#atabs').hidden=true;$('#mainBox').classList.remove('wide');$('#toolFrame').removeAttribute('src');$('#toolFrame').removeAttribute('data-src');$('#logout').hidden=true;$('#loginCard').hidden=false;
+  setMode(hasVault()?'unlock':'setup');
 });
 $('#addDate').addEventListener('click',function(){var v=$('#dateSel').value;if(v&&data.closedDates.indexOf(v)===-1){data.closedDates.push(v);data.closedDates.sort();renderDates()}});
 $('#annOn').addEventListener('change',function(){$('#annState').textContent='نمایش پیام: '+($('#annOn').checked?'روشن':'خاموش')});
@@ -313,11 +362,9 @@ $('#dl').addEventListener('click',function(){
   setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
 });
 
-/* auto sign-in when the token is already saved on this device */
-try{
-  var saved=JSON.parse(localStorage.getItem('poolAdmin')||'null');
-  if(saved&&saved.token){cfg=saved;$('#repo').value=cfg.repo;$('#branch').value=cfg.branch;$('#path').value=cfg.path;$('#token').value=cfg.token;loginFlow(true)}
-}catch(e){}
+/* start: old plain-text token (earlier version) is removed; saved vault -> ask for the password */
+try{localStorage.removeItem('poolAdmin')}catch(e){}
+setMode(hasVault()?'unlock':'setup');
 })();
 </script>
 </body>

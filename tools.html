@@ -245,7 +245,8 @@ button.day:disabled { opacity: .45; cursor: not-allowed; }
 </main>
 
 <script>
-const IMGS = { m: "img/tools/m.jpg", w: "img/tools/w.jpg", week: "img/tools/week.jpg", priv: "img/tools/priv.jpg" };
+const IMGS = {};
+["m","w","week","priv"].forEach(k => { IMGS[k] = ["img/tools/"+k+".jpg","tools/"+k+".jpg","img/"+k+".jpg","img/tools/"+k+".jpeg","img/tools/"+k+".png","tools/"+k+".png","img/tools/"+k+".webp","tools/"+k+".webp"]; });
 const INK = "#0b2b72";
 const $ = (id) => document.getElementById(id);
 const fa = (s) => String(s).replace(/[0-9]/g, (c) => "۰۱۲۳۴۵۶۷۸۹"[+c]);
@@ -308,7 +309,13 @@ function fitText(ctx, text, x, y, maxW, size, color) {
   ctx.fillStyle = color;
   ctx.fillText(text, x, y);
 }
-function loadImg(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
+function loadImg(src) {
+  const list = Array.isArray(src) ? src.slice() : [src];
+  return new Promise((res, rej) => {
+    const next = () => { if (!list.length) return rej(new Error("img")); const i = new Image(); i.onload = () => res(i); i.onerror = next; i.src = list.shift(); };
+    next();
+  });
+}
 /* plain browser download (this page runs on its own, not inside Claude) */
 async function getDownloads() {
   return { save: async ({ filename, data }) => {
