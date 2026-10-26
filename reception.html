@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#06182c">
+<title>پنل پذیرش استخر شهدای بسیج</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#06182c;--navy:#0a2a4a;--blue:#0b78c4;--aqua:#34d3e3;--foam:#f1f8fb;--text:#12283d;--muted:#566d80;--line:#d8e7ee;--ok:#16874f;--ok-soft:#e0f5e9;--bad:#c62839;--bad-soft:#fde8ea;--gold:#f2c14e;--font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--foam);color:var(--text);line-height:1.7;min-height:100vh;-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
+[hidden]{display:none!important}
+header{background:var(--ink);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:20}
+.hd{width:min(900px,100%);margin-inline:auto;display:flex;align-items:center;gap:12px}
+.hd img{height:34px;width:auto}.hd h1{font-size:17px;font-weight:900}
+.hd .sp{margin-inline-start:auto;display:flex;gap:10px;align-items:center}
+.sync{font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:6px;color:#bfe9f4}
+.sync i{width:9px;height:9px;border-radius:50%;background:#46d68a;display:inline-block}
+.sync.busy i{background:var(--gold)}.sync.err i{background:#ff6b78}
+main{width:min(900px,100% - 24px);margin:16px auto 80px;display:grid;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 24px rgba(6,24,44,.06)}
+.card h2{font-size:17px;font-weight:900;color:var(--ink);margin-bottom:10px}
+.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-weight:800;font-size:14px}
+input[type=text],input[type=password],select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff;font-size:15px}
+.hint{font-size:12.5px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:12px 18px;font-weight:800;font-size:14px;cursor:pointer;background:var(--ink);color:#fff}
+.btn.pri{background:linear-gradient(135deg,var(--aqua),#2aa7e0);color:#04243a}
+.btn.line{background:#fff;border:1.5px solid var(--line);color:var(--navy)}
+.btn.danger{background:var(--bad-soft);color:var(--bad)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.msg{padding:11px 14px;border-radius:12px;font-size:14px;font-weight:700;margin-top:12px}
+.msg.err{background:var(--bad-soft);color:var(--bad)}.msg.ok{background:var(--ok-soft);color:var(--ok)}
+details{border:1px dashed var(--line);border-radius:14px;padding:10px 14px;margin:12px 0}summary{cursor:pointer;font-weight:800;font-size:14px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tabs button{border:2px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;font-weight:900;font-size:17px;cursor:pointer;color:var(--muted)}
+.tabs button small{display:block;font-size:12px;font-weight:700}
+.tabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar select{width:auto;flex:1;min-width:150px}
+.warn{background:#fff6dc;border:1px solid #f0d78a;color:#7a5a00;border-radius:14px;padding:10px 14px;font-weight:700;font-size:14px}
+/* sale rows */
+.sale{display:grid;grid-template-columns:1fr auto;gap:10px 12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.sale:last-child{border-bottom:0}
+.sale b{font-size:16px}.sale .pr{color:var(--muted);font-size:13px;font-weight:700}
+.step{display:inline-flex;align-items:center;gap:4px;background:var(--foam);border-radius:14px;padding:4px}
+.step button{width:44px;height:44px;border:0;border-radius:11px;background:#fff;font-size:24px;font-weight:900;cursor:pointer;box-shadow:0 1px 3px rgba(6,24,44,.15);color:var(--ink)}
+.step output{min-width:44px;text-align:center;font-size:22px;font-weight:900}
+.pay{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pay .btn{padding:13px 8px;font-size:15px}
+.tot{font-weight:900;color:var(--blue);font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-size:12.5px;font-weight:800}
+td:first-child,th:first-child{text-align:start;font-weight:800}
+tfoot td{font-weight:900;background:var(--foam);border-bottom:0}
+.tw{overflow-x:auto}
+.list .it{display:grid;grid-template-columns:1fr auto;gap:6px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center;font-size:14px}
+.list .it.del{opacity:.45;text-decoration:line-through}
+.list .it small{color:var(--muted);font-weight:700}
+.tag{display:inline-block;border-radius:99px;padding:1px 10px;font-size:12px;font-weight:800}
+.tag.c{background:var(--ok-soft);color:var(--ok)}.tag.k{background:#e6f3fb;color:#0b5a8c}
+.grand{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.grand div{background:var(--foam);border-radius:14px;padding:10px 4px}.grand b{display:block;font-size:16px;color:var(--ink)}.grand span{font-size:12px;color:var(--muted);font-weight:800}
+.modal{position:fixed;inset:0;background:rgba(6,24,44,.55);display:grid;place-items:center;z-index:50;padding:16px}
+.modal .card{width:min(420px,100%)}
+@media(max-width:480px){.sale{grid-template-columns:1fr}.sale .step{justify-self:start}}
+</style>
+</head>
+<body>
+<header><div class="hd"><img src="img/logo.webp" alt="" width="68" height="34"><h1>پنل پذیرش</h1>
+<div class="sp"><span class="sync" id="sync" hidden><i></i><span id="syncT">همگام</span></span><button class="btn line sm" id="logout" type="button" hidden>خروج</button></div></div></header>
+<main>
+
+<section class="card" id="loginCard">
+  <div id="unlockBox" hidden>
+    <h2>ورود پذیرش</h2>
+    <div class="field"><label for="pw">رمز پذیرش</label><input type="password" id="pw" autocomplete="current-password"></div>
+    <p class="hint"><a href="#" id="newDev">ورود با توکن جدید</a></p>
+  </div>
+  <div id="setupBox">
+    <h2>راه‌اندازی این دستگاه</h2>
+    <p class="hint" style="margin-bottom:12px">بار اول توکن گیت‌هاب را وارد کنید و رمز پذیرش را بگذارید. روی همهٔ دستگاه‌ها باید <b>یک رمز</b> بگذارید. بعد از آن فقط رمز لازم است. اطلاعات فروش رمزگذاری‌شده ذخیره می‌شود.</p>
+    <div class="field"><label for="token">توکن گیت‌هاب</label><input type="password" id="token" autocomplete="off" dir="ltr" placeholder="github_pat_..."></div>
+    <div class="field"><label for="pwNew">رمز پذیرش (حداقل ۶ کاراکتر)</label><input type="password" id="pwNew" autocomplete="new-password"></div>
+    <details><summary>تنظیمات پیشرفته</summary>
+      <div class="field" style="margin-top:10px"><label for="repo">مخزن</label><input type="text" id="repo" dir="ltr" value="pcmohqm-coder/pool-ticket"></div>
+      <div class="field"><label for="branch">شاخه</label><input type="text" id="branch" dir="ltr" value="main"></div>
+      <div class="field"><label for="path">فایل داده</label><input type="text" id="path" dir="ltr" value="reception-data.json"></div>
+    </details>
+  </div>
+  <button class="btn pri" id="login" type="button">ورود</button>
+  <div class="msg err" id="loginMsg" hidden></div>
+</section>
+
+<div id="app" hidden style="display:grid;gap:14px">
+  <div class="card bar">
+    <select id="daySel" aria-label="روز"></select>
+    <button class="btn danger" id="closeDay" type="button">پایان روز و دریافت PDF</button>
+  </div>
+  <div class="warn" id="oldWarn" hidden></div>
+  <div class="warn" id="testWarn" hidden>این روز قبل از شروع رسمی (۵ آبان) است و آزمایشی حساب می‌شود. بعد از تست «پایان روز» بزنید تا پاک شود.</div>
+  <h2 id="dayTitle" style="font-size:19px;font-weight:900;color:var(--ink)"></h2>
+  <div class="tabs" id="tabs" role="tablist">
+    <button role="tab" data-s="m" aria-selected="true">آقایان<small id="cm"></small></button>
+    <button role="tab" data-s="w" aria-selected="false">بانوان<small id="cw"></small></button>
+  </div>
+  <section class="card"><h2>ثبت فروش</h2><div id="form"></div></section>
+  <section class="card"><h2>جمع سانس</h2><div class="tw"><table><thead><tr><th>نوع</th><th>تعداد</th><th>نقد</th><th>کارت</th><th>جمع</th></tr></thead><tbody id="sumB"></tbody><tfoot id="sumF"></tfoot></table></div></section>
+  <section class="card"><h2>جمع کل روز</h2><div class="grand" id="grand"></div></section>
+  <section class="card"><h2>فروش‌های ثبت‌شده</h2><div class="list" id="list"></div></section>
+</div>
+</main>
+
+<div class="modal" id="modal" hidden><div class="card">
+  <h2>ویرایش فروش</h2>
+  <div class="field"><label>سانس</label><select id="eS"><option value="m">آقایان</option><option value="w">بانوان</option></select></div>
+  <div class="field"><label>نوع بلیط</label><select id="eK"></select></div>
+  <div class="field"><label>تعداد</label><div class="step"><button type="button" id="eMinus">−</button><output id="eQ">1</output><button type="button" id="ePlus">+</button></div></div>
+  <div class="field" id="eP"><label>نحوه پرداخت</label><select id="ePay"><option value="c">نقد</option><option value="k">کارت</option></select></div>
+  <div class="bar"><button class="btn pri" id="eSave" type="button">ذخیره</button><button class="btn line" id="eCancel" type="button">انصراف</button><button class="btn danger" id="eDel" type="button" style="margin-inline-start:auto">حذف</button></div>
+</div></div>
+
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s)};
+var TYPES=[
+ {k:'n',name:'بلیط عادی',price:250000,money:true},
+ {k:'h',name:'بلیط نیم‌بها',price:125000,money:true},
+ {k:'v',name:'بلیط ویژه',price:120000,money:true},
+ {k:'q',name:'قم‌تیکت'},
+ {k:'p',name:'پول‌تیکت'}
+];
+var SESS={m:'آقایان',w:'بانوان'};
+var START='2026-10-27';   /* first real day */
+function baseSess(d){var w=new Date(d+'T12:00:00Z').getUTCDay();return (w===1||w===3)?'w':(w===6?null:'m')}   /* Mon,Wed = women; Sun,Tue,Thu,Fri = men; Sat = closed */
+function sessionsFor(d){var b=baseSess(d),a=b?[b]:[];['m','w'].forEach(function(x){if(a.indexOf(x)<0&&daySales(d,x).length)a.push(x)});return a.length?a:['m','w']}
+var VAULT='poolRecVault';
+var cfg={token:'',repo:'pcmohqm-coder/pool-ticket',branch:'main',path:'reception-data.json'};
+var sha=null,salt=null,dkey=null,db={days:{}},pending=[],pushing=false,sess='m',day='',qty={},pollT=null,retryT=null,editId=null,eq=1;
+var fa=function(n){return Number(n).toLocaleString('fa-IR')};
+var money=function(n){return fa(n)+' تومان'};
+function typ(k){for(var i=0;i<TYPES.length;i++)if(TYPES[i].k===k)return TYPES[i]}
+function todayStr(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tehran',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}
+function jal(d){return new Intl.DateTimeFormat('fa-IR-u-ca-persian',{timeZone:'UTC',weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date(d+'T12:00:00Z'))}
+function hhmm(t){return new Intl.DateTimeFormat('fa-IR',{timeZone:'Asia/Tehran',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(t))}
+function show(el,t){el.textContent=t;el.hidden=false}
+
+/* ---------- crypto ---------- */
+function b64(buf){var a=new Uint8Array(buf),s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s)}
+function unb64(t){var s=atob(t.replace(/\s/g,'')),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+function deriveKey(pw,sl){return crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']).then(function(m){return crypto.subtle.deriveKey({name:'PBKDF2',salt:sl,iterations:250000,hash:'SHA-256'},m,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])})}
+function encJSON(key,obj){var iv=crypto.getRandomValues(new Uint8Array(12));return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},key,new TextEncoder().encode(JSON.stringify(obj))).then(function(ct){return {iv:b64(iv),ct:b64(ct)}})}
+function decJSON(key,o){return crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(o.iv)},key,unb64(o.ct)).then(function(pt){return JSON.parse(new TextDecoder().decode(pt))})}
+function sealVault(pw,obj){var sl=crypto.getRandomValues(new Uint8Array(16));return deriveKey(pw,sl).then(function(k){return encJSON(k,obj)}).then(function(e){localStorage.setItem(VAULT,JSON.stringify({salt:b64(sl),iv:e.iv,ct:e.ct}))})}
+function openVault(pw){var v=JSON.parse(localStorage.getItem(VAULT));return deriveKey(pw,unb64(v.salt)).then(function(k){return decJSON(k,v)})}
+function hasVault(){try{return !!localStorage.getItem(VAULT)}catch(e){return false}}
+
+/* ---------- github ---------- */
+function api(method,path,body){
+  var o={method:method,headers:{'Accept':'application/vnd.github+json','Authorization':'Bearer '+cfg.token,'X-GitHub-Api-Version':'2022-11-28'}};
+  if(body){o.headers['Content-Type']='application/json';o.body=JSON.stringify(body)}
+  return fetch('https://api.github.com'+path,o).then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null}catch(e){}if(!r.ok){var e=new Error((j&&j.message)||('HTTP '+r.status));e.status=r.status;throw e}return j})});
+}
+function furl(){return '/repos/'+cfg.repo+'/contents/'+cfg.path.split('/').map(encodeURIComponent).join('/')}
+function errText(e){
+  if(e.pw)return 'رمز اشتباه است.';
+  if(e.status===401)return 'توکن معتبر نیست یا منقضی شده است.';
+  if(e.status===403)return 'دسترسی کافی نیست. توکن باید اجازهٔ «Contents: Read and write» داشته باشد.';
+  if(e.status===404)return 'مخزن پیدا نشد. نام مخزن را بررسی کنید.';
+  if(e instanceof TypeError)return 'ارتباط با گیت‌هاب برقرار نشد. اینترنت را بررسی کنید.';
+  return 'خطا: '+e.message;
+}
+/* fetch remote -> {db,sha}; derives key on first use with the file's own salt (password must match other devices) */
+function fetchRemote(pw){
+  return api('GET',furl()+'?ref='+encodeURIComponent(cfg.branch)+'&t='+Date.now()).then(function(j){
+    var o=JSON.parse(new TextDecoder().decode(unb64(j.content)));
+    var kp=(dkey&&salt===o.salt)?Promise.resolve(dkey):deriveKey(pw,unb64(o.salt));
+    return kp.then(function(k){return decJSON(k,o).then(function(d){dkey=k;salt=o.salt;return {db:norm(d),sha:j.sha}},function(){throw Object.assign(new Error('pw'),{pw:true})})});
+  },function(e){
+    if(e.status===404){
+      if(!dkey){salt=b64(crypto.getRandomValues(new Uint8Array(16)));return deriveKey(pw,unb64(salt)).then(function(k){dkey=k;return {db:{days:{}},sha:null}})}
+      return {db:{days:{}},sha:null};
+    }
+    throw e;
+  });
+}
+function norm(d){d=d&&typeof d==='object'?d:{};if(!d.days||typeof d.days!=='object')d.days={};return d}
+function writeRemote(d,s){
+  return encJSON(dkey,d).then(function(e){
+    var txt=JSON.stringify({v:1,salt:salt,iv:e.iv,ct:e.ct});
+    var body={message:'reception data',content:btoa(txt),branch:cfg.branch};
+    if(s)body.sha=s;
+    return api('PUT',furl(),body);
+  });
+}
+function applyOp(d,op){
+  if(op.t==='up'){var s=op.s;var day=d.days[s.d]||(d.days[s.d]={sales:[]});var f=null;for(var i=0;i<day.sales.length;i++)if(day.sales[i].id===s.id){f=i;break}
+    if(f===null)day.sales.push(s);else if(s.u>=day.sales[f].u)day.sales[f]=s}
+  else if(op.t==='close'){delete d.days[op.d]}
+}
+
+/* ---------- sync ---------- */
+function setSync(st,t){var el=$('#sync');el.hidden=false;el.className='sync '+st;$('#syncT').textContent=t}
+function savePending(){try{localStorage.setItem('poolRecPending',JSON.stringify(pending))}catch(e){}}
+function push(op){applyOp(db,op);pending.push(op);savePending();render();flush()}
+function flush(tries){
+  if(pushing||!pending.length)return;
+  pushing=true;tries=tries||0;clearTimeout(retryT);setSync('busy','در حال ارسال…');
+  var n=pending.length,ops=pending.slice(0,n);
+  fetchRemote(null).then(function(r){
+    ops.forEach(function(o){applyOp(r.db,o)});
+    return writeRemote(r.db,r.sha).then(function(j){sha=j&&j.content&&j.content.sha||null;pending.splice(0,n);savePending();db=r.db;pending.forEach(function(o){applyOp(db,o)})});
+  }).then(function(){pushing=false;setSync('','همگام');render();if(pending.length)flush()},function(e){
+    pushing=false;
+    if((e.status===409||e.status===422)&&tries<3){return flush(tries+1)}
+    setSync('err','ثبت نشد، تلاش دوباره…');retryT=setTimeout(function(){flush()},8000);
+  });
+}
+function poll(){
+  if(pushing||pending.length||document.hidden)return;
+  fetchRemote(null).then(function(r){if(pushing||pending.length)return;db=r.db;sha=r.sha;setSync('','همگام');render()},function(){setSync('err','قطع ارتباط')});
+}
+
+/* ---------- views ---------- */
+function daySales(d,s){var x=db.days[d];if(!x)return[];return x.sales.filter(function(v){return !v.x&&(!s||v.s===s)})}
+function daysList(){var t=todayStr(),a=Object.keys(db.days).filter(function(d){return daySales(d).length||d===t});if(a.indexOf(t)<0)a.push(t);a.sort().reverse();return a}
+function render(){
+  var list=daysList();
+  if(!day||list.indexOf(day)<0)day=list.indexOf(todayStr())>=0?todayStr():list[0];
+  var sel=$('#daySel');sel.innerHTML='';list.forEach(function(d){var o=document.createElement('option');o.value=d;o.textContent=jal(d)+(d===todayStr()?' (امروز)':'');sel.appendChild(o)});sel.value=day;
+  var old=list.filter(function(d){return d<todayStr()&&daySales(d).length});
+  var w=$('#oldWarn');if(old.length){w.hidden=false;w.textContent='روزهای بسته‌نشده: '+old.map(jal).join('، ')+' — از لیست بالا انتخاب کنید و پایان روز بزنید.'}else w.hidden=true;
+  var ss=sessionsFor(day);if(ss.indexOf(sess)<0)sess=ss[0];
+  $('#tabs').hidden=ss.length<2;
+  $('#cm').textContent=fa(count('m'))+' بلیط';$('#cw').textContent=fa(count('w'))+' بلیط';
+  var bs=baseSess(day);$('#dayTitle').textContent=jal(day)+' — '+(bs?'سانس '+SESS[bs]:'شنبه تعطیل است');
+  var tw=$('#testWarn');tw.hidden=day>=START;
+  document.querySelectorAll('#tabs button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.s===sess)});
+  renderForm();renderSum();renderList();
+}
+function count(s){return daySales(day,s).reduce(function(a,v){return a+v.q},0)}
+function renderForm(){
+  var f=$('#form');if(f.dataset.s===sess&&f.dataset.d===day&&f.children.length){updForm();return}
+  f.dataset.s=sess;f.dataset.d=day;f.innerHTML='';
+  TYPES.forEach(function(t){
+    var r=document.createElement('div');r.className='sale';r.dataset.k=t.k;
+    r.innerHTML='<div><b>'+t.name+'</b><div class="pr">'+(t.money?money(t.price)+' برای هر بلیط':'فقط شمارش تعداد')+'</div></div>'+
+     '<div class="step"><button type="button" data-a="-" aria-label="کم">−</button><output>'+fa(qty[t.k]||0)+'</output><button type="button" data-a="+" aria-label="زیاد">+</button></div>'+
+     (t.money?'<div class="pay"><button class="btn pri" data-pay="c" type="button">ثبت نقد</button><button class="btn line" data-pay="k" type="button">ثبت کارت</button></div><div class="tot" style="grid-column:1/-1"></div>':'<div class="pay" style="grid-template-columns:1fr"><button class="btn pri" data-pay="" type="button">ثبت تعداد</button></div>');
+    f.appendChild(r);
+  });
+  updForm();
+}
+function updForm(){
+  document.querySelectorAll('#form .sale').forEach(function(r){var k=r.dataset.k,q=qty[k]||0,t=typ(k);
+    r.querySelector('output').textContent=fa(q);
+    r.querySelectorAll('[data-pay]').forEach(function(b){b.disabled=!q});
+    var tt=r.querySelector('.tot');if(tt)tt.textContent=q?(fa(q)+' × '+fa(t.price)+' = '+money(q*t.price)):'';
+  });
+}
+$('#form').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;var r=b.closest('.sale');var k=r.dataset.k;
+  if(b.dataset.a){qty[k]=Math.max(0,Math.min(99,(qty[k]||0)+(b.dataset.a==='+'?1:-1)));updForm();return}
+  if(b.dataset.pay!==undefined){var q=qty[k]||0;if(!q)return;
+    var now=new Date().toISOString();
+    push({t:'up',s:{id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),d:day,s:sess,k:k,q:q,pay:b.dataset.pay,p:typ(k).price||0,t:now,u:Date.now()}});
+    qty[k]=0;updForm();
+  }
+});
+function agg(s){
+  var o={};TYPES.forEach(function(t){o[t.k]={q:0,c:0,k:0}});
+  daySales(day,s).forEach(function(v){var a=o[v.k];if(!a)return;a.q+=v.q;if(v.pay==='c')a.c+=v.q*v.p;if(v.pay==='k')a.k+=v.q*v.p});
+  return o;
+}
+function renderSum(){
+  var o=agg(sess),tq=0,tc=0,tk=0,h='';
+  TYPES.forEach(function(t){var a=o[t.k];tq+=a.q;tc+=a.c;tk+=a.k;
+    h+='<tr><td>'+t.name+'</td><td>'+fa(a.q)+'</td><td>'+(t.money?fa(a.c):'—')+'</td><td>'+(t.money?fa(a.k):'—')+'</td><td>'+(t.money?fa(a.c+a.k):'—')+'</td></tr>'});
+  $('#sumB').innerHTML=h;
+  $('#sumF').innerHTML='<tr><td>جمع</td><td>'+fa(tq)+'</td><td>'+fa(tc)+'</td><td>'+fa(tk)+'</td><td>'+fa(tc+tk)+'</td></tr>';
+  var a1=tot('m'),a2=tot('w');
+  $('#grand').innerHTML='<div><b>'+money(a1.c+a2.c)+'</b><span>جمع نقد</span></div><div><b>'+money(a1.k+a2.k)+'</b><span>جمع کارت</span></div><div><b>'+money(a1.c+a2.c+a1.k+a2.k)+'</b><span>جمع کل</span></div>';
+}
+function tot(s){var o=agg(s),c=0,k=0;TYPES.forEach(function(t){c+=o[t.k].c;k+=o[t.k].k});return {c:c,k:k}}
+function renderList(){
+  var all=(db.days[day]?db.days[day].sales:[]).filter(function(v){return v.s===sess}).sort(function(a,b){return a.t<b.t?1:-1});
+  var l=$('#list');if(!all.length){l.innerHTML='<p class="hint">هنوز فروشی ثبت نشده.</p>';return}
+  l.innerHTML=all.map(function(v){var t=typ(v.k);
+    return '<div class="it'+(v.x?' del':'')+'"><div><b>'+fa(v.q)+' × '+t.name+'</b> '+(v.pay==='c'?'<span class="tag c">نقد</span>':v.pay==='k'?'<span class="tag k">کارت</span>':'')+'<br><small>'+hhmm(v.t)+(t.money?' — '+money(v.q*v.p):'')+(v.x?' — حذف‌شده':'')+'</small></div>'+(v.x?'':'<button class="btn line sm" data-edit="'+v.id+'" type="button">ویرایش</button>')+'</div>';
+  }).join('');
+}
+$('#list').addEventListener('click',function(e){var b=e.target.closest('[data-edit]');if(b)openEdit(b.dataset.edit)});
+$('#tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b){sess=b.dataset.s;render()}});
+$('#daySel').addEventListener('change',function(){day=this.value;render()});
+
+/* ---------- edit ---------- */
+function findSale(id){var x=db.days[day];if(!x)return null;for(var i=0;i<x.sales.length;i++)if(x.sales[i].id===id)return x.sales[i];return null}
+function eRefresh(){$('#eQ').textContent=fa(eq);$('#eP').hidden=!typ($('#eK').value).money}
+function openEdit(id){
+  var v=findSale(id);if(!v)return;editId=id;eq=v.q;
+  $('#eK').innerHTML=TYPES.map(function(t){return '<option value="'+t.k+'">'+t.name+'</option>'}).join('');
+  $('#eK').value=v.k;$('#eS').value=v.s;$('#ePay').value=v.pay||'c';eRefresh();$('#modal').hidden=false;
+}
+$('#eK').addEventListener('change',eRefresh);
+$('#eMinus').addEventListener('click',function(){eq=Math.max(1,eq-1);eRefresh()});
+$('#ePlus').addEventListener('click',function(){eq=Math.min(99,eq+1);eRefresh()});
+$('#eCancel').addEventListener('click',function(){$('#modal').hidden=true});
+$('#eSave').addEventListener('click',function(){
+  var v=findSale(editId);if(!v)return;var k=$('#eK').value,t=typ(k);
+  var n=Object.assign({},v,{k:k,s:$('#eS').value,q:eq,pay:t.money?$('#ePay').value:'',p:t.price||0,u:Date.now()});
+  push({t:'up',s:n});$('#modal').hidden=true;
+});
+$('#eDel').addEventListener('click',function(){
+  if(!confirm('این فروش حذف شود؟'))return;var v=findSale(editId);if(!v)return;
+  push({t:'up',s:Object.assign({},v,{x:1,u:Date.now()})});$('#modal').hidden=true;
+});
+
+/* ---------- PDF (canvas -> JPEG -> minimal PDF, so Persian text is correct) ---------- */
+function buildReport(d){
+  var W=1240,H=1754,c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);x.direction='rtl';x.textBaseline='middle';
+  var F='Vazirmatn,Tahoma,sans-serif',R=W-80;
+  function T(s,px,y,sz,wt,col,al){x.font=(wt||400)+' '+sz+'px '+F;x.fillStyle=col||'#12283d';x.textAlign=al||'right';x.fillText(s,px,y)}
+  x.fillStyle='#06182c';x.fillRect(0,0,W,170);
+  T('استخر شهدای بسیج',R,64,48,900,'#fff');T('گزارش پایان روز پذیرش',R,122,30,600,'#bfe9f4');
+  T(jal(d),80,92,32,800,'#34d3e3','left');
+  var y=230,tc=0,tk=0,tq=0;
+  var cols=[R,760,580,400,215]; /* name, count, cash, card, total (right edges) */
+  sessionsFor(d).forEach(function(s){
+    var o=aggDay(d,s),sc=0,sk=0,sq=0;
+    x.fillStyle='#e6f3fb';x.fillRect(80,y-34,W-160,68);T('سانس '+SESS[s],R-16,y,34,900,'#06182c');y+=70;
+    x.fillStyle='#f1f8fb';x.fillRect(80,y-26,W-160,52);
+    ['نوع بلیط','تعداد','نقد (تومان)','کارت (تومان)','جمع (تومان)'].forEach(function(h,i){T(h,i?cols[i]:cols[0]-16,y,24,800,'#566d80',i?'center':'right')});y+=56;
+    TYPES.forEach(function(t){var a=o[t.k];sq+=a.q;sc+=a.c;sk+=a.k;
+      T(t.name,cols[0]-16,y,28,800);T(fa(a.q),cols[1],y,28,600,null,'center');
+      T(t.money?fa(a.c):'—',cols[2],y,28,600,null,'center');T(t.money?fa(a.k):'—',cols[3],y,28,600,null,'center');T(t.money?fa(a.c+a.k):'—',cols[4],y,28,800,null,'center');
+      x.fillStyle='#d8e7ee';x.fillRect(80,y+30,W-160,2);y+=64});
+    x.fillStyle='#06182c';x.fillRect(80,y-30,W-160,60);
+    T('جمع سانس',cols[0]-16,y,28,900,'#fff');T(fa(sq),cols[1],y,28,900,'#fff','center');T(fa(sc),cols[2],y,28,900,'#fff','center');T(fa(sk),cols[3],y,28,900,'#fff','center');T(fa(sc+sk),cols[4],y,28,900,'#fff','center');
+    tc+=sc;tk+=sk;tq+=sq;y+=120;
+  });
+  x.fillStyle='#e0f5e9';x.fillRect(80,y-10,W-160,260);
+  T('جمع کل روز',R-20,y+36,38,900,'#16874f');
+  T('جمع نقد: '+money(tc),R-20,y+104,32,800);
+  T('جمع کارت: '+money(tk),R-20,y+160,32,800);
+  T('جمع کل: '+money(tc+tk),R-20,y+216,36,900,'#16874f');
+  T('تعداد کل بلیط: '+fa(tq),80+20,y+36,28,800,'#566d80','left');
+  T('پنل پذیرش استخر شهدای بسیج',W/2,H-50,22,600,'#566d80','center');
+  return c;
+}
+var dayBackup=null;
+function aggDay(d,s){var o={};TYPES.forEach(function(t){o[t.k]={q:0,c:0,k:0}});daySales(d,s).forEach(function(v){var a=o[v.k];if(!a)return;a.q+=v.q;if(v.pay==='c')a.c+=v.q*v.p;if(v.pay==='k')a.k+=v.q*v.p});return o}
+function makePdf(canvas){
+  var jpg=unb64(canvas.toDataURL('image/jpeg',.92).split(',')[1]);
+  var enc=new TextEncoder(),parts=[],len=0,offs=[];
+  function add(u){parts.push(u);len+=u.length}
+  function S(s){add(enc.encode(s))}
+  S('%PDF-1.4\n');
+  offs[1]=len;S('1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n');
+  offs[2]=len;S('2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj\n');
+  offs[3]=len;S('3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]/Resources<</XObject<</Im0 4 0 R>>>>/Contents 5 0 R>>endobj\n');
+  offs[4]=len;S('4 0 obj<</Type/XObject/Subtype/Image/Width '+canvas.width+'/Height '+canvas.height+'/ColorSpace/DeviceRGB/BitsPerComponent 8/Filter/DCTDecode/Length '+jpg.length+'>>stream\n');add(jpg);S('\nendstream\nendobj\n');
+  var cs='q 595 0 0 842 0 0 cm /Im0 Do Q';
+  offs[5]=len;S('5 0 obj<</Length '+cs.length+'>>stream\n'+cs+'\nendstream\nendobj\n');
+  var xr=len;S('xref\n0 6\n0000000000 65535 f \n');
+  for(var i=1;i<=5;i++)S(('0000000000'+offs[i]).slice(-10)+' 00000 n \n');
+  S('trailer<</Size 6/Root 1 0 R>>\nstartxref\n'+xr+'\n%%EOF');
+  var out=new Uint8Array(len),p=0;parts.forEach(function(u){out.set(u,p);p+=u.length});
+  return new Blob([out],{type:'application/pdf'});
+}
+$('#closeDay').addEventListener('click',function(){
+  if(pending.length){alert('هنوز اطلاعات در حال ارسال است. چند لحظه صبر کنید و دوباره بزنید.');return}
+  var d=day;
+  if(!daySales(d).length&&!confirm('برای این روز فروشی ثبت نشده. ادامه می‌دهید؟'))return;
+  document.fonts.load('800 30px Vazirmatn','آقایان ۱۲۳۴۵۶۷۸۹۰').catch(function(){}).then(function(){
+    var blob=makePdf(buildReport(d));
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pazireh-'+d+'.pdf';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){
+      if(confirm('فایل PDF دریافت شد؟\nبا تأیید، اطلاعات این روز برای همیشه از سامانه پاک می‌شود.')){push({t:'close',d:d})}
+    },700);
+  });
+});
+
+/* ---------- login ---------- */
+var mode='setup';
+function setMode(m){mode=m;$('#unlockBox').hidden=m!=='unlock';$('#setupBox').hidden=m!=='setup';$('#loginMsg').hidden=true}
+function enter(){
+  $('#loginCard').hidden=true;$('#app').hidden=false;$('#logout').hidden=false;
+  try{pending=JSON.parse(localStorage.getItem('poolRecPending')||'[]')}catch(e){pending=[]}
+  pending.forEach(function(o){applyOp(db,o)});render();setSync('','همگام');
+  clearInterval(pollT);pollT=setInterval(poll,15000);
+  if(pending.length)flush();
+}
+function loginFlow(){
+  if(!window.crypto||!crypto.subtle){show($('#loginMsg'),'این مرورگر رمزگذاری را پشتیبانی نمی‌کند. صفحه را با https باز کنید.');return}
+  var b=$('#login');b.disabled=true;$('#loginMsg').hidden=true;var done=function(){b.disabled=false};
+  var pw;dkey=null;
+  if(mode==='unlock'){
+    pw=$('#pw').value;if(!pw){show($('#loginMsg'),'رمز را وارد کنید.');done();return}
+    openVault(pw).then(function(o){cfg=o},function(){throw Object.assign(new Error('pw'),{pw:true})})
+     .then(function(){return fetchRemote(pw)}).then(function(r){db=r.db;sha=r.sha;enter()})
+     .catch(function(e){show($('#loginMsg'),errText(e))}).then(function(){$('#pw').value='';done()});return;
+  }
+  var tok=$('#token').value.trim();pw=$('#pwNew').value;
+  if(!tok){show($('#loginMsg'),'توکن را وارد کنید.');done();return}
+  if(pw.length<6){show($('#loginMsg'),'رمز باید حداقل ۶ کاراکتر باشد.');done();return}
+  cfg={token:tok,repo:$('#repo').value.trim(),branch:$('#branch').value.trim(),path:$('#path').value.trim()};
+  fetchRemote(pw).then(function(r){
+    db=r.db;sha=r.sha;
+    var p=r.sha?Promise.resolve():writeRemote(db,null).then(function(j){sha=j&&j.content&&j.content.sha||null});
+    return p;
+  }).then(function(){return sealVault(pw,cfg)}).then(function(){$('#token').value='';$('#pwNew').value='';enter()})
+   .catch(function(e){dkey=null;show($('#loginMsg'),e.pw?'این رمز با رمز دستگاه‌های دیگر نمی‌خواند. همان رمز قبلی پذیرش را بزنید.':errText(e))}).then(done);
+}
+$('#login').addEventListener('click',loginFlow);
+['#pw','#pwNew'].forEach(function(s){$(s).addEventListener('keydown',function(e){if(e.key==='Enter')loginFlow()})});
+$('#newDev').addEventListener('click',function(e){e.preventDefault();if(confirm('توکن و رمز ذخیره‌شده روی این دستگاه پاک می‌شود. ادامه می‌دهید؟')){try{localStorage.removeItem(VAULT)}catch(x){}setMode('setup')}});
+$('#logout').addEventListener('click',function(){
+  clearInterval(pollT);clearTimeout(retryT);cfg.token='';dkey=null;db={days:{}};$('#app').hidden=true;$('#logout').hidden=true;$('#sync').hidden=true;$('#loginCard').hidden=false;setMode(hasVault()?'unlock':'setup');
+});
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&!$('#app').hidden)poll()});
+setMode(hasVault()?'unlock':'setup');
+})();
+</script>
+</body>
+</html>
